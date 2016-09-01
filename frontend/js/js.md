@@ -29,9 +29,25 @@ foo();	//undefined
 # 60. JQuery
 ## 60.1基础
 ```javascript
+//插入html
+$( "button.continue" ).html( "Next Step..." )
+
 //绑定动作
-<input id="upload" type="button" value="上传" />
-$("#upload").click(function(){ //ToDo }）
+var hiddenBox = $( "#banner-message" );
+$( "#button-container button" ).on( "click", function( event ) {
+  hiddenBox.show();
+});
+
+//ajax
+$.ajax({
+  url: "/api/getWeather",
+  data: {
+    zipcode: 97201
+  },
+  success: function( result ) {
+    $( "#weather-temp" ).html( "<strong>" + result + "</strong> degrees" );
+  }
+});
 ```
 
 ## 60.20 jquery上传文件
