@@ -50,9 +50,23 @@ $.ajax({
 });
 ```
 
-## 60.20 jquery上传文件
+## 60.20 ajax
+### 60.20.1 注释
+```
+//
+```
+
+
+### 60.20.3 示例
 ```javascript
-//使用 FormData 对象添加字段方式, IE11支持
+//下载文件
+$( "#refJs" ).on( "click", function( event ) {
+  $.get("./frontend/js/js.md", function(data) { 
+    $(".jumbotron").html( data )
+  });
+});
+
+//jq上传文件， 使用 FormData 对象添加字段方式, IE11支持
 <input id="upload" type="button" value="上传" />
 <script>
 	$("#upload").click(function(){
@@ -73,6 +87,7 @@ $.ajax({
 	});
 </script>
 ```
+
 
 # 70. AngularJs
 **调试**  
