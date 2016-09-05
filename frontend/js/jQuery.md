@@ -1,14 +1,13 @@
 # 基础 [API](http://api.jquery.com/)
 ```
-//插入html
+//插入html   
 $( "button.continue" ).html( "Next Step..." )  
 
-//绑定动作  
-
-var hiddenBox = $( "#banner-message" );
-$( "#button-container button" ).on( "click", function( event ) {
-  hiddenBox.show();
-});
+//绑定动作   
+var hiddenBox = $( "#banner-message" );   
+$( "#button-container button" ).on( "click", function( event ) {   
+  hiddenBox.show();   
+});   
 
 //ajax
 $.ajax({
