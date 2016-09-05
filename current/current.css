@@ -1,0 +1,46 @@
+
+body { padding-top: 70px; }
+
+.markdown-body {
+    counter-reset: index
+}
+
+//自动编号
+.h1:before,h2::before,h3:before{
+    content: counters(index, '-') '. '; 
+    counter-increment: index;
+}
+
+.markdown-body code {
+    white-space: nowrap
+}
+
+.markdown-body pre>code {
+    margin: 0;
+    padding: 0;
+    white-space: pre;
+    border: none;
+    background: transparent
+}
+
+.markdown-body .highlight pre,.markdown-body pre {
+    background-color: #f8f8f8;
+    border: 1px solid #ddd;
+    font-size: 13px;
+    line-height: 19px;
+    overflow: auto;
+    padding: 6px 10px;
+    border-radius: 3px
+}
+
+.markdown-body pre {
+    word-wrap: normal
+}
+
+.markdown-body pre code,.markdown-body pre tt {
+    margin: 0;
+    padding: 0;
+    background-color: transparent;
+    border: none;
+    word-wrap: normal
+}
