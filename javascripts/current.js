@@ -1,6 +1,6 @@
 function dealmd(path) {
     debugger;
-    $.get("path", function(data) {
+    $.get(path, function(data) {
         var html_content = markdown.toHTML(data);
         $(".markdown-body").html(html_content)
     });
