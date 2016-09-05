@@ -21,10 +21,20 @@ $.ajax({
 });
 ```
 
-# [绑定动作](http://api.jquery.com/on/)
+# [绑定动作.on](http://api.jquery.com/on/)
 ```
+$("#js").on( "click", function( event ) {
+  var value = event.target.text;
+});
+
 //用法 .on( events [, selector ] [, data ], handler )
-	events -->
+	events --> 异或多个用空格分开的事件名称，如"click"等
+	selector --> 进一步的过滤条件
+	data --> Data to be passed to the handler in event.data when an event is triggered.
+	handler --> function(event){}
+
+//移除事件	.off()
+//只触发一次 	.one()
 ```
 
 # ajax
