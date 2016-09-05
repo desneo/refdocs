@@ -1,7 +1,7 @@
 # 基础 [API](http://api.jquery.com/)
 ```
 //插入html
-$( "button.continue" ).html( "Next Step..." )
+$( "button.continue" ).html( "Next Step..." )  
 
 //绑定动作
 var hiddenBox = $( "#banner-message" );
