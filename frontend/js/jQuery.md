@@ -1,5 +1,5 @@
 # 基础 [API](http://api.jquery.com/)
-```javascript
+```
 //插入html
 $( "button.continue" ).html( "Next Step..." )
 
