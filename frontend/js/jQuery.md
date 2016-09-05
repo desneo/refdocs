@@ -21,6 +21,12 @@ $.ajax({
 });
 ```
 
+# [绑定动作](http://api.jquery.com/on/)
+```
+//用法 .on( events [, selector ] [, data ], handler )
+	events -->
+```
+
 # ajax
 ## 注释
 ```
