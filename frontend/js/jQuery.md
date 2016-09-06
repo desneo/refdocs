@@ -19,6 +19,15 @@
 	  }
 	});
 
+# jQuery DOM操作
+## 
+
+## 插入节点
+	内容后追加: $("p").append("<b>你好</b>");		// <p>我想说:<b>你好</b></p>
+	内容前追加: $("p").prepend("<b>你好</b>")		// <p><b>你好</b>我想说: </p>
+	元素后同级插入: $("p").after("<b>你好</b>")		// <p>我想说：</P> <b>你好！</b>
+	元素前统计插入: $("p").before("<b></b>") 		// 元素前同级插入
+
 # [绑定动作.on](http://api.jquery.com/on/)
 	$("#js").on( "click", function( event ) {
 	  var value = event.target.text;
@@ -67,9 +76,4 @@
 		});
 	</script>
 
-#jQuery DOM操作
-## 插入节点
-	内容后追加: $("p").append("<b>你好</b>");		// <p>我想说:<b>你好</b></p>
-	内容前追加: $("p").prepend("<b>你好</b>")		// <p><b>你好</b>我想说: </p>
-	元素后同级插入: $("p").after("<b>你好</b>")		// <p>我想说：</P> <b>你好！</b>
-	元素前统计插入: $("p").before("<b></b>") 		// 元素前同级插入
+
