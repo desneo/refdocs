@@ -5,11 +5,11 @@ function dealmd(path) {
         $(".markdown-body").html(html_content);
         //html自动编号
         $("h1").each(function(i, vali) {
-        	 $(this).prepend(i+1+'.');
-        	 $(this).find("h2").each(function(j, valj){
-        	 	$(this).prepend(i+"."+(j+1)+'.');
-        	 	$(this).find("h3").each(function(k, valk){
-        	 		$(this).prepend(i+"."+(j+1)+'.'+(k+1)+'.');
+        	 $(vali).prepend(i+1+'.');
+        	 $(vali).find("h2").each(function(j, valj){
+        	 	$(valj).prepend(i+"."+(j+1)+'.');
+        	 	$(valj).find("h3").each(function(k, valk){
+        	 		$(valk).prepend(i+"."+(j+1)+'.'+(k+1)+'.');
         	 	});
         	 });
         });
