@@ -6,13 +6,13 @@ function dealmd(path) {
         //html自动编号
         $("h1").each(function(i, vali) {
         	 $(this).prepend(i+1+'.');
-        	 $("h2").each(function(j, valj){
+        	 $(this).find("h2").each(function(j, valj){
         	 	$(this).prepend(i+"."+(j+1)+'.');
-        	 	$("h3").each(function(k, valk){
+        	 	$(this).find("h3").each(function(k, valk){
         	 		$(this).prepend(i+"."+(j+1)+'.'+(k+1)+'.');
         	 	});
         	 });
-    	});
+        });
     });
 }
 
