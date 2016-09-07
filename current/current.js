@@ -5,22 +5,25 @@ function dealmd(path) {
         $(".markdown-body").html(html_content);
         //html自动编号
         var h1Index = 0;
+        var h2Index = 0;
+        var h3Index = 0;
+        var h4Index = 0;
         $("h1,h2,h3,h4").each(function(i, val) {
         	if("H1" == val.tagName){
         		h1Index += 1;
-		        var h2Index = 0;
+		        h2Index = 0;
         		$(val).prepend(h1Index+".");
         	}
 
         	if("H2" == val.tagName){
         		h2Index += 1;
-		        var h3Index = 0;
+		        h3Index = 0;
         		$(val).prepend(h1Index+"." + h2Index + ".");
         	}
 
         	if("H3" == val.tagName){
         		h3Index += 1;
-		        var h4Index = 0;
+		        h4Index = 0;
         		$(val).prepend(h1Index+"." + h2Index + "." + h3Index + ".");
         	}
         });
