@@ -30,8 +30,16 @@ function dealmd(path) {
     });
 }
 
+//JS下拉框处理
 $("#js").on("click", function(event) {
     var value = event.target.text;
     var path = "./frontend/js/" + value + ".md";
+    dealmd(path);
+});
+
+//Tools便签处理
+$("#tools").on("click", function(event) {
+    var value = event.target.text;
+    var path = "./others/" + value + ".md";
     dealmd(path);
 });
