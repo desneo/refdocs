@@ -33,7 +33,7 @@ function dealmd(path) {
 //JS下拉框处理
 $("#java").on("click", function(event) {
     var value = event.target.text;
-    var path = "./java/js/" + value + ".md";
+    var path = "./java/" + value + ".md";
     dealmd(path);
 });
 
