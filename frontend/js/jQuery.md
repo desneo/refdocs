@@ -1,4 +1,5 @@
 # 基础 [API](http://api.jquery.com/)
+	//<script src="https://ajax.aspnetcdn.com/ajax/jQuery/jquery-3.1.0.js"></script>
 	//插入html   
 	$( "button.continue" ).html( "Next Step..." )  
 	
