@@ -1,11 +1,11 @@
 # Groovy
 ## 基础  
 	== 相当于java中的equals
-	//安全引用操作符, 如果xx==null， 则后面不执行
-	println xx?.yy;  
+	
+	println xx?.yy;  //安全引用操作符, 如果xx==null， 则后面不执行  
 	
 	//字符串求值， 或${x}
-	def x = 1
+	def x = 1;
 	def doubleQuoteWithDollar = "I am $x dolloar" //输出I am 1 dolloar
 	
 	//定义变量
@@ -20,16 +20,6 @@
 	def  nonReturnTypeFunc(){  //函数返回值类型可指定类型，如String，如果不return string则报错
 	     [return] last_line;   //return可选， 最后一行代码的执行结果就是本函数的返回值
 	}
-	
-	
-	//List
-	def aList = [5,'string',true] //List由[]定义，其元素可以是任何对象
-	        //可以直接通过索引存取，而且不用担心索引越界。如果索引超过当前链表长度，List会自动往该索引添加元素
-	array.add(obj); 
-	def xx = []; xx +="name"
-	println(aList[0..1])  //取前2个值
-	println(aList[-1])  //倒数第一个值
-	aList.size  ===>结果是101
 	
 	//Map
 	def aMap = ['key1':'value1','key2':true]  //Map由[:]定义，注意其中的冒号。冒号左边是key，右边是Value。
@@ -99,10 +89,6 @@
 	['abc', 'z', 'xyzuvw', 'Hello', '321'].sort {it.size()} == ['z', 'abc', '321', 'Hello', 'xyzuvw'];	//自定义排序
 	[7,4,-6,-9,5,-13].sort { a, b -> a == b ? 0 : Math.abs(a) < Math.abs(b) ? -1 : 1 } //自定义排序，（如比较绝对值）
 
-## 正则表达式  
-	~     创建匹配模式
-	=~    创建一个匹配器
-	==~   计算是否匹配
 
 ## 操作xml  
 	//创建xml
