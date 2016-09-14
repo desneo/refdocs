@@ -20,14 +20,6 @@
 	def  nonReturnTypeFunc(){  //函数返回值类型可指定类型，如String，如果不return string则报错
 	     [return] last_line;   //return可选， 最后一行代码的执行结果就是本函数的返回值
 	}
-	
-	//Map
-	def aMap = ['key1':'value1','key2':true]  //Map由[:]定义，注意其中的冒号。冒号左边是key，右边是Value。
-	println aMap['keyName']   //取值，这种表达方法更传统一点
-	aMap.anotherkey = "i am map"  //为map添加新元素
-	def key1="wowo"
-	def aConfusedMap=[key1:"who am i?"] //aConfuseMap中的key1到底是"key1"还是变量key1的值“wowo”？显然，答案是字符串"key1"。
-	                              //如果要是"wowo"的话，def aConfusedMap=[(key1):"who am i?"]
 
 ## 容器操作
 ### List
