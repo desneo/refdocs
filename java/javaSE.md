@@ -39,25 +39,65 @@
 	def aConfusedMap=[key1:"who am i?"] //aConfuseMap中的key1到底是"key1"还是变量key1的值“wowo”？显然，答案是字符串"key1"。
 	                              //如果要是"wowo"的话，def aConfusedMap=[(key1):"who am i?"]
 
-## 闭包
-	//Groovy中，当函数的最后一个参数是闭包的话，可以省略圆括号。
-	targetFile.eachLine { //流式操作每一行
-	    String line ->  println line
-	}
-	
-	//定义闭包
-	def sayhello = {
-	  name ->   //定义入参
-	    println("name="+name);
-	}
+## 容器操作
+### List
+	def list = [5, 6, 7, 8];
+	list[2] == 7	
+	list[-2]==6		//从尾部往前取
+	list.size()==4	//长度
+	list.add(5)		//添加
+	list[2]=100		//指定位置添加
+	def list=[];	//追加元素
+	list << 7 << "i" << 11
+	assert list == [7, "i", 11]
+	['a',2,'c',4].clear()==[]	//清空数组
 
-## 内置的集合操作
-	each  //["Cat", "Dog", "Elephant"].each{yy-> println yy}(默认提供一个it变量)	遍历集合，对每一项处理函数
-	collect //手机每一项处理后的返回值，类似java8 lamdba中map
-	inject  //集合分组
-	findAll //找到所有匹配元素
-	max   //集合中最大值
-	min
+	['a','b','c','b','b'] - 'b' == ['a','c']	//删除元素
+	['a','b','c','b','b'] - ['b','c'] == ['a']
+	['a','b','c','b','b'].remove('c');		//如果有元素被删除返回true，否则false
+
+	![]		//true, 判空
+	[].empty	//true,判空
+
+	def list3 = list.clone();	//克隆一个list
+	list3 == list;		//比较两个list，按元素比较
+
+	[1, 2, 3].each {println "Item: $it" }	//遍历数组
+	['a', 'b', 'c'].eachWithIndex { it, i ->  println "$i: $it"}	//带索引遍历
+
+	[1, 2, 3].find { it > 1 } == 2	//查找第一个符合条件的元素
+	[1, 2, 3].findAll { it > 1 } == [2, 3]		//查找所有
+	['a', 'b', 'c', 'd', 'e'].findIndexOf { it in ['c', 'e', 'g']} == 2;	//满足条件元素的索引
+	['a', 'b', 'c', 'd', 'c'].indexOf('c') == 2
+	['a', 'b', 'c', 'd', 'c'].indexOf('z') == -1	//-1表示元素不在list中
+	['a', 'b', 'c', 'd', 'c'].lastIndexOf('c') == 4		//最后一个匹配元素
+
+	[1, 2, 3].every { it < 5 }		//返回true/false, 所有元素满足条件
+	[1, 2, 3].any { it > 2 }	
+
+	[1, 2, 3, 4, 5, 6].sum() == 21 	//求和，对所有元素使用plus()方法
+	['a', 'b', 'c', 'd', 'e'].sum() == 'abcde';
+	['a', 'b', 'c', 'd', 'e'].sum { ((char) it) - ((char) 'a') } == 10;		//自定义求和方法
+	[['a', 'b'], ['c', 'd']].sum() == ['a', 'b', 'c', 'd']	//合并数组
+
+	[1, 2, 3].join('-') == '1-2-3';		//连接数组
+
+	[9, 4, 2, 10, 5].max()==10;		//最大值
+	['x', 'y', 'a', 'z'].min() == 'a'	
+	['abc', 'z', 'xyzuvw', 'Hello', '321'].max { it.size() } == 'xyzuvw'	//自定义比较方法
+	Comparator mc = { a, b -> a == b ? 0 : (a < b ? -1 : 1) };		//自定义比较方法	
+	def list = [7, 4, 9, -6, -1, 11, 2, 3, -9, 5, -13];
+	assert list.max(mc) == 11;
+
+	'a' in ['a','b','c'];	//元素包含，返true/false
+	['a','b','c'].contains('a')
+	[1,3,4].containsAll([1,4])		//全部包含
+	[1,2,3,3,3,3,4,5].count(3) == 4;	//统计
+	[1,2,3,3,3,3,4,5].count { it%2==0} == 2;	//自定义统计方法
+
+	[6, 3, 9, 2, 7, 1, 5].sort() == [1, 2, 3, 5, 6, 7, 9]	//排序
+	['abc', 'z', 'xyzuvw', 'Hello', '321'].sort {it.size()} == ['z', 'abc', '321', 'Hello', 'xyzuvw'];	//自定义排序
+	[7,4,-6,-9,5,-13].sort { a, b -> a == b ? 0 : Math.abs(a) < Math.abs(b) ? -1 : 1 } //自定义排序，（如比较绝对值）
 
 ## 正则表达式  
 	~     创建匹配模式
