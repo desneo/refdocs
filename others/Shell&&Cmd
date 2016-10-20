@@ -1,0 +1,6 @@
+# 获取文件头/文件尾
+    head -100 catanila.out > temp.log
+    tail -f oc.logs
+
+# cmd结果导出到文件
+    mvn dependency:tree > tree.xml
