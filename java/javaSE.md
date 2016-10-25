@@ -44,7 +44,7 @@
 	def list3 = list.clone();	//克隆一个list
 	list3 == list;		//比较两个list，按元素比较
 
-	[1, 2, 3].each {println "Item: $it" }	//遍历数组
+	[1, 2, 3].each {println "Item: $it" }	//遍历数组,循环数组
 	['a', 'b', 'c'].eachWithIndex { it, i ->  println "$i: $it"}	//带索引遍历
 
 	[1, 2, 3].find { it > 1 } == 2	//查找第一个符合条件的元素
