@@ -267,6 +267,7 @@
 	
 	--》打开远程debug： debug图标 --> debug configuration -->  Remote java Application --》 配置地址端口--》 勾选"Allow termination of remote VM"
 	--》 查看debug远程端口：  /home/business/opt/container/bin/catalina.sh -->  搜索 Xdebug --》（常用:8090）
+	     JAVA_OPTS="$JAVA_OPTS -Xdebug -Xrunjdwp:transport=dt_socket,address=5889,server=y,suspend=n" 
 	-->打开debug视图 --》 右上角 open persperctive --> debug
     
 # maven
