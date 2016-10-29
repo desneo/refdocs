@@ -19,6 +19,17 @@
         .....
     }
         
-## 最小化缩进
+## 最小化缩进 避免超过3层的嵌套
+    void func1(void){
+        if(IsWorkDay()){
+            print("Error, is work day");            if(IsWorkDay()){
+        }else{                                          print("Error, is work day");
+            if(IsWorkTime()){                           return;
+                print("Error, is wirk day");  ==>   }
+            }else{                                  if(){
+                businessdealwith();                     print("Error, is work time");
+            }                                           return;
+        }                                           }
+    }
 ## 清晰表达式
 ## 善用辅助类拆分
