@@ -46,19 +46,22 @@
 			  fs.appendFileSync('C:\\Users\\z00316474\\Desktop\\fanyi.txt', data);
 		});
 
-	--fs.writeFile(file, data[, options], callback) 写入文件，另fs.writeFileSync(file, data[, options]) , 如果文件已存在，则替换文件（即覆盖）,data可string / buffer
+	--fs.writeFile(file, data[, options], callback) 写入文件，另fs.writeFileSync(file, data[, options]) 
+		如果文件已存在，则替换文件（即覆盖）,data可string / buffer
 		fs.writeFile('message.txt', 'Hello Node.js', (err) => {
 		  if (err) throw err;
 		  console.log('It\'s saved!');
 		});
 
-	--fs.appendFile(file, data[, options], callback) 追加写入,另fs.appendFileSync(file, data[, options]), 文件不存在则创建，data可string / buffer
+	--fs.appendFile(file, data[, options], callback) 追加写入,另fs.appendFileSync(file, data[, options])
+		文件不存在则创建，data可string / buffer
 		fs.appendFileSync('C:\\Users\\z00316474\\Desktop\\fanyi.txt', data);
 
 ## 模块
 	引用模块require: var math = require("math");
 	
-	模块定义-exports: 一个文件==一个模块，模块中存在一个module对象—代表模块自身，而exports对象是module的属性。将方法挂在exports上即可导出。
+	模块定义-exports: 
+		一个文件==一个模块，模块中存在一个module对象—代表模块自身，而exports对象是module的属性。将方法挂在exports上即可导出。
 		//math.js
 		exports.add = function(){
 				var sum = 0;
