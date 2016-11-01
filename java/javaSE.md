@@ -216,8 +216,10 @@
     List<String> lines = Files.readAllLines(path, StandardCharsets.UTF_8);
     byte[] bytes = Files.readAllBytes(path);  
 
-    //java8
-    Files.lines(path, StandardCharsets.UTF_8).forEach(System.out.println);	//流式打开，内存占用小
+    //java8 流式打开，内存占用小
+    Files.lines(path, StandardCharsets.UTF_8).forEach((line) -> {
+        System.out.println(line);
+    });	
 
     //java6--从jar包中读配置文件
     //getResourceAsStream入参中如果开头'/',则从classPath根目录(也即jar包根目录)找起；否则以*.class文件所在的目录往下匹配文件
