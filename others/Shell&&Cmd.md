@@ -15,3 +15,5 @@
 # sftp/ssh登录另一台linux
     sftp besread@10.21.89.7     lls显示本地文件夹
     ssh besread@10.21.89.7     
+
+# 查看磁盘空间 df -h
