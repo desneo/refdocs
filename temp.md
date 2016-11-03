@@ -11,12 +11,15 @@
     1) Class c1 = Class.forName ("java.lang.String");      //常用
     2) String str = "abc"; Class c1 = str.getClass();
 
-    //方法
+    //方法, 几乎可以还原一个class的原貌，除了class引用的其它classes(需要记录下所有入参和返回值的类型，加以剔除)
     Method[] methods = c1.getMethods();
     System.out.println(method.getName());
     System.out.println(method.getGenericParameterTypes().length);
     System.out.println(method.getGenericReturnType());
-    
+
+### 使用
+    1、 
+
 ## 访问控制
     00 -- Java的访问控制是停留在编译层的，也就是它不会在.class文件中留下任何的痕迹，只在编译的时候进
         行访问控制的检查。其实，通过反射的手段，是可以访问任何包下任何类中的成员,如私有成员。
