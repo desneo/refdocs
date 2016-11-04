@@ -17,8 +17,19 @@
     System.out.println(method.getGenericParameterTypes().length);
     System.out.println(method.getGenericReturnType());
 
-### 使用
-    1、 
+### 运行时生成instance
+    1、 无入参的构造函数
+        Class c = Class.forName("DynTest");
+        obj = c.newInstance();
+    2、带入参的构造函数 (先获得指定的constructor)
+        Class c = Class.forName("DynTest");
+        Class[] pTypes = new Class[] { double.class, int.class };
+        Constructor ctor = c.getConstructor(pTypes);    //指定的构造函数
+        Object[] arg = new Object[] {3.14159, 125}; //自变量
+        Object obj = ctor.newInstance(arg);
+
+### 运行时调用methods
+    
 
 ## 访问控制
     00 -- Java的访问控制是停留在编译层的，也就是它不会在.class文件中留下任何的痕迹，只在编译的时候进
