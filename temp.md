@@ -29,7 +29,39 @@
         Object obj = ctor.newInstance(arg);
 
 ### 运行时调用methods
-    
+    public String func(String s, Hashtable ht)
+    {
+    …System.out.println("func invoked"); return s;
+    }
+    public static void main(String args[])
+    {
+    Class c = Class.forName("Test");
+    Class ptypes[] = new Class[2];
+    ptypes[0] = Class.forName("java.lang.String");
+    ptypes[1] = Class.forName("java.util.Hashtable");
+    Method m = c.getMethod("func",ptypes);
+    Test obj = new Test();
+    Object args[] = new Object[2];
+    arg[0] = new String("Hello,world");
+    arg[1] = null;
+    Object r = m.invoke(obj, arg);
+    Integer rval = (String)r;
+    System.out.println(rval);
+    }
+
+### 运行时变更fields内容
+    public class Test {
+        public double d;
+        public static void main(String args[])
+        {
+            Class c = Class.forName("Test");
+            Field f = c.getField("d"); //指定field 名称
+            Test obj = new Test();
+            System.out.println("d= " + (Double)f.get(obj));
+            f.set(obj, 12.34);
+            System.out.println("d= " + obj.d);
+        }
+    }    
 
 ## 访问控制
     00 -- Java的访问控制是停留在编译层的，也就是它不会在.class文件中留下任何的痕迹，只在编译的时候进
