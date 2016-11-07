@@ -51,8 +51,8 @@
     }
 
 ### 运行时变更fields内容
-    //先获取field,再示例，再修改
-    public class Test {
+        //先获取field,再示例，再修改
+        public class Test {
         public double d;
         public static void main(String args[])
         {
@@ -63,7 +63,7 @@
             f.set(obj, 12.34);
             System.out.println("d= " + obj.d);
         }
-    }    
+        }    
 
 ## 访问控制
     00 -- Java的访问控制是停留在编译层的，也就是它不会在.class文件中留下任何的痕迹，只在编译的时候进
