@@ -29,6 +29,7 @@
         Object obj = ctor.newInstance(arg);
 
 ### 运行时调用methods
+    //先获取方法，组装入参，再实例，调用
     public String func(String s, Hashtable ht)
     {
     …System.out.println("func invoked"); return s;
@@ -50,6 +51,7 @@
     }
 
 ### 运行时变更fields内容
+    //先获取field,再示例，再修改
     public class Test {
         public double d;
         public static void main(String args[])
