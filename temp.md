@@ -65,6 +65,68 @@
         }
         }    
 
+
+# Java代理
+    1) 实现InvocationHandler 接口创建自己的调用处理器； --> 为 Proxy 类指定 ClassLoader 对象和一组 interface 来创建动态代理类 
+        -->通过反射机制获得动态代理类的构造函数，其唯一参数类型是调用处理器接口类型；
+        -->通过构造函数创建动态代理类实例，构造时调用处理器对象作为参数被传入
+    3) 参考地址  https://www.zhihu.com/question/20794107/answer/2333038
+    package test;
+    public interface Subject   
+    {   
+      public void doSomething();   
+    }
+
+    package test;
+    public class RealSubject implements Subject   
+    {   
+      public void doSomething()   
+      {   
+        System.out.println( "call doSomething()" );   
+      }   
+    }  
+
+    package test;
+    import java.lang.reflect.InvocationHandler;  
+    import java.lang.reflect.Method;  
+    import java.lang.reflect.Proxy;  
+
+    public class ProxyHandler implements InvocationHandler
+    {
+        private Object tar;
+        //绑定委托对象，并返回代理类
+        public Object bind(Object tar)
+        {
+            this.tar = tar;
+            //绑定该类实现的所有接口，取得代理类 
+            return Proxy.newProxyInstance(tar.getClass().getClassLoader(),
+                                          tar.getClass().getInterfaces(),
+                                          this);
+        }    
+        public Object invoke(Object proxy , Method method , Object[] args)throws Throwable
+        {
+            Object result = null;
+            //这里就可以进行所谓的AOP编程了
+            //这里就可以进行所谓的AOP编程了
+            //在调用具体函数方法前，执行功能处理
+            result = method.invoke(tar,args);
+            //在调用具体函数方法后，执行功能处理
+            return result;
+        }
+    }
+
+    public class TestProxy
+    {
+        public static void main(String args[])
+        {
+               ProxyHandler proxy = new ProxyHandler();
+               //绑定该类实现的所有接口
+               Subject sub = (Subject) proxy.bind(new RealSubject());
+               sub.doSomething();
+        }
+    }
+
+
 ## 访问控制
     00 -- Java的访问控制是停留在编译层的，也就是它不会在.class文件中留下任何的痕迹，只在编译的时候进
         行访问控制的检查。其实，通过反射的手段，是可以访问任何包下任何类中的成员,如私有成员。
