@@ -17,3 +17,7 @@
     ssh besread@10.21.89.7     
 
 # 查看磁盘空间 df -h
+
+# 查看环境变量
+    win： set
+    linux: env
