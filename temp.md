@@ -165,7 +165,48 @@
                 System.out.println(str);
             }
         }
-}
+
+# Java类加载器 ClassLoder
+        虚拟机载入java类：ClassLoader读取.class文件，转换成kava.lang.class的一个实例，
+    然后通过newInstance创建该类的一个对象。
+        java有3个初始类加载器，当虚拟机启动时，他们会按照以下顺序启动: Bootstrap classloader(parent)
+    --> extension classloader(parent) --> system classloder。
+
+## bootstrap classloader 加载核心库
+    URL[] urls=sun.misc.Launcher.getBootstrapClassPath().getURLs();
+    for (int i = 0; i < urls.length; i++) {
+        System.out.println(urls[i].toExternalForm());
+    }
+
+## extension classloader
+    //用来加载JRE的扩展目录(JAVA_HOME/jre/lib/ext或java.ext.dirs属性指定的目录)jar的类包。
+    System.out.println(ClassLoader.getSystemClassLoader().getParent());
+
+## system classloader 加载classpath下jar包
+    //我们写的java类，一般都是由它加载，除非制定个人的类加载器。
+
+## 全盘负责委托机制
+    classloader加载类时，使用全盘负责委托机制，可以分开两部分理解：全盘负责，委托。
+    全盘负责机制：若类A调用了类Ｂ，则类B和类B所引入的所有jar包，都由类A的类加载器统一加载。
+    委托机制：类加载器在加载类A时，会优先让父加载器加载，当父加载器加载不到，再找父父加载器，
+        一直找到bootstrap  classloader都找不到，才自己去相关的路径去寻找加载.见ClassLoader源码.
+    举个例子，类加载器加载类A的过程：
+        1,判断是否已经加载过，在cache里面查找，若有，跳7；否则下一步
+        2,判断当前加载器是否有父加载器，若无，则当前为ext classloader，跳去４；否则下一步
+        3,请求父加载器加载该类，若加载成功，跳7；若不成功，即父加载器不能找到该类，跳2
+        4,请求jvm的bootstrap classloader加载，若加载成功，跳7；若失败，跳5
+        5,当前加载器自己加载，若成功，跳7；否则，跳6
+        6,抛出ClassNotFoundException
+        7,返回Class
+
+## 编写自己的类加载器
+        Java加载类的过程，实质上是调用loadClass()方法，loadClass中调用findLoadedClass()方
+    法来检查该类是否已经被加载过，如果没有就会调用父加载器的loadClass()，如果父加载器
+    无法加载该类，就调用findClass()来查找该类。
+        所以我们要做的就是新建MyClassLoader继承java.lang.ClassLoader，重写其中的findClass()方法。
+    主要是重新设计查找字节码文件的方案，然后调用definedClass来返回。
+        本人写了一个demo，用自己的类加载器去加载指定java文件，且带有热部署效果，具体请查看以下url。
+        Demo地址：http://git.oschina.net/ericquan8/hot-deploy
 
 ## 访问控制
     00 -- Java的访问控制是停留在编译层的，也就是它不会在.class文件中留下任何的痕迹，只在编译的时候进
