@@ -169,44 +169,53 @@
 # Java类加载器 ClassLoder
         虚拟机载入java类：ClassLoader读取.class文件，转换成kava.lang.class的一个实例，
     然后通过newInstance创建该类的一个对象。
+        http://www.ibm.com/developerworks/cn/java/j-lo-hotswapcls/
+## 层次结构
+    //启动顺序 从上往下
+    BootStrapClassLoader  核心库,sun.boot.class.path下类加载，或jre/lib下核心API，或Xbootclasspath指定的jar包。
+            /\
+        ExtClassLoader     加载JRE的扩展目录(JAVA_HOME/jre/lib/ext或java.ext.dirs属性指定的目录)jar的类包。
+            /\
+        AppClassLoader  最常用，加载classpath下jar包，默认为环境变量CLASSPATH中设定的值。也可通过-classpath指定。
+            /\
+        CustomClassLoader 自定义类加载过程，进行指定类的运行时动态加载
         java有3个初始类加载器，当虚拟机启动时，他们会按照以下顺序启动: Bootstrap classloader(parent)
-    --> extension classloader(parent) --> system classloder。
 
-## bootstrap classloader 加载核心库
+    //示例1
     URL[] urls=sun.misc.Launcher.getBootstrapClassPath().getURLs();
-    for (int i = 0; i < urls.length; i++) {
         System.out.println(urls[i].toExternalForm());
-    }
 
-## extension classloader
-    //用来加载JRE的扩展目录(JAVA_HOME/jre/lib/ext或java.ext.dirs属性指定的目录)jar的类包。
-    System.out.println(ClassLoader.getSystemClassLoader().getParent());
+## java类加载过程
+        1、在进行类加载时，首先会从自己向上挨个检查是否已经加载了指定类，如果已经加载则直接返回该类的引用。
+    如果到最高层也没有加载过指定类，那么会自顶向下挨个尝试加载，直到用户自定义类加载器，如果还不能成
+    功，就会抛出异常（也称委托机制）。
+        2、每个类加载器都有自己的名字空间(ClassLoader的classes字段)，对于同一个类加载器实例来说，名字相同的
+    类只能存在一个，并且仅加载一次。不管有无变化，下次再需要加载时，它只是从自己的缓存中直接返回已加载过的类引用。
+        3、要想实现同一个类的不同版本的共存，我们必须要通过不同的类加载器来加载该类的不同版本。
+        4、全盘负责机制：若类A调用了类Ｂ，则类B和类B所引入的所有jar包，都由类A的类加载器统一加载。
 
-## system classloader 加载classpath下jar包
-    //我们写的java类，一般都是由它加载，除非制定个人的类加载器。
-
-## 全盘负责委托机制
-    classloader加载类时，使用全盘负责委托机制，可以分开两部分理解：全盘负责，委托。
-    全盘负责机制：若类A调用了类Ｂ，则类B和类B所引入的所有jar包，都由类A的类加载器统一加载。
-    委托机制：类加载器在加载类A时，会优先让父加载器加载，当父加载器加载不到，再找父父加载器，
-        一直找到bootstrap  classloader都找不到，才自己去相关的路径去寻找加载.见ClassLoader源码.
-    举个例子，类加载器加载类A的过程：
-        1,判断是否已经加载过，在cache里面查找，若有，跳7；否则下一步
-        2,判断当前加载器是否有父加载器，若无，则当前为ext classloader，跳去４；否则下一步
-        3,请求父加载器加载该类，若加载成功，跳7；若不成功，即父加载器不能找到该类，跳2
-        4,请求jvm的bootstrap classloader加载，若加载成功，跳7；若失败，跳5
-        5,当前加载器自己加载，若成功，跳7；否则，跳6
-        6,抛出ClassNotFoundException
-        7,返回Class
-
-## 编写自己的类加载器
+## 自定义ClassLoader
+### 方案1 重写 findClass,jdk推荐
         Java加载类的过程，实质上是调用loadClass()方法，loadClass中调用findLoadedClass()方
     法来检查该类是否已经被加载过，如果没有就会调用父加载器的loadClass()，如果父加载器
     无法加载该类，就调用findClass()来查找该类。
         所以我们要做的就是新建MyClassLoader继承java.lang.ClassLoader，重写其中的findClass()方法。
     主要是重新设计查找字节码文件的方案，然后调用definedClass来返回。
-        本人写了一个demo，用自己的类加载器去加载指定java文件，且带有热部署效果，具体请查看以下url。
-        Demo地址：http://git.oschina.net/ericquan8/hot-deploy
+### 方案2 重写loadClass
+        findLoadedClass：每个类加载器都维护有自己的一份已加载类名字空间，其中不能出现两个同名的类。凡是通过该类加载
+    器加载的类，无论是直接的还是间接的，都保存在自己的名字空间中，该方法就是在该名字空间中寻找指定的类是否已存在，如
+    果存在就返回给类的引用，否则就返回null。这里的直接是指，存在于该类加载器的加载路径上并由该加载器完成加载，间接是
+    指，由该类加载器把类的加载工作委托给其他类加载器完成类的实际加载。
+        getSystemClassLoader：Java2 中新增的方法。该方法返回系统使用的 ClassLoader。可以在自己定制的类加载器中通过该
+    方法把一部分工作转交给系统类加载器去处理。
+        defineClass：该方法是 ClassLoader中非常重要的一个方法，它接收以字节数组表示的类字节码，并把它转换成Class实例
+    ，该方法转换一个类的同时，会先要求装载该类的父类以及实现的接口类。
+    loadClass：加载类的入口方法，调用该方法完成类的显式加载。通过对该方法的重新实现，我们可以完全控制和管理类的加载过程。
+    resolveClass：链接一个指定的类。这是一个在某些情况下确保类可用的必要方法，详见 Java 语言规范中“执行”一章对该方法的描述。
+
+##  热加载
+    需要升级时取实例化一个新的类加载器.
+
 
 ## 访问控制
     00 -- Java的访问控制是停留在编译层的，也就是它不会在.class文件中留下任何的痕迹，只在编译的时候进
