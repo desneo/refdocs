@@ -129,6 +129,44 @@
 
 ## cglib--修改class文件
 
+# Java动态编译
+    1) 运行期直接编译.java 文件，执行.class，并且能够获得相关的输入输出
+    public class Client {
+        public static void main(String[] args) throws Exception {
+            //Java 源代码
+            Stri ng sourceStr = "public class Hello{public String sayHello (String name)
+                {return \"Hello,\" + name + \"!\";}}";
+            // 类名及文件名
+            String clsName = "Hello";
+            // 方法名
+            String methodName = "sayHello";
+            // 当前编译器
+            JavaCompiler cmp = ToolProvider.getSystemJavaCompiler();
+            //Java 标准文件管理器
+            StandardJavaFileManager fm = cmp.getStandardFileManager(null,null,null);
+            //Java 文件对象
+            JavaFileObject jfo = new StringJavaObject(clsName,sourceStr);
+            // 编译参数，类似于javac <options> 中的options
+            List<String> optionsList = new ArrayList<String>();
+            // 编译文件的存放地方，注意：此处是为Eclipse 工具特设的
+            optionsList.addAll(Arrays.asList("-d","./bin"));
+            // 要编译的单元
+            List<JavaFileObject> jfos = Arrays.asList(jfo);
+            // 设置编译环境
+            Java Compiler.CompilationTask task = cmp.getTask(null, fm, null,optionsList,null,jfos);
+            // 编译成功
+            if(task.call()){
+                // 生成对象
+                Object obj = Class.forName(clsName).newInstance();
+                Class<? extends Object> cls = obj.getClass();
+                // 调用sayHello 方法
+                Method m = cls.getMethod(methodName, String.class);
+                String str = (String) m.invoke(obj, "Dynamic Compilation");
+                System.out.println(str);
+            }
+        }
+}
+
 ## 访问控制
     00 -- Java的访问控制是停留在编译层的，也就是它不会在.class文件中留下任何的痕迹，只在编译的时候进
         行访问控制的检查。其实，通过反射的手段，是可以访问任何包下任何类中的成员,如私有成员。
