@@ -1,6 +1,7 @@
 # 获取文件头/文件尾
     head -100 catanila.out > temp.log
     tail -f oc.logs
+    tail -100 oc.log
 
 # 查看jar包/解压jar包
     jar xvf *.jar   解压
@@ -11,6 +12,9 @@
 
 # 合并文件
     cat *.txt > test.txt 
+
+# 清空文件
+    echo "" > oc.log
     
 # sftp/ssh登录另一台linux
     sftp besread@10.21.89.7     lls显示本地文件夹
