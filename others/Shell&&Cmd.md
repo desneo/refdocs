@@ -28,7 +28,7 @@
     7、0或1个a后面跟了个b的行					grep “a\?b” /etc/passwd
     8、最少一个a，最多3个a后面跟了一个b的行		grep “a\{1,3\}b” /etc/passwd
     9、单词admin的行							grep “\<admin\>” /etc/passwd
-    10，匹配自少出现一次ad，最多出现3次ad的行	grep “\(ab\)\{1,3\}” /etc/passwd
+    10、匹配自少出现一次ad，最多出现3次ad的行	grep “\(ab\)\{1,3\}” /etc/passwd
 ## 选项option
     --color=auto 自动为匹配的字符附色
     -r: 递归搜索用法同 -d recurse(递归)
