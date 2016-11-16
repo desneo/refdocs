@@ -52,7 +52,7 @@ $("#css").on("click", function(event) {
 });
 
 //othres下拉框处理
-$("#others").on("click", function(event) {
+$("#program").on("click", function(event) {
     var value = event.target.text;
     var path = "./others/" + value + ".md";
     dealmd(path);
