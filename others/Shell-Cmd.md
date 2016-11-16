@@ -84,5 +84,5 @@
 
 
 # 查看环境变量 set/env
-    win： set
+    win： set
     linux: env
