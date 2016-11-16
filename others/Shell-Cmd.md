@@ -1,3 +1,5 @@
+帮助信息 wc --help
+
 # 文件操作
 ## 获取文件头/文件尾
     head -100 catanila.out > temp.log
@@ -65,12 +67,9 @@
     \>: 锚定词尾，用法格式：pattern\>
     \(\): 分组，用法格式: \(pattern\)
 
-    
-# sftp/ssh登录另一台linux
-    sftp besread@10.21.89.7     lls显示本地文件夹
-    ssh besread@10.21.89.7     
+# 函数 ls -l | wc -l
 
-# 查看磁盘空间 df -h
+
 
 # 文件(夹)大小 du -m file/folder
     du : 		du -sm	file/directory
@@ -81,7 +80,12 @@
     -m 以M为单位显示大小	不显示M，只显示数字
     -k  以1024 bit单位显示
     -g   以GB为单位显示
+    
+# sftp/ssh登录另一台linux
+    sftp besread@10.21.89.7     lls显示本地文件夹
+    ssh besread@10.21.89.7     
 
+# 查看磁盘空间 df -h
 
 # 查看环境变量 set/env
     win： set
