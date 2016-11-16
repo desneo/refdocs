@@ -1,14 +1,22 @@
-# 获取文件头/文件尾
+# 文件操作
+## 获取文件头/文件尾
     head -100 catanila.out > temp.log
     tail -f oc.logs
     tail -100 oc.log
+## 合并文件
+    cat *.txt > test.txt 
+## 清空文件
+    echo "" > oc.log
+## 创建文件
+    touch test.txt
+## cmd结果导出到文件
+    mvn dependency:tree > tree.xml
 
 # 查看jar包/解压jar包
     jar xvf *.jar   解压
     jar -tvf *.jar 查看内容
 
-# cmd结果导出到文件
-    mvn dependency:tree > tree.xml
+
 
 # 搜索文件find
     find ./ -name "test.txt"
@@ -57,11 +65,6 @@
     \>: 锚定词尾，用法格式：pattern\>
     \(\): 分组，用法格式: \(pattern\)
 
-# 合并文件
-    cat *.txt > test.txt 
-
-# 清空文件
-    echo "" > oc.log
     
 # sftp/ssh登录另一台linux
     sftp besread@10.21.89.7     lls显示本地文件夹
