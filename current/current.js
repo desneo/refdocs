@@ -30,7 +30,7 @@ function dealmd(path) {
     });
 }
 
-//JS下拉框处理
+//Java下拉框处理
 $("#java").on("click", function(event) {
     var value = event.target.text;
     var path = "./java/" + value + ".md";
@@ -44,9 +44,23 @@ $("#js").on("click", function(event) {
     dealmd(path);
 });
 
-//Tools便签处理
-$("#tools").on("click", function(event) {
+//CSS下拉框处理
+$("#css").on("click", function(event) {
+    var value = event.target.text;
+    var path = "./frontend/css/" + value + ".md";
+    dealmd(path);
+});
+
+//othres下拉框处理
+$("#others").on("click", function(event) {
     var value = event.target.text;
     var path = "./others/" + value + ".md";
+    dealmd(path);
+});
+
+//hobby下拉框处理
+$("#hobby").on("click", function(event) {
+    var value = event.target.text;
+    var path = "./hobby/" + value + ".md";
     dealmd(path);
 });
