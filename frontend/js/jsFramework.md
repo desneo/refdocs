@@ -17,11 +17,20 @@
         2、错误引起整个系统退出。
         3、大量计算占用CPU时，无法继续调用异步I/O
 
-    7) 升级node (http://www.jb51.net/article/52409.htm)
+### node常用指令
+        npm -v          #显示版本，检查npm 是否正确安装。
+        npm install -g express  #全局安装express模块
+        npm list         #列出已安装模块
+        npm show express     #显示模块详情
+        npm update        #升级当前目录下的项目的所有模块
+        npm update -g express  #升级全局安装的express模块
+        npm uninstall express  #删除指定的模块
+#### [升级node](http://www.jb51.net/article/52409.htm)
         //linux
         node install –g n
         n stable    //升级到stable版本
         n 6.00  //升级到指定版本
+        
         //windows  gnvm.exe 保存到 Node.js 所在的文件夹
         config       配置 .gnvmrc
         use          使用某个本地已存在的 Node.js 版本
@@ -36,14 +45,6 @@
         reg          设定 .gnvmrc 属性值 [noderoot] 为 环境变量 [NODE_HOME]，并加入到 Path 中
         version      查看 gnvm 版本
 
-    node常用指令
-        npm -v          #显示版本，检查npm 是否正确安装。
-        npm install -g express  #全局安装express模块
-        npm list         #列出已安装模块
-        npm show express     #显示模块详情
-        npm update        #升级当前目录下的项目的所有模块
-        npm update -g express  #升级全局安装的express模块
-        npm uninstall express  #删除指定的模块
  
 ## 文件系统
     require('fs')
