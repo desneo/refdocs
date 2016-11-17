@@ -25,6 +25,15 @@
         npm update        #升级当前目录下的项目的所有模块
         npm update -g express  #升级全局安装的express模块
         npm uninstall express  #删除指定的模块
+
+### 设置npm代理
+        npm config set proxy http://username:password@proxyhk.huxxx.com:8080/
+        npm config set https-proxy http://username:password@proxyhk.huxxx.com:8080/
+        npm config set ssl-strict false
+        npm config set http-proxy http://username:password@proxyhk.huxxx.com:8080/ -g
+        npm config set https-proxy http://username:password@proxyhk.huxxx.com:8080/ -g
+
+
 #### [升级node](http://www.jb51.net/article/52409.htm)
         //linux
         node install –g n
