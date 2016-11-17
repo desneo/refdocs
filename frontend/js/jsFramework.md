@@ -34,7 +34,7 @@
         npm config set https-proxy http://username:password@proxyhk.huxxx.com:8080/ -g
 
 
-#### [升级node](http://www.jb51.net/article/52409.htm)
+### [升级node](http://www.jb51.net/article/52409.htm)
         //linux
         node install –g n
         n stable    //升级到stable版本
