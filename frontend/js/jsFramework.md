@@ -20,6 +20,7 @@
 ### node常用指令
         npm -v          #显示版本，检查npm 是否正确安装。
         npm install -g express  #全局安装express模块
+        npm init        //创建package.json文件，便于后续开发者使用
         npm list         #列出已安装模块
         npm show express     #显示模块详情
         npm update        #升级当前目录下的项目的所有模块
