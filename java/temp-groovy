@@ -1,0 +1,37 @@
+## [操作文件](http://docs.groovy-lang.org/latest/html/groovy-jdk/java/io/File.html)
+	//API详解见链接也页上部
+	def targetFile = new File(fileName) //创建file对象
+### [读文件](http://docs.groovy-lang.org/latest/html/groovy-jdk/java/io/InputStream.html)
+	new File(baseDir, 'haiku.txt').eachLine { line -> println line };	//读出所有行
+	new File(baseDir, 'haiku.txt').eachLine { line, nb -> println "Line $nb: $line" }	//行号
+	def list = new File(baseDir, 'haiku.txt').collect {it}	//返回list
+	byte[] contents = file.getBytes();	//读取字节
+	
+### [写文件](http://docs.groovy-lang.org/latest/html/groovy-jdk/java/io/File.html)
+	targetFile.append(Object text, String charset)    //尾部追加，不存在则创建
+	targetFile.write(String text)   
+	targetFile.write(String text, String charset)
+
+### [遍历文件树/文件夹](http://docs.groovy-lang.org/latest/html/groovy-jdk/java/io/File.html)
+	def dir = new File(folderName);
+	dir.eachFile { file -> println file.name};	//文件和文件夹，非递归
+	dir.eachFileMatch(~/.*\.txt/) { file ->println file.name };	//非递归
+	
+	dir.eachFileRecurse { file ->println file.name };	//递归
+	dir.eachFileRecurse(FileType.FILES) { file ->println file.name };	//只文件，递归	
+	
+### 终止遍历
+	dir.traverse { file ->
+		if (file.directory && file.name=='bin') {
+			FileVisitResult.TERMINATE                   
+		} else {
+			println file.name
+			FileVisitResult.CONTINUE                    
+		}
+	}
+
+## [调用shell/cmd指令](http://groovy-lang.org/groovy-dev-kit.html#_reading_files)
+	//只用Process对象
+	def process = "ls -l".execute();	println "Found text ${process.text}" ;
+	def process = "ls -l".execute();process.in.eachLine { line ->println line};
+		
