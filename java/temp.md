@@ -1,4 +1,4 @@
-## 仓库
+## [仓库](http://search.maven.org/)
     1、仓库搜索服务 --> http://search.maven.org/
     2、超级pom,中央仓库 ${M2_HOME}/lib/maven-model-builder-3.0.4.jar --> \org\apache\maven\model\pom-4.0.0.xml, 所有Maven POM的父POM
     3、//本地仓库（可从maven中复制一份到此处修改，不要修改全局的settings.xml）
