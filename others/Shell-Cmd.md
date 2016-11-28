@@ -1,32 +1,36 @@
 帮助信息 wc --help
 
-# 文件操作
-## 获取文件头/文件尾
+
+
+
+# Shell
+## 文件操作
+### 获取文件头/文件尾
     head -100 catanila.out > temp.log
     tail -f oc.logs
     tail -100 oc.log
-## 合并文件
+### 合并文件
     cat *.txt > test.txt 
-## 清空文件
+### 清空文件
     echo "" > oc.log
-## 创建文件
+### 创建文件
     touch test.txt
-## cmd结果导出到文件
+### cmd结果导出到文件
     mvn dependency:tree > tree.xml
 
-# 查看jar包/解压jar包
+## 查看jar包/解压jar包
     jar xvf *.jar   解压
     jar -tvf *.jar 查看内容
 
 
 
-# 搜索文件find
+## 搜索文件find
     find ./ -name "test.txt"
 
-# 检索文件内容grep 
+## 检索文件内容grep 
     grep -r bes.dsf.server.zookeeper ./*.properties 
     grep [options] 'pattern' FILE
-## 示例
+### 示例
     1、行首为root的行	 grep “^root” /etc/passwd
     2、行尾为sh的行		grep “sh$” /etc/passwd
     3、查找空白行 		grep “^$” /etc/passwd
@@ -39,7 +43,7 @@
     8、最少一个a，最多3个a后面跟了一个b的行		grep “a\{1,3\}b” /etc/passwd
     9、单词admin的行							grep “\<admin\>” /etc/passwd
     10、匹配自少出现一次ad，最多出现3次ad的行	grep “\(ab\)\{1,3\}” /etc/passwd
-## 选项option
+### 选项option
     --color=auto 自动为匹配的字符附色
     -r: 递归搜索用法同 -d recurse(递归)
     -v: 反向选取，只显示不符合模式的行；
@@ -49,7 +53,7 @@
     -B #：前面的#行；
     -C #：前后的#行；
     -E: 使用扩展的正则表达式
-## 正则表达式
+### 正则表达式
     ^：锚定行首的符合条件的内容，用法格式“^pattern”；
     $: 锚定行尾的符合条件的内容，用法格式“pattern$”；
     .: 匹配任意单个字符
@@ -67,7 +71,6 @@
     \>: 锚定词尾，用法格式：pattern\>
     \(\): 分组，用法格式: \(pattern\)
 
-# 文件行处理
 ## sed 处理一行，替换 删除
 	sed option 'action' filename   （文件可多个）
 		option: -i 直接在原文件中修改！
@@ -189,7 +192,7 @@
 
 
 
-# 统计 ls -l | wc -l
+## 统计 ls -l | wc -l
     wc [option] file
         -c,--bytes  统计字节
         -m,--chars  统计chracter
@@ -198,7 +201,7 @@
         -w,--words  统计单词
 
 
-# 文件(夹)大小 du -m file/folder
+## 文件(夹)大小 du -m file/folder
     du : 		du -sm	file/directory
        默认不加选项 只显示文件夹的大小，包括显示子目录中的文件夹
     -a 显示所有文件的大小，包括文件子目录中的文件
@@ -208,15 +211,15 @@
     -k  以1024 bit单位显示
     -g   以GB为单位显示
     
-# sftp/ssh登录另一台linux
+## sftp/ssh登录另一台linux
     sftp besread@10.21.89.7     lls显示本地文件夹
     ssh besread@10.21.89.7     
 
-# 查看磁盘空间 df -h
+## 查看磁盘空间 df -h
 
-# 查看环境变量 set/env
+## 查看环境变量 set/env
     win： set
     linux: env
 
-# 增加权限 chmod 777 xx.sh
+## 增加权限 chmod 777 xx.sh
 	rwx分别对应421权值
