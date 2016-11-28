@@ -217,3 +217,6 @@
 # 查看环境变量 set/env
     win： set
     linux: env
+
+# 增加权限 chmod 777 xx.sh
+	rwx分别对应421权值
