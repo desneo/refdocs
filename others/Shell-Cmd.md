@@ -26,23 +26,26 @@
 
 ## 搜索文件find
     find ./ -name "test.txt"
-
 ### 示例
 	find . ( -name "*.txt" -o -name "*.pdf" ) -print	//查找txt和pdf文件
 	find . -regex  ".*(.txt|.pdf)$"		//按正则查找
 	find . ! -name "*.txt" -print		//否定参数查找所有非txt文本
 	find . -maxdepth 1 -type f		//指定搜索深度打印出当前目录的文件（深度为1）
-
+	find ./ -iname "*.phP"   	//忽略大小写
+	find ./		//列出目录和子目录下的所有文件
+	
+	
 ### 找到后执行指定动作 
 	// {}是一个特殊的字符串，对于每一个匹配的文件，{}会被替换成相应的文件名；
 	find . -type f -name "*.swp" -delete			//删除所有文件
-	find . -type f -user root -exec chown weber {} ;	//将当前目录下的所有权变更为weber
+	find . -type f -user root -exec chown weber {} \;	//将当前目录下的所有权变更为weber
 		-exec ./commands.sh {} \;			//执行多个指令时，封装在脚本中
-
-
+	find ./ -name "*.entity.xml" -exec grep -r paymentMode {} \;	//尾部必须加\;  否则报错
+	
 ## 检索文件内容grep 
-    grep -r bes.dsf.server.zookeeper ./*.properties 
-    grep [options] 'pattern' FILE
+	grep -r bes.dsf.server.zookeeper ./
+	find ./ -name "*.entity.xml" -exec grep -r paymentMode {} \;	//指定类型文件中搜索
+	grep [options] 'pattern' FILE
 ### 示例
     1、行首为root的行	 grep “^root” /etc/passwd
     2、行尾为sh的行		grep “sh$” /etc/passwd
