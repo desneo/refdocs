@@ -129,7 +129,8 @@
 ### 打印指定字段 {print $1} 序号1开始
 	awk -F '|' '$2>3 {print $1}' data.cvs
 ### 指定分隔符 -F '|' 
-	awk -F '|' '$2>3 {print $1}'	
+	awk -F '|' '$2>3 {print $1}'
+	awk -F 'ms' '{print $1}'     //可使用字符串分割
 ### 只输出字段匹配的行 ~
 	$ awk '$4 ~/Technology/'	//只第4个字段匹配的行 (不匹配 ~!)
 	$ awk '$1 ~/^root/' test	//将显示test文件第一列中以root开头的行。
@@ -138,7 +139,10 @@
 
 ### 过滤出两个文件中相同行
 	awk -F'[/,]' 'NR==FNR{a[$1]=$1}NR>FNR{if ($2 in a) print $0}' b a >c		//推荐，先将记录放在数组中！
-	
+
+### 求平均值/求和
+	awk '{sum+=$1} END {print "Average = ", sum/NR}'
+
 ### awk内部变量名
 	$0		完整的输入记录-即当期的完整行
 	$n		当前记录的第n个字段，字段间由FS分隔。
