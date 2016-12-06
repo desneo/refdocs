@@ -41,7 +41,8 @@
 	
 ## 检索文件内容grep 
 	grep -r bes.dsf.server.zookeeper ./
-	find ./ -name "*.entity.xml" -exec grep -r paymentMode {} \;	//指定类型文件中搜索
+	find ./ -name "*.entity.xml" -exec grep -r paymentMode {} \;	//指定类型文件中搜索,必须\;结尾
+	grep -a  'querySubscriberDetailList Call' querySubscriberDetailList.log 	//查找带空格的字符串
 	grep [options] 'pattern' FILE
 ### 示例
     1、行首为root的行	 grep “^root” /etc/passwd
