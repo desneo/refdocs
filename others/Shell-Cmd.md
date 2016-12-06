@@ -126,21 +126,25 @@
 		内置函数
 		控制流命令
 		也可以调用外部shell，使用system指令（参见详解知识点）。
-### 打印指定字段 {print $1} 序号1开始
-	awk -F '|' '$2>3 {print $1}' data.cvs
-### 指定分隔符 -F '|' 
-	awk -F '|' '$2>3 {print $1}'
+### 使用示例
+	awk -F '|' '$2>3 {print $1}' data.cvs	//打印指定字段 {print $1} 序号1开始
+	
+	////指定分隔符 -F '|' (可多个分隔符)
+	awk -F '|' '$2>3 {print $1}'	
 	awk -F 'ms' '{print $1}'     //可使用字符串分割
-### 只输出字段匹配的行 ~
+	awk -F"[@ /t]" '{print $2,$3}' test		//以@，空格，Tab键分割test文件的每一行，并输出第二、第三列。
+	
+	//只展示匹配的行
 	$ awk '$4 ~/Technology/'	//只第4个字段匹配的行 (不匹配 ~!)
 	$ awk '$1 ~/^root/' test	//将显示test文件第一列中以root开头的行。
-### 调用外部shell
+	
+	//调用外部shell
 	ls -l |awk '$1~/^d/{system("du -s "$9)}'	//筛选出当前目录下的左右文件夹并显示大小。
-
-### 过滤出两个文件中相同行
+	
+	//过滤出两个文件中相同行
 	awk -F'[/,]' 'NR==FNR{a[$1]=$1}NR>FNR{if ($2 in a) print $0}' b a >c		//推荐，先将记录放在数组中！
-
-### 求平均值/求和
+	
+	//求平均值/求和
 	awk '{sum+=$1} END {print "Average = ", sum/NR}'
 
 ### awk内部变量名
