@@ -7,8 +7,8 @@
     Ctrl+X  删除当前行
     Ctrl+G  跳转指定行
     Ctrl+Shift+方向  交换上下行
-    Ctrl+J  合并行
-
+    Ctrl+J  合并当前行和下一行
+    
 ## 插件 
     注： preference-->package control -->输入install
     1、Emmet
