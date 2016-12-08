@@ -2,6 +2,12 @@
 ##基本信息
 	软件: autoit-v3-setup.exe	
 	后缀: *.au3
+	;MouseClick ( "left" , 3653, 184,2000,0 )	//单行注释 ;号开头
+	#comments-start 	//多行注释，成对出现
+		asfasdasd
+	#comments-end 
+	
+	
 ### [参考地址](https://zhuanlan.zhihu.com/p/19792473?columnSlug=autohotkey)
 
 	
