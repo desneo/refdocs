@@ -1,5 +1,6 @@
 
 ##基本信息
+	后缀: *.au3
 ### [参考地址](https://zhuanlan.zhihu.com/p/19792473?columnSlug=autohotkey)
 
 	
