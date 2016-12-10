@@ -1,6 +1,6 @@
-帮助信息 wc --help
-
 # Shell
+	1、帮助信息 wc --help
+	2、#此处是注释代码
 ## 文件操作
 ### 获取文件头/文件尾
     head -100 catanila.out > temp.log
