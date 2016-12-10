@@ -44,10 +44,6 @@
 	//只触发一次 	.one()
 
 # ajax
-## 注释
-
-
-
 ## 示例
 	//下载文件
 	$( "#refJs" ).on( "click", function( event ) {
@@ -77,4 +73,27 @@
 		});
 	</script>
 
+# jQuery其它
+## 模拟点击
+	document.getElementsByTagName("a")[0].click();	//原生js已自带点击事件
+	$("#b").click()		//常用,可点击btn
+	$("#zh-top-nav-count-wrap")[0].click()
+	$("#a").trigger("click")	//执行#a的click事件
+	
+	//点击<a>标签，我们平时都是点击的A标签中的文字,触发文字上的click才会跳转
+	如:  <a class="zu-top-nav-link open" href="javascript:;" id="zh-top-nav-count-wrap" role="button"><span class="mobi-arrow"></span></a>
+	$("#zh-top-nav-count-wrap .mobi-arrow").click()
 
+## 区分模拟点击和用户点击事件
+	//1-我们可以通过传递的参数e来判断是否是真正的用户点击，如果是用户点击事件，对象e将有clientX, clientY, pageX, pageY等属性，并且均是数字。我们也可以检查originalEvent属性
+		$("#foo").click(function(e){  
+		if(e.hasOwnProperty('originalEvent'))  
+			// Probably a real click.  
+		else  
+			// Probably a fake click.  
+		}); 
+	
+	//2-也可以在定义事件函数的时候指定额外的参数，通过此参数来判断,详见trigger api
+
+## [查看jquery绑定的事件函数](http://sudodev.cn/detect-jquery-event-function-define/)
+	
