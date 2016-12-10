@@ -48,8 +48,20 @@
     $("[attributename]")            //含有属性(值任意)的元素
     $( "input[id][name$='man']" ).val( "only this one" );   //同时满足所有属性条件的元素
 ## 内容过滤器
-    $("div:contains('John')" )     //内容含有指定字符串，如<div>John Resig</div>
+    $("div:contains('John')")     //内容含有指定字符串，如<div>John Resig</div>
     $("div:has(p)")                //至少含有一个满足条件selector的div
+
+# 属性/内容操作-addClass等
+    $( "p" ).addClass( "myClass yourClass" );       //添加class
+    $("a[name=\"public0_dyg01\"]").attr("href")；    //获取第一个匹配元素指定属性的值
+    .attr( attributeName, value )                   //设置所有元素的属性值
+    $( "#mydiv" ).hasClass( "foo" )                 //是否有某个class，true false
+    .html();        //设置或获取标签的值
+    $( "select.foo" ).val();    //获取文本值
+    input.removeAttr( "title" )；    //移除属性
+    $("p").removeClass("myClass yourClass")；    //移除class
+    $( "div.tumble" ).toggleClass( "bounce" )   //没有class则添加，有则删除
+
 
 
 # jQuery DOM操作
