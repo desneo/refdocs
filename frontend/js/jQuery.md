@@ -138,6 +138,11 @@
 	//2-也可以在定义事件函数的时候指定额外的参数，通过此参数来判断,详见trigger api
 
 ## 模拟鼠标移动
-	
+    JS可以触发 mouseover 但是不能触发 hover
+        document.getElementById( 'link' ).dispatchEvent( new Event( 'mouseover' ) );
+    但是可以通过class的方式，比如CSS里面这样写：
+        a:hover, a.hover {color : red; }
+    这样在JS里面可以通过添加class .hover 来实现你说的功能。
+
 ## [查看jquery绑定的事件函数](http://sudodev.cn/detect-jquery-event-function-define/)
 	
