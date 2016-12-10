@@ -1,14 +1,14 @@
 # 基础 [API](http://api.jquery.com/)
 	//<script src="https://ajax.aspnetcdn.com/ajax/jQuery/jquery-3.1.0.js"></script>
-	//插入html   
-	$( "button.continue" ).html( "Next Step..." )  
-	
-	//绑定动作   
-	var hiddenBox = $( "#banner-message" );   
-	$( "#button-container button" ).on( "click", function( event ) {   
-	  hiddenBox.show();   
-	});   
-	
+	//插入html
+	$( "button.continue" ).html( "Next Step..." )
+
+	//绑定动作
+	var hiddenBox = $( "#banner-message" );
+	$( "#button-container button" ).on( "click", function( event ) {
+	  hiddenBox.show();
+	});
+
 	//ajax
 	$.ajax({
 	  url: "/api/getWeather",
@@ -20,9 +20,39 @@
 	  }
 	});
 
-# jQuery DOM操作
-## 
+# jQuery选择器
+    1.转义字符\\ ，示例： !"#$%&'()*+,./:;<=>?@[\]^`{|}~ , id="foo.bar"-->$("#foo\\.bar")
+    2.多选择器(组合结果)： $("selector1,selector2, selectorN")
+## 基本选择器
+    $("*")          //选择所有元素
+    $(#id)          //id选择器
+    $(".sclass")    //class选择器
+    $("P")          //元素选择器
+## 继承关系选择器
+    $("parent > child")     //选中上一级元素是parent的child元素
+    $("ancestor descendant")    //祖先中有ancestor的descendant的元素
+    $("prev + next")            //prev之后的next元素
+    $("prev ~ siblings")        //与prev共一个parent节点，但是在prev之后的元素
+## 属性过滤器
+    //1-单双引号是有意义的，$("a[rel='nofollow']")
+         $("a[rel='nofollow']"), will select <a href="example.html" rel="nofollow">Some text</a> ， but not <a href="example.html" rel="nofollow foe">Some text</a>.
+    //2-单双引号转义 $("a[rel=\"nofollow self\"]")
 
+    $("[attribute|='value']")       //属性值是value或以value-开头
+    $("[attribute*='value']")       //属性值中含有字符串
+    $("[attribute~='value']")       //属性值中含有value字符串（以空格分开）的元素
+    $("[attribute='value']")        //含有属性+属性值匹配
+    $("[attribute!='value']")       //不含有属性或属性名称不为value
+    $("[attribute^='value']")       //以value字符串开头的属性
+    $("[attribute$='value']")       //以value字符串结尾的属性
+    $("[attributename]")            //含有属性(值任意)的元素
+    $( "input[id][name$='man']" ).val( "only this one" );   //同时满足所有属性条件的元素
+## 内容过滤器
+    $("div:contains('John')" )     //内容含有指定字符串，如<div>John Resig</div>
+    $("div:has(p)")                //至少含有一个满足条件selector的div
+
+
+# jQuery DOM操作
 ## 插入节点
 	内容后追加: $("p").append("<b>你好</b>");		// <p>我想说:<b>你好</b></p>
 	内容前追加: $("p").prepend("<b>你好</b>")		// <p><b>你好</b>我想说: </p>
@@ -33,13 +63,13 @@
 	$("#js").on( "click", function( event ) {
 	  var value = event.target.text;
 	});
-	
+    
 	//用法 .on( events [, selector ] [, data ], handler )
 		events --> 异或多个用空格分开的事件名称，如"click"等
 		selector --> 进一步的过滤条件
 		data --> Data to be passed to the handler in event.data when an event is triggered.
 		handler --> function(event){}
-	
+    
 	//移除事件	.off()
 	//只触发一次 	.one()
 
@@ -95,5 +125,7 @@
 	
 	//2-也可以在定义事件函数的时候指定额外的参数，通过此参数来判断,详见trigger api
 
+## 模拟鼠标移动
+	
 ## [查看jquery绑定的事件函数](http://sudodev.cn/detect-jquery-event-function-define/)
 	
