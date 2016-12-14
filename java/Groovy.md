@@ -46,7 +46,7 @@
 	//判空
 	![]		//true, 判空
 	[].empty	//true
-
+    
 	def list3 = list.clone();	//克隆一个list
 	list3 == list;		//比较两个list，按元素比较
 
@@ -61,7 +61,7 @@
 	['a', 'b', 'c', 'd', 'c'].lastIndexOf('c') == 4		//最后一个匹配元素
 
 	[1, 2, 3].every { it < 5 }		//返回true/false, 所有元素满足条件
-	[1, 2, 3].any { it > 2 }	
+	[1, 2, 3].any { it > 2 }
 
 	[1, 2, 3, 4, 5, 6].sum() == 21 	//求和，对所有元素使用plus()方法
 	['a', 'b', 'c', 'd', 'e'].sum() == 'abcde';
@@ -71,18 +71,20 @@
 	[1, 2, 3].join('-') == '1-2-3';		//连接数组
 
 	[9, 4, 2, 10, 5].max()==10;		//最大值
-	['x', 'y', 'a', 'z'].min() == 'a'	
+	['x', 'y', 'a', 'z'].min() == 'a'
 	['abc', 'z', 'xyzuvw', 'Hello', '321'].max { it.size() } == 'xyzuvw'	//自定义比较方法
-	Comparator mc = { a, b -> a == b ? 0 : (a < b ? -1 : 1) };		//自定义比较方法	
+	Comparator mc = { a, b -> a == b ? 0 : (a < b ? -1 : 1) };		//自定义比较方法
 	def list = [7, 4, 9, -6, -1, 11, 2, 3, -9, 5, -13];
 	assert list.max(mc) == 11;
 
+    
 	'a' in ['a','b','c'];	//元素包含，返true/false
 	['a','b','c'].contains('a')
 	[1,3,4].containsAll([1,4])		//全部包含
 	[1,2,3,3,3,3,4,5].count(3) == 4;	//统计
 	[1,2,3,3,3,3,4,5].count { it%2==0} == 2;	//自定义统计方法
 
+    //排序
 	[6, 3, 9, 2, 7, 1, 5].sort() == [1, 2, 3, 5, 6, 7, 9]	//排序
 	['abc', 'z', 'xyzuvw', 'Hello', '321'].sort {it.size()} == ['z', 'abc', '321', 'Hello', 'xyzuvw'];	//自定义排序
 	[7,4,-6,-9,5,-13].sort { a, b -> a == b ? 0 : Math.abs(a) < Math.abs(b) ? -1 : 1 } //自定义排序，（如比较绝对值）
