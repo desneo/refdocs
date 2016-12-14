@@ -24,22 +24,28 @@
 # 容器操作
 ## List
 	def list = [5, 6, 7, 8];
+	
+	//取值
 	list[2] == 7	
 	list[-2]==6		//从尾部往前取
+
 	list.size()==4	//长度
+	
+	//添加元素
 	list.add(5)		//添加
 	list[2]=100		//指定位置添加
-	def list=[];	//追加元素
-	list << 7 << "i" << 11
-	assert list == [7, "i", 11]
+	[] << 7 << "i" << 11;
+	
+	
+	//删除清空
 	['a',2,'c',4].clear()==[]	//清空数组
-
-	['a','b','c','b','b'] - 'b' == ['a','c']	//删除元素
+	['a','b','c','b','b'] - 'b' == ['a','c']
 	['a','b','c','b','b'] - ['b','c'] == ['a']
 	['a','b','c','b','b'].remove('c');		//如果有元素被删除返回true，否则false
-
+	
+	//判空
 	![]		//true, 判空
-	[].empty	//true,判空
+	[].empty	//true
 
 	def list3 = list.clone();	//克隆一个list
 	list3 == list;		//比较两个list，按元素比较
