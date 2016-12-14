@@ -1,6 +1,5 @@
 
-# Groovy
-## 基础  
+# 基础  
 	== 相当于java中的equals
 	
 	println xx?.yy;  //安全引用操作符, 如果xx==null， 则后面不执行  
@@ -22,8 +21,8 @@
 	     [return] last_line;   //return可选， 最后一行代码的执行结果就是本函数的返回值
 	}
 
-## 容器操作
-### List
+# 容器操作
+## List
 	def list = [5, 6, 7, 8];
 	list[2] == 7	
 	list[-2]==6		//从尾部往前取
@@ -82,7 +81,7 @@
 	['abc', 'z', 'xyzuvw', 'Hello', '321'].sort {it.size()} == ['z', 'abc', '321', 'Hello', 'xyzuvw'];	//自定义排序
 	[7,4,-6,-9,5,-13].sort { a, b -> a == b ? 0 : Math.abs(a) < Math.abs(b) ? -1 : 1 } //自定义排序，（如比较绝对值）
 
-### Map
+## Map
 	def map = [name: 'Gromit', likes: 'cheese', id: 1234];
 	map.get('name') == 'Gromit';	//未取到值时返回null
 	map['name'] == 'Gromit';
@@ -129,21 +128,21 @@
 	]
 
 
-## [操作文件](http://docs.groovy-lang.org/latest/html/groovy-jdk/java/io/File.html)
+# [操作文件](http://docs.groovy-lang.org/latest/html/groovy-jdk/java/io/File.html)
 	//API详解见链接也页上部
 	def targetFile = new File(fileName) //创建file对象
-### [读文件](http://docs.groovy-lang.org/latest/html/groovy-jdk/java/io/InputStream.html)
+## [读文件](http://docs.groovy-lang.org/latest/html/groovy-jdk/java/io/InputStream.html)
 	new File(baseDir, 'haiku.txt').eachLine { line -> println line };	//读出所有行
 	new File(baseDir, 'haiku.txt').eachLine { line, nb -> println "Line $nb: $line" }	//行号
 	def list = new File(baseDir, 'haiku.txt').collect {it}	//返回list
 	byte[] contents = file.getBytes();	//读取字节
 	
-### [写文件](http://docs.groovy-lang.org/latest/html/groovy-jdk/java/io/File.html)
+## [写文件](http://docs.groovy-lang.org/latest/html/groovy-jdk/java/io/File.html)
 	targetFile.append(Object text, String charset)    //尾部追加，不存在则创建
 	targetFile.write(String text)   
 	targetFile.write(String text, String charset)
 
-### [遍历文件树/文件夹](http://docs.groovy-lang.org/latest/html/groovy-jdk/java/io/File.html)
+## [遍历文件树/文件夹](http://docs.groovy-lang.org/latest/html/groovy-jdk/java/io/File.html)
 	def dir = new File(folderName);
 	dir.eachFile { file -> println file.name};	//文件和文件夹，非递归
 	dir.eachFileMatch(~/.*\.txt/) { file ->println file.name };	//非递归
@@ -151,7 +150,7 @@
 	dir.eachFileRecurse { file ->println file.name };	//递归
 	dir.eachFileRecurse(FileType.FILES) { file ->println file.name };	//只文件，递归	
 	
-### 终止遍历
+## 终止遍历
 	dir.traverse { file ->
 		if (file.directory && file.name=='bin') {
 			FileVisitResult.TERMINATE                   
@@ -161,7 +160,7 @@
 		}
 	}
 
-## [操作xml](http://groovy-lang.org/search.html)
+# [操作xml](http://groovy-lang.org/search.html)
 	//创建xml
 	import groovy.xml.*
 	def st = new StringWriter()
@@ -192,13 +191,11 @@
 	 }
 	}
 	
-	
+# 其它	
 ## [调用shell/cmd指令](http://groovy-lang.org/groovy-dev-kit.html#_reading_files)
 	//只用Process对象
 	def process = "ls -l".execute();	println "Found text ${process.text}" ;
 	def process = "ls -l".execute();process.in.eachLine { line ->println line};
-
-
 
 ## java<-->groovy互相调用  
 	//groovy<--java
