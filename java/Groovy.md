@@ -113,25 +113,25 @@
 	ages['Bob'] == null
 
 	def map2 = map.clone();	//克隆map
-	map.containsKey("name");	//包含，返回true,false
-
-	map.each { entry ->		//遍历map
-		println "Name: $entry.key Age: $entry.value"
-	}
-	map.each { key, value ->	//直接取key、value
-		println "Name: $key Age: $value"
-	}
+	
+	map.containsKey("name");	//是否包含，返回true,false
+	
+	//遍历
+	map.each { entry ->	println "Name: $entry.key Age: $entry.value"}
+	map.each { key, value -> println "Name: $key Age: $value"}
 
 	map1.putAll(map2);	//合并map
-
-	def bob = people.find { it.value.name == 'Bob' };	//查找
-	def females = people.findAll { it.value.gender == 'F' }
+	
+	//过滤
+	def bob = people.find { it.value.name == 'Bob' };	//返回第一个满足条件的map元素
+	def females = people.findAll { it.value.gender == 'F' } 	//返回所有
 	def agesOfMales = people.findAll { id, person ->
 		person.gender == 'M'
 	}.collect { id, person ->
 		person.age
 	}
 
+	//判断
 	people.every { id, person ->person.age > 18 };	//满足所有条件，返回true，false
 	people.any { id, person ->person.age == 54 };
 
