@@ -24,7 +24,8 @@
 # 容器操作
 ## List
 	def list = [5, 6, 7, 8];
-	
+	def list = [];
+		
 	//取值
 	list[2] == 7	
 	list[-2]==6		//从尾部往前取
@@ -36,6 +37,9 @@
 	list[2]=100		//指定位置添加
 	[] << 7 << "i" << 11;
 	
+	//合并数组
+	[1, 2] + 3 + [4, 5] + 6 == [1, 2, 3, 4, 5, 6]
+	[['a', 'b'], ['c', 'd']].sum() == ['a', 'b', 'c', 'd']	
 	
 	//删除清空
 	['a',2,'c',4].clear()==[]	//清空数组
@@ -48,28 +52,32 @@
 	[].empty	//true
     
 	def list3 = list.clone();	//克隆一个list
+	
 	list3 == list;		//比较两个list，按元素比较
-
-	[1, 2, 3].each {println "Item: $it" }	//遍历数组,循环数组
+	
+	//遍历循环
+	[1, 2, 3].each {println "Item: $it" }	
 	['a', 'b', 'c'].eachWithIndex { it, i ->  println "$i: $it"}	//带索引遍历
-
+	
+	//查找
 	[1, 2, 3].find { it > 1 } == 2	//查找第一个符合条件的元素
 	[1, 2, 3].findAll { it > 1 } == [2, 3]		//查找所有
 	['a', 'b', 'c', 'd', 'e'].findIndexOf { it in ['c', 'e', 'g']} == 2;	//满足条件元素的索引
 	['a', 'b', 'c', 'd', 'c'].indexOf('c') == 2
 	['a', 'b', 'c', 'd', 'c'].indexOf('z') == -1	//-1表示元素不在list中
 	['a', 'b', 'c', 'd', 'c'].lastIndexOf('c') == 4		//最后一个匹配元素
-
 	[1, 2, 3].every { it < 5 }		//返回true/false, 所有元素满足条件
 	[1, 2, 3].any { it > 2 }
-
+	
+	//求和
 	[1, 2, 3, 4, 5, 6].sum() == 21 	//求和，对所有元素使用plus()方法
 	['a', 'b', 'c', 'd', 'e'].sum() == 'abcde';
 	['a', 'b', 'c', 'd', 'e'].sum { ((char) it) - ((char) 'a') } == 10;		//自定义求和方法
-	[['a', 'b'], ['c', 'd']].sum() == ['a', 'b', 'c', 'd']	//合并数组
 
+	//转字符串
 	[1, 2, 3].join('-') == '1-2-3';		//连接数组
-
+	
+	//比较
 	[9, 4, 2, 10, 5].max()==10;		//最大值
 	['x', 'y', 'a', 'z'].min() == 'a'
 	['abc', 'z', 'xyzuvw', 'Hello', '321'].max { it.size() } == 'xyzuvw'	//自定义比较方法
@@ -77,20 +85,26 @@
 	def list = [7, 4, 9, -6, -1, 11, 2, 3, -9, 5, -13];
 	assert list.max(mc) == 11;
 
-    
-	'a' in ['a','b','c'];	//元素包含，返true/false
-	['a','b','c'].contains('a')
-	[1,3,4].containsAll([1,4])		//全部包含
-	[1,2,3,3,3,3,4,5].count(3) == 4;	//统计
-	[1,2,3,3,3,3,4,5].count { it%2==0} == 2;	//自定义统计方法
-
     //排序
 	[6, 3, 9, 2, 7, 1, 5].sort() == [1, 2, 3, 5, 6, 7, 9]	//排序
 	['abc', 'z', 'xyzuvw', 'Hello', '321'].sort {it.size()} == ['z', 'abc', '321', 'Hello', 'xyzuvw'];	//自定义排序
 	[7,4,-6,-9,5,-13].sort { a, b -> a == b ? 0 : Math.abs(a) < Math.abs(b) ? -1 : 1 } //自定义排序，（如比较绝对值）
+	
+    //是否包含
+	'a' in ['a','b','c'];	//元素包含，返true/false
+	['a','b','c'].contains('a')
+	[1,3,4].containsAll([1,4])		//全部包含
+	
+	//统计
+	[1,2,3,3,3,3,4,5].count(3) == 4;	//统计
+	[1,2,3,3,3,3,4,5].count { it%2==0} == 2;	//自定义统计方法
+
 
 ## Map
 	def map = [name: 'Gromit', likes: 'cheese', id: 1234];
+	def map = [:];
+	
+	//取值
 	map.get('name') == 'Gromit';	//未取到值时返回null
 	map['name'] == 'Gromit';
 	map.name == 'Gromit';
