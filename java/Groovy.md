@@ -59,7 +59,7 @@
 	[1, 2, 3].each {println "Item: $it" }	
 	['a', 'b', 'c'].eachWithIndex { it, i ->  println "$i: $it"}	//带索引遍历
 	
-	//查找 过滤
+	//查找
 	[1, 2, 3].find { item ->if(item==3){return true;}} == 3	//返回第一个符合条件的元素，无则返回null
 	[1, 2, 3].findAll { it > 1 } == [2, 3]		//查找所有
 	['a', 'b', 'c', 'd', 'e'].findIndexOf { it in ['c', 'e', 'g']} == 2;	//满足条件元素的索引
@@ -68,6 +68,9 @@
 	['a', 'b', 'c', 'd', 'c'].lastIndexOf('c') == 4		//最后一个匹配元素
 	[1, 2, 3].every { it < 5 }		//返回true/false, 所有元素满足条件
 	[1, 2, 3].any { it > 2 }
+	
+	//过滤
+	[1, 2, 3].collect { it * 2 } == [2, 4, 6]
 	
 	//求和
 	[1, 2, 3, 4, 5, 6].sum() == 21 	//求和，对所有元素使用plus()方法
