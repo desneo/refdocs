@@ -59,8 +59,8 @@
 	[1, 2, 3].each {println "Item: $it" }	
 	['a', 'b', 'c'].eachWithIndex { it, i ->  println "$i: $it"}	//带索引遍历
 	
-	//查找
-	[1, 2, 3].find { it > 1 } == 2	//查找第一个符合条件的元素
+	//查找 过滤
+	[1, 2, 3].find { item ->if(item==3){return true;}} == 3	//返回第一个符合条件的元素，无则返回null
 	[1, 2, 3].findAll { it > 1 } == [2, 3]		//查找所有
 	['a', 'b', 'c', 'd', 'e'].findIndexOf { it in ['c', 'e', 'g']} == 2;	//满足条件元素的索引
 	['a', 'b', 'c', 'd', 'c'].indexOf('c') == 2
