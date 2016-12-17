@@ -4,7 +4,8 @@
 
 ## UserScript
 ### [属性详解](https://greasyfork.org/zh-CN/help/meta-keys)
-
+### [API文档](http://tampermonkey.net/documentation.php?ext=dhdg#_version)
+### [知乎文章](https://www.zhihu.com/question/21577346)
 
 
 # Chrome插件
