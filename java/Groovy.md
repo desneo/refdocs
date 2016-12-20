@@ -50,7 +50,10 @@
 	//判空
 	![]		//true, 判空
 	[].empty	//true
-    
+	
+	//去重
+    	[1,2,3,2,5,3].unique() == [1, 2, 3, 5]
+	
 	def list3 = list.clone();	//克隆一个list
 	
 	list3 == list;		//比较两个list，按元素比较
