@@ -52,7 +52,7 @@
 	[].empty	//true
 	
 	//去重
-    	[1,2,3,2,5,3].unique() == [1, 2, 3, 5]
+	[1,2,3,2,5,3].unique() == [1, 2, 3, 5]
 	
 	def list3 = list.clone();	//克隆一个list
 	
