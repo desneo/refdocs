@@ -21,3 +21,28 @@
     //获取节点属性的值
     Attribute idAttribute = root.attribute("name");
     String bsName = idAttribute.getText();
+
+## 创建xml
+	// 创建文档并设置文档的根元素节点   
+	org.dom4j.Element root = DocumentHelper.createElement("profiles");
+	org.dom4j.Document document = DocumentHelper.createDocument(root);
+
+	//子节点  ,2栏描述信息
+	for (Map.Entry<String, String> entry : map.entrySet())
+	{   
+		//添加节点
+		org.dom4j.Element element = root.addElement("view-entity-profile");
+		//添加属性
+		element.addAttribute("name", entry.getKey());
+	}
+
+	//结果写入xml
+	//格式化输出
+	OutputFormat format = OutputFormat.createPrettyPrint();
+	//设置编码，防止乱码
+	format.setEncoding("UTF-8");
+	Writer xmlwriter = new OutputStreamWriter(new FileOutputStream(desXmlFile), "UTF-8");
+	XMLWriter writer = new XMLWriter(xmlwriter, format);
+
+	writer.write(document);
+	writer.close();
