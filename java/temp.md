@@ -9,11 +9,11 @@
     //取得某个节点的子节点(第一个)
     Element element = root.element(“四大名著");
     //索取所有指定子节点
-    List nodes = rootElm.elements("csdn");
-    //遍历所有节点
-    for(Iterator it=root.elementIterator();it.hasNext();){
-        Element element = (Element) it.next();
-    }
+    List<Element> nodes = rootElm.elements("csdn");
+	//获取节点下的第一级的所有节点
+	List<Element> eles = element.elements();
+
+
 
     //获取节点文字
     String element = node.getText();
