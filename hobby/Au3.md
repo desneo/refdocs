@@ -265,6 +265,93 @@
 	@YDAY Current day of year. Range is 001 to 366 (or 001 to 365 if not a leap year) 
 
 #内部函数
+## 网络管理
+	FtpSetProxy Sets the internet proxy to use for ftp access.
+	HttpSetProxy Sets the internet proxy to use for http access.
+	HttpSetUserAgent Sets the HTTP user-agent string which is sent with all Inet requests.
+	InetClose Closes a handle returned from InetGet().
+	InetGet 	//下载文件，兼容HHTP/HTTPS/FTP协议
+	InetGetInfo Returns detailed data for a handle returned from InetGet().
+	InetGetSize Returns the size (in bytes) of a file located on the internet.
+	InetRead Downloads a file from the internet using the HTTP, HTTPS or FTP protocol.
+	Ping Pings a host and returns the roundtrip-time.
+	TCPAccept Permits an incoming connection attempt on a socket.
+	TCPCloseSocket Closes a TCP socket.
+	TCPConnect Create a socket connected to an existing server.
+	TCPListen Creates a socket listening for an incoming connection.
+	TCPNameToIP Converts an Internet name to IP address.
+	TCPRecv Receives data from a connected socket.
+	TCPSend Sends data on a connected socket.
+	TCPShutdown, UDPShutdown Stops TCP/UDP services.
+	TCPStartup, UDPStartup Starts TCP or UDP services.
+	UDPBind Create a socket bound to an incoming connection.
+	UDPCloseSocket Close a UDP socket.
+	UDPOpen Open a socket connected to an existing server .
+	UDPRecv Receives data from an opened socket.
+	UDPSend Sends data on an opened socket. 
+
+
+## 进程管理
+	DllCall Dynamically calls a function in a DLL.
+	DllCallAddress Dynamically calls a function at a specific memory address.
+	DllCallbackFree Frees a previously created handle created with DllCallbackRegister.
+	DllCallbackGetPtr Returns the pointer to a callback function that can be passed to the Win32 API.
+	DllCallbackRegister Creates a user-defined DLL Callback function.
+	DllClose Closes a previously opened DLL.
+	DllOpen Opens a DLL file for use in DllCall.
+	DllStructCreate Creates a C/C++ style structure to be used in DllCall.
+	DllStructGetData Returns the data of an element of the struct.
+	DllStructGetPtr Returns the pointer to the struct or an element in the struct.
+	DllStructGetSize Returns the size of the struct in bytes.
+	DllStructSetData Sets the data of an element in the struct.
+	ProcessClose 	//关闭进程
+	ProcessExists 	//进程是否存在
+	ProcessGetStats Returns an array about Memory or IO infos of a running process.
+	ProcessList Returns an array listing the currently running processes (names and PIDs).
+	ProcessSetPriority Changes the priority of a process.
+	ProcessWait Pauses script execution until a given process exists.
+	ProcessWaitClose Pauses script execution until a given process does not exist.
+	Run 	//运行外部程序
+	RunAs Runs an external program under the context of a different user.
+	RunAsWait Runs an external program under the context of a different user and pauses script execution until the program finishes.
+	RunWait Runs an external program and pauses script execution until the program finishes.
+	ShellExecute Runs an external program using the ShellExecute API.
+	ShellExecuteWait Runs an external program using the ShellExecute API and pauses script execution until it finishes.
+	Shutdown Shuts down the system.
+	StderrRead Reads from the STDERR stream of a previously run child process.
+	StdinWrite Writes a number of characters to the STDIN stream of a previously run child process.
+	StdioClose Closes all resources associated with a process previously run with STDIO redirection.
+	StdoutRead Reads from the STDOUT stream of a previously run child process. 
+
+## 窗口管理
+	WinActivate 	//激活窗口到前台
+	WinActive 	//指定窗口是否处于激活状态
+	WinClose 	//关闭窗口
+	WinExists 	//窗口是否存在
+	WinFlash Flashes a window in the taskbar.
+	WinGetCaretPos Returns the coordinates of the caret in the foreground window.
+	WinGetClassList Retrieves the classes from a window.
+	WinGetClientSize Retrieves the size of a given window's client area.
+	WinGetHandle Retrieves the internal handle of a window.
+	WinGetPos Retrieves the position and size of a given window.
+	WinGetProcess Retrieves the Process ID (PID) associated with a window.
+	WinGetState Retrieves the state of a given window.
+	WinGetText Retrieves the text from a window.
+	WinGetTitle Retrieves the full title from a window.
+	WinKill Forces a window to close.
+	WinList Retrieves a list of windows.
+	WinMenuSelectItem Invokes a menu item of a window.
+	WinMinimizeAll 	//窗口最小化
+	WinMinimizeAllUndo Undoes a previous WinMinimizeAll function.
+	WinMove Moves and/or resizes a window.
+	WinSetOnTop Change a window's "Always On Top" attribute.
+	WinSetState Shows, hides, minimizes, maximizes, or restores a window.
+	WinSetTitle Changes the title of a window.
+	WinSetTrans Sets the transparency of a window.
+	WinWait Pauses execution of the script until the requested window exists.
+	WinWaitActive 暂停脚本直到激活指定窗口
+	WinWaitClose Pauses execution of the script until the requested window does not exist.
+	WinWaitNotActive Pauses execution of the script until the requested window is not active. 
 
 
 # 运行程序或打开文件
