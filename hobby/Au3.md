@@ -311,13 +311,21 @@
 	EndFunc   ;==>ShowMessage
 ## 示例2
 	//若未打开则打开 ，以打开则展示窗口
+	#include <MsgBoxConstants.au3>
+	#include <WinAPI.au3>
 	HotKeySet("#c", "ShowMessage") ; Shift-Alt-d
 	While 1
 		Sleep(100)
 	WEnd
 	Func ShowMessage()
-		If Not ProcessExists("Everything.exe")Then Run("D:\program\Everything\Everything.exe")
-	EndFunc   ;==>ShowMessage
+		If Not ProcessExists("Everything.exe") Then
+			Run("D:\program\Everything\Everything.exe")
+		EndIf
+		If ProcessExists("Everything.exe") Then
+			WinActivate("Everything")
+		EndIf
+	EndFunc 
+
 
 	
 	
