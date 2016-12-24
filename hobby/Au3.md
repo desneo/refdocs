@@ -13,7 +13,22 @@
 	#comments-end 
 ## [参考地址](https://zhuanlan.zhihu.com/p/19792473?columnSlug=autohotkey)
 ## [au3十一天教程](http://blog.csdn.net/bolg_hero/article/details/50083303)
+## [AutoIt进行桌面操作](http://www.360doc.com/content/10/1214/18/8392_78106234.shtml)
 
+## windows编程
+		Title--窗口标题
+		Class--窗口类
+		句柄--类似指向指针的指针，用于定位对象和资源
+		controlID--窗口内部控件ID，获得 "[CLASS:Edit; INSTANCE:1]" 	 //CLASS和INSTANCE可使用WindowInfo工具在Control标签中查看到
+	1、使用自带的Window Info工具查看窗口的Title和Class
+	2、 window--窗口， Control--控件
+			窗口包含 下拉框、单选按钮等控件
+	3、
+	
+## window系统名中英文对照
+	1、右下角的通知区域(系统托盘) <==>System tray
+	
+	
 
 # 语法 不区分大小写
 ## 注释;
@@ -102,6 +117,9 @@
 	2、While...WEnd 
 	3、Do...Until 
 	4、For...In...Next (可遍历对象节点)
+	5、ExitLoop   终止while/do/for循环(类似break)
+		ContinueLoop  继续循环(continue)
+	
 	
 	//示例1
 	For $i = 5 To 1 Step -1
@@ -263,157 +281,3 @@
 	@YEAR Current four-digit year 
 	@WDAY Numeric day of week. Range is 1 to 7 which corresponds to Sunday through Saturday. 
 	@YDAY Current day of year. Range is 001 to 366 (or 001 to 365 if not a leap year) 
-
-#内部函数
-## 网络管理
-	FtpSetProxy Sets the internet proxy to use for ftp access.
-	HttpSetProxy Sets the internet proxy to use for http access.
-	HttpSetUserAgent Sets the HTTP user-agent string which is sent with all Inet requests.
-	InetClose Closes a handle returned from InetGet().
-	InetGet 	//下载文件，兼容HHTP/HTTPS/FTP协议
-	InetGetInfo Returns detailed data for a handle returned from InetGet().
-	InetGetSize Returns the size (in bytes) of a file located on the internet.
-	InetRead Downloads a file from the internet using the HTTP, HTTPS or FTP protocol.
-	Ping Pings a host and returns the roundtrip-time.
-	TCPAccept Permits an incoming connection attempt on a socket.
-	TCPCloseSocket Closes a TCP socket.
-	TCPConnect Create a socket connected to an existing server.
-	TCPListen Creates a socket listening for an incoming connection.
-	TCPNameToIP Converts an Internet name to IP address.
-	TCPRecv Receives data from a connected socket.
-	TCPSend Sends data on a connected socket.
-	TCPShutdown, UDPShutdown Stops TCP/UDP services.
-	TCPStartup, UDPStartup Starts TCP or UDP services.
-	UDPBind Create a socket bound to an incoming connection.
-	UDPCloseSocket Close a UDP socket.
-	UDPOpen Open a socket connected to an existing server .
-	UDPRecv Receives data from an opened socket.
-	UDPSend Sends data on an opened socket. 
-
-
-## 进程管理
-	DllCall Dynamically calls a function in a DLL.
-	DllCallAddress Dynamically calls a function at a specific memory address.
-	DllCallbackFree Frees a previously created handle created with DllCallbackRegister.
-	DllCallbackGetPtr Returns the pointer to a callback function that can be passed to the Win32 API.
-	DllCallbackRegister Creates a user-defined DLL Callback function.
-	DllClose Closes a previously opened DLL.
-	DllOpen Opens a DLL file for use in DllCall.
-	DllStructCreate Creates a C/C++ style structure to be used in DllCall.
-	DllStructGetData Returns the data of an element of the struct.
-	DllStructGetPtr Returns the pointer to the struct or an element in the struct.
-	DllStructGetSize Returns the size of the struct in bytes.
-	DllStructSetData Sets the data of an element in the struct.
-	ProcessClose 	//关闭进程
-	ProcessExists 	//进程是否存在
-	ProcessGetStats Returns an array about Memory or IO infos of a running process.
-	ProcessList Returns an array listing the currently running processes (names and PIDs).
-	ProcessSetPriority Changes the priority of a process.
-	ProcessWait Pauses script execution until a given process exists.
-	ProcessWaitClose Pauses script execution until a given process does not exist.
-	Run 	//运行外部程序
-	RunAs Runs an external program under the context of a different user.
-	RunAsWait Runs an external program under the context of a different user and pauses script execution until the program finishes.
-	RunWait Runs an external program and pauses script execution until the program finishes.
-	ShellExecute Runs an external program using the ShellExecute API.
-	ShellExecuteWait Runs an external program using the ShellExecute API and pauses script execution until it finishes.
-	Shutdown Shuts down the system.
-	StderrRead Reads from the STDERR stream of a previously run child process.
-	StdinWrite Writes a number of characters to the STDIN stream of a previously run child process.
-	StdioClose Closes all resources associated with a process previously run with STDIO redirection.
-	StdoutRead Reads from the STDOUT stream of a previously run child process. 
-
-## 窗口管理
-	WinActivate 	//激活窗口到前台
-	WinActive 	//指定窗口是否处于激活状态
-	WinClose 	//关闭窗口
-	WinExists 	//窗口是否存在
-	WinFlash Flashes a window in the taskbar.
-	WinGetCaretPos Returns the coordinates of the caret in the foreground window.
-	WinGetClassList Retrieves the classes from a window.
-	WinGetClientSize Retrieves the size of a given window's client area.
-	WinGetHandle Retrieves the internal handle of a window.
-	WinGetPos Retrieves the position and size of a given window.
-	WinGetProcess Retrieves the Process ID (PID) associated with a window.
-	WinGetState Retrieves the state of a given window.
-	WinGetText Retrieves the text from a window.
-	WinGetTitle Retrieves the full title from a window.
-	WinKill Forces a window to close.
-	WinList Retrieves a list of windows.
-	WinMenuSelectItem Invokes a menu item of a window.
-	WinMinimizeAll 	//窗口最小化
-	WinMinimizeAllUndo Undoes a previous WinMinimizeAll function.
-	WinMove Moves and/or resizes a window.
-	WinSetOnTop Change a window's "Always On Top" attribute.
-	WinSetState Shows, hides, minimizes, maximizes, or restores a window.
-	WinSetTitle Changes the title of a window.
-	WinSetTrans Sets the transparency of a window.
-	WinWait Pauses execution of the script until the requested window exists.
-	WinWaitActive 暂停脚本直到激活指定窗口
-	WinWaitClose Pauses execution of the script until the requested window does not exist.
-	WinWaitNotActive Pauses execution of the script until the requested window is not active. 
-
-
-# 运行程序或打开文件
-## 运行程序
-	Run("Notepad.exe")
-	
-# [模拟鼠标点击（按钮等）控件](https://zhuanlan.zhihu.com/p/19792473?columnSlug=autohotkey)
-	适用命令/函数：Click/MouseClick/ControlClick
-	其 中 Click/MouseClick 用来模拟用户的物理操作（点击），把鼠标点击事件发送到指定坐标位置（相对当前窗口或绝对位置）上，但这种方法并不能保证 100% 的准确性，屏幕分辨​率、用户干扰和系统环境等都会影响到它们的执行结果；
-	而 ControlClick 则直接把鼠标点击事件发送到目标窗口的目标控件上，因而更准确，一般我们不考虑使用坐标位​置方式的点击
-
-## ControlClick 
-	使用：ControlClick ( "窗口标题", "窗口文本", 控件ID [, 按钮] [, 点击次数]] )
-	查看标题等信息使用安装目录下的  AutoIt Window Info 工具。
-	
-	//示例
-	ControlClick("SearchGroupCustListBO.bo.xml 属性", "", "确定")	//打开了文件的属性，自动点击属性上的"确定"按钮。
-	
-## MouseClick
-	使用：MouseClick ( “按钮” [, X坐标, Y坐标 [, 点击次数 [, 速度 ]]] )
-		// 按钮:”left”(左键),”right”(右键),”middle”(中键),”main”(主键),”menu”(菜单键),”primary”(主要按钮),”secondary”(次要按钮)，默认点击左键。
-		//X坐标, Y坐标：[可选] 鼠标移动到屏幕 X/Y坐标处执行点击，若两者都留空则使用当前位置。
-		//点击次数：[可选] 点击鼠标按钮的次数，默认值为 1。
-		//速度：[可选] 鼠标移动速度,可设数值范围在 1(最快)和 100(最慢)之间.若设置速度为0则立即移动鼠标到指定位置(速度最快),默认速度为 10. 
-		//返回1表示点击成功，返回0点击失败。
-	
-	鼠标位置查看器： http://jszj.7edown.com:808/green/mousexy.rar
-		
-	//使用示例
-	MouseClick ( "left" , 3653, 184,1000,0 )
-	
-# 热键--快捷键
-	使用： HotKeySet( "key" [, "function"] )
-		//key： # win, ! Alt, + Shift, ^ Ctrl
-## 示例1
-	//win+r 快捷键时弹出对话框
-	#include <MsgBoxConstants.au3>
-	HotKeySet("#c", "ShowMessage") ; Shift-Alt-d
-	While 1
-		Sleep(100)
-	WEnd
-	Func ShowMessage()
-		MsgBox($MB_SYSTEMMODAL, "", "This is a message.")
-	EndFunc   ;==>ShowMessage
-## 示例2
-	//若未打开则打开 ，以打开则展示窗口
-	#include <MsgBoxConstants.au3>
-	#include <WinAPI.au3>
-	HotKeySet("#c", "ShowMessage") ; Shift-Alt-d
-	While 1
-		Sleep(100)
-	WEnd
-	Func ShowMessage()
-		If Not ProcessExists("Everything.exe") Then
-			Run("D:\program\Everything\Everything.exe")
-		EndIf
-		If ProcessExists("Everything.exe") Then
-			WinActivate("Everything")
-		EndIf
-	EndFunc 
-
-
-	
-	
-	
