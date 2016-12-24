@@ -157,7 +157,8 @@
 	1、toolbar 工具栏，内部是按钮。内部的按钮无句柄
 	
 	_GUICtrlToolbar_ButtonCount		//返回toolbar上的按钮数量
-	
+	_GUICtrlToolbar_GetButtonText	//获取按钮上文字
+	_GUICtrlToolbar_ClickButton		//点击toolbar上的按钮
 
 
 # 运行程序或打开文件
@@ -202,19 +203,4 @@
 	Func ShowMessage()
 		MsgBox($MB_SYSTEMMODAL, "", "This is a message.")
 	EndFunc   ;==>ShowMessage
-## 示例2
-	//若未打开则打开 ，以打开则展示窗口
-	#include <MsgBoxConstants.au3>
-	#include <WinAPI.au3>
-	HotKeySet("#c", "ShowMessage") ; Shift-Alt-d
-	While 1
-		Sleep(100)
-	WEnd
-	Func ShowMessage()
-		If Not ProcessExists("Everything.exe") Then
-			Run("D:\program\Everything\Everything.exe")
-		EndIf
-		If ProcessExists("Everything.exe") Then
-			WinActivate("Everything")
-		EndIf
-	EndFunc 
+
