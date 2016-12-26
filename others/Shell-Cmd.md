@@ -30,15 +30,15 @@
 	find . -maxdepth 1 -type f		//指定搜索深度打印出当前目录的文件（深度为1）
 	find ./ -iname "*.phP"   	//忽略大小写
 	find ./		//列出目录和子目录下的所有文件
-	
-	
+		
 ### 找到后执行指定动作 
 	// {}是一个特殊的字符串，对于每一个匹配的文件，{}会被替换成相应的文件名；
 	find . -type f -name "*.swp" -delete			//删除所有文件
 	find . -type f -user root -exec chown weber {} \;	//将当前目录下的所有权变更为weber
 		-exec ./commands.sh {} \;			//执行多个指令时，封装在脚本中
 	find ./ -name "*.entity.xml" -exec grep -r paymentMode {} \;	//尾部必须加\;  否则报错
-	
+### 示例
+	find ./ -name "*.jar" -exec jar -tvf {} \; | grep "QueryGroupMembersBO.bo.xml"   //在所有jar中搜索指定文件
 ## 检索文件内容grep 
 	grep -r bes.dsf.server.zookeeper ./
 	find ./ -name "*.entity.xml" -exec grep -r paymentMode {} \;	//指定类型文件中搜索,必须\;结尾
