@@ -29,6 +29,10 @@
 
 ## 浏览器最大化
 	driver.manage().window().maximize();
+
+## 设置浏览器大小
+	//webdriver提供了很多调整浏览器窗口的接口，比如move_to(移动窗口)，position(设置或获取浏览器的位置)。在一般情况下这些功能并不常用。
+	driver.manage().window().setSize(new Dimension(320, 240));
 	
 ## 打开页面URL get
 	//navigate.to会产生1个Navigator对象，其封装了与导航相关的一些方法，比如前进后退等。
