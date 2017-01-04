@@ -243,6 +243,13 @@
 
 ## 查看磁盘空间 df -h
 
+## 重启系统 shutdown -r now
+
+## 查看端口占用进程 
+	1-查找被占用的端口 netstat -tln | grep 8083
+	2-查看端口属于哪个程序 lsof -i :8083 
+
+
 ## 查看环境变量 set/env
     win： set
     linux: env
