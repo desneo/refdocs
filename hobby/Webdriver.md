@@ -93,14 +93,22 @@
 		element.clear();
 		
 ### sendKeys 在对象上模拟按键输入
-		WebElement element = dr.findElement(By.name("q"));
-		element.sendKeys("something");
+	WebElement element = dr.findElement(By.id("q"));
+	element.sendKeys("something");
 	
 	示例2：将A多行文本框中的内容清空并复制到B文本框中。
 	dr.findElement(By.id("A")).sendKeys(Keys.chord(Keys.CONTROL + "a"));	
 	dr.findElement(By.id("A")).sendKeys(Keys.chord(Keys.CONTROL + "x"));
 	dr.findElement(By.id("B")).sendKeys(Keys.chord(Keys.CONTROL + "v"));
-		
+
+### 示例 百度页面自动搜索
+	driver.get("http://www.baidu.com");
+	WebElement element = driver.findElement(By.name("kw"));
+	element.sendKeys("周绍华");
+	driver.findElement(By.id("su")).click();
+	
+	
+	
 ## 执行js executeScript
 	//页面上直接执行一段js
 	((JavascriptExecutor)dr).executeScript("$('#tooltip').fadeOut();");
@@ -130,6 +138,8 @@
 ## [cookie与自动登录](https://easonhan007.gitbooks.io/selenium-webdriver/content/32/cookie.java.html)
 	有很多系统的登陆信息都是保存在cookie里的，因此只要往cookie中添加正确的值就可以实现自动登陆了。什么图片验证码、登陆的用例就都是浮云了。
 	webdriver读写cookie的接口有以下一些:
+		//构造函数中可设置过期时间, 
+			Cookie(String name, String value, String path, Date expiry)
 		addCookie(Cookie cookie)。添加cookie，参数是Cookie对象
 		deleteAllCookies。删除所有cookie
 		getCookies。返回所有的cookie
@@ -138,7 +148,18 @@
 	示例：
 		Cookie c1 = new Cookie("BAIDUID", "xxxxxxxxxx");
         dr.manage().addCookie(c1);
-
+		
+	示例2：自动登录百度
+		driver.get("http://www.baidu.com");
+        System.out.println(driver.manage().getCookies());
+        Cookie c1 = new Cookie("BAIDUID", "FEBF1691EDBA5CACD0E35016F5DB070B:FG=1");
+        Cookie c2 = new Cookie("BDUSS",
+                "FNRXVGYXJFbWVucFZXazdlYXk0d2ttSX45blVSVHY5OFJPOTZ3Y3d1Q3BaSlZZSVFBQUFBJCQAAAAAAAAAAAEAAAB4px4MZ2V0bWUxOTg3MTIwOQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAKnXbVip121Y");
+        driver.manage().addCookie(c1);
+        driver.manage().addCookie(c2);
+        driver.findElement(By.id("su")).click();
+	
+	
 ## 超时设置
 	//webdriver中可以设置很多的超时时间
 	implicitlyWait。识别对象时的超时时间。过了这个时间如果对象还没找到的话就会抛出NoSuchElement异常
