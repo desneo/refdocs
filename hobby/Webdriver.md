@@ -88,13 +88,18 @@
 	//click 点击对象
 		dr.findElement(By.linkText("Link1")).click();
 		
-	//sendKeys 在对象上模拟按键输入
-		WebElement element = dr.findElement(By.name("q"));
-		element.sendKeys("something");
-		
 	//clear 清除对象的内容，如果可以的话
 		WebElement element = dr.findElement(By.name("q");
 		element.clear();
+		
+### sendKeys 在对象上模拟按键输入
+		WebElement element = dr.findElement(By.name("q"));
+		element.sendKeys("something");
+	
+	示例2：将A多行文本框中的内容清空并复制到B文本框中。
+	dr.findElement(By.id("A")).sendKeys(Keys.chord(Keys.CONTROL + "a"));	
+	dr.findElement(By.id("A")).sendKeys(Keys.chord(Keys.CONTROL + "x"));
+	dr.findElement(By.id("B")).sendKeys(Keys.chord(Keys.CONTROL + "v"));
 		
 ## 执行js executeScript
 	//页面上直接执行一段js
