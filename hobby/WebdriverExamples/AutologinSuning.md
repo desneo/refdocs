@@ -55,7 +55,7 @@ public class AutoLoginSuning
         
         //输入密码和账户
         dr.findElement(By.cssSelector("#userName")).sendKeys("17715235413");
-        dr.findElement(By.cssSelector("#password")).sendKeys("getme19871209");
+        dr.findElement(By.cssSelector("#password")).sendKeys("getm");
         
         //勾选自动登录框
         //WebElement autoLogin = dr.findElement(By.cssSelector("#rememberMe"))
