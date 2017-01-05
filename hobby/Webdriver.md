@@ -40,7 +40,9 @@
 	 driver.navigate().back();
 	 driver.navigate().forward();
 	
-	//
+	//当前title和url
+	System.out.printf("title of current page is %s\n", dr.getTitle());
+	System.out.printf("url of current page is %s\n", dr.getCurrentUrl());
 	
 ## 启动浏览器 
 	System.setProperty("webdriver.chrome.driver", "C:\\my-program\\chromedriver.exe");
@@ -167,7 +169,9 @@
         driver.manage().addCookie(c1);
         driver.manage().addCookie(c2);
         driver.findElement(By.id("su")).click();
-	
+
+## [浏览器tab页切换](http://www.bubuko.com/infodetail-912343.html)
+			
 	
 ## 超时设置
 	//webdriver中可以设置很多的超时时间
