@@ -55,7 +55,8 @@
 
 ## 打开页面URL get
 	//navigate.to会产生1个Navigator对象，其封装了与导航相关的一些方法，比如前进后退等。
-	driver.get("http://www.baidu.com");
+	driver.get("http://www.baidu.com");	
+		//注：页面加载完成后才会往下执行
 
 ## 对象定位(s)
 	//定义一组对象 List<WebElement> checkboxes = dr.findElements(By.cssSelector("input[type=checkbox]"));
