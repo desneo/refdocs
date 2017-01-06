@@ -55,7 +55,7 @@
 	dr.quit(); 
 
 
-## 打开页面URL get
+## 打开页面URL get 新开一个浏览器
 	//navigate.to会产生1个Navigator对象，其封装了与导航相关的一些方法，比如前进后退等。
 	driver.get("http://www.baidu.com");	
 		//注：页面加载完成后才会往下执行
@@ -171,7 +171,10 @@
         driver.findElement(By.id("su")).click();
 
 ## [浏览器tab页切换](http://www.bubuko.com/infodetail-912343.html)
-			
+	//先获取所有tab页的句柄，再跳入指定的tab页
+	String tempHandleIds = dr.getWindowHandles()
+	dr.switchTo().window(tempHandleId);
+	
 	
 ## 超时设置
 	//webdriver中可以设置很多的超时时间
