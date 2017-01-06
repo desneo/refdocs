@@ -6,18 +6,18 @@
 	trsseract --help
 		-l eng	//识别所用的语言， --list-langs	 当前支持的语言
 		-psm	//图片模式，默认3
-			0 = 方向，Orientation and script detection (OSD) only.  
-			1 = Automatic page segmentation with OSD.
-			2 = Automatic page segmentation, but no OSD, or OCR
-			3 = Fully automatic page segmentation, but no OSD. (Default)
-			4 = Assume a single column of text of variable sizes.
-			5 = Assume a single uniform block of vertically aligned text.
-			6 = Assume a single uniform block of text.
-			7 = 单行文本，Treat the image as a single text line.
-			8 = 单词，Treat the image as a single word.
-			9 = Treat the image as a single word in a circle.
-			10 = 单个字母，Treat the image as a single character.
-			-l lang and/or -psm pagesegmode must occur before anyconfigfile.
+			0 =只进行定向和脚本检测（OSD）
+			1 =通过OSD进行页面自动分割
+			2 =自动分割，但没有OSD，或OCR
+			3 =全自动分割，但没有OSD（默认）
+			.4 =假设待识别图片是一列的文本
+			5 =假设待识别图片是一个统一的垂直对齐的文本块
+			6 =假设待识别图片是一个统一的文本块
+			7 =把图像作为一个单一的文本行
+			8 =把图像当作一个字
+			9 =把图像作为一个字在一个圆圈中
+			10 =把图像当作一个单独的字符
+		-l lang and/or -psm pagesegmode must occur before anyconfigfile.
 ## 其它
 	1--识别中文
 		可以到http://code.google.com/p/tesseract-ocr/downloads/list下载对应的语言的字库文件. 
