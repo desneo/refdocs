@@ -54,8 +54,8 @@
             dr.findElement(By.cssSelector(".login-tab-r span")).click();
 
             //输入密码和账户
-            dr.findElement(By.cssSelector("#userName")).sendKeys("17715235413");
-            dr.findElement(By.cssSelector("#password")).sendKeys("getm");
+            dr.findElement(By.cssSelector("#userName")).sendKeys("177xxxx");
+            dr.findElement(By.cssSelector("#password")).sendKeys("getxxx");
 
             //勾选自动登录框
             //WebElement autoLogin = dr.findElement(By.cssSelector("#rememberMe"))
@@ -73,7 +73,7 @@
                 }
             });
 
-            //等待打卡领云钻加载完成
+            //等待 我的易购页加载完成
             dr.findElement(By.cssSelector(".mysuning-handle span")).click();
 
             (new WebDriverWait(dr, 10)).until(new ExpectedCondition<Boolean>()
@@ -83,11 +83,31 @@
                     return d.findElement(By.cssSelector(".radiu-btn")).isDisplayed();
                 }
             });
-            //点击我的易购按钮
             dr.findElement(By.cssSelector(".radiu-btn")).click();
+
+            //等待打开 打卡签到页面
+            Thread.sleep(3000);
+            for (String tempHandleId : dr.getWindowHandles())
+
+            {
+                dr.switchTo().window(tempHandleId);
+                if (dr.getTitle().equals("打卡签到_苏宁会员_苏宁易购"))
+                {
+                    //等待 点我打卡加载完成
+                    (new WebDriverWait(dr, 10)).until(new ExpectedCondition<Boolean>()
+                    {
+                        public Boolean apply(WebDriver d)
+                        {
+                            return d.findElement(By.cssSelector(".lotterydraw-start .starttip")).isDisplayed();
+                        }
+                    });
+                    dr.findElement(By.cssSelector(".lotterydraw-start .starttip")).click();
+                }
+                continue;
+
+            }
 
             Thread.sleep(10000);
             dr.quit();
         }
     }
-
