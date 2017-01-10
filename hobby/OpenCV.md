@@ -37,4 +37,6 @@
 			时每个Mat对象都有自己的信息头，但是共享同一个矩阵。
 	3--若是任然想复制矩阵本身，则可以用clone 和copyTo
 
+# [阈值处理Imgproc.threshold](http://www.cncoders.net/article/17364/)
 
+# [颜色分解成单通道 Core.split(m, mv);](http://blog.csdn.net/gxiaob/article/details/8799242)
