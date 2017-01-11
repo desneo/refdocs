@@ -46,9 +46,24 @@
 	
 # 相关函数说明
 ## Imgcodecs.imread 读文件，返回格式BGR
+
 ## [Imgcodecs.imwrite 写文件(单通道或3通道的BGR)](http://docs.opencv.org/3.2.0/d4/da8/group__imgcodecs.html#gabbc7ef1aa2edfaa87772f1202d67e0ce)
-## mat.get(row, col) 获取像素信息
+
+## mat.get(row, col) 获取/设置像素信息
+	mat.put(i, j, temp);
 	返回数组，三通道里面有3个值，单通道一个值。
+	//遍历所有像素
+		Imgproc.cvtColor(mat, mat, Imgproc.COLOR_BGR2GRAY);
+        for (int i = 0; i < mat.rows(); i++)
+        {
+            for (int j = 0; j < mat.cols(); j++)
+            {
+                double[] temp = mat.get(i, j);
+                temp[0] = 256;
+                mat.put(i, j, temp);
+            }
+        }
+	
 ## [Imgproc.cvtColor 颜色空间转换](http://baike.baidu.com/link?url=39OkKSxllQaqxFxO2cZJIFb88wgAQVRocvDD2RM0ltvDFJXJau49mAPuO_pE45s3DQdNLYjSDuQpZvzqyNdPcK)
 	cvCvtColor(...)，是Opencv里的颜色空间转换函数，可以实现BGR颜色向HSV，HSI等颜色空间的转换，也可以转换为灰度图像。
 	说明：	void cvCvtColor( const CvArr* src, CvArr* dst, int code );
@@ -68,6 +83,8 @@
 		后面两个参数都有默认值，uniform参数表明直方图是否等距，最后一个参数与多图像下直方图的显示与存储有关。
 	
 ## [阈值处理Imgproc.threshold](http://www.cncoders.net/article/17364/)
+
+## 降噪
 
 ## [颜色分解成单通道 Core.split(m, mv);](http://blog.csdn.net/gxiaob/article/details/8799242)	
 	
