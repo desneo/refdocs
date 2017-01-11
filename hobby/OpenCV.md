@@ -70,7 +70,7 @@
 	示例：  Imgproc.cvtColor(mat, mat, Imgproc.COLOR_RGB2GRAY);		//转灰度图
 			Imgproc.COLOR_RGB2HLS	//转HLS
 
-## [calcHist] 计算图像直方图(http://www.cnblogs.com/ronny/p/opencv_road_4.html)
+## [calcHist 计算图像直方图](http://www.cnblogs.com/ronny/p/opencv_road_4.html)
 	//另： http://docs.opencv.org/3.1.0/d6/dc7/group__imgproc__hist.html#ga4b2b5fd75503ff9e6844cc4dcdaed35d
 	void calcHist(java.util.List<Mat> images, MatOfInt channels, Mat mask, Mat hist, MatOfInt histSize, MatOfFloat ranges)
 		images：为输入的图像，可多个。
