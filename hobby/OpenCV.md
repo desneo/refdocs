@@ -47,10 +47,13 @@
 # 相关函数说明
 ## Imgcodecs.imread 读文件，返回格式BGR
 ## [Imgcodecs.imwrite 写文件(单通道或3通道的BGR)](http://docs.opencv.org/3.2.0/d4/da8/group__imgcodecs.html#gabbc7ef1aa2edfaa87772f1202d67e0ce)
+## mat.get(row, col) 获取像素信息
+	返回数组，三通道里面有3个值，单通道一个值。
 ## [Imgproc.cvtColor 颜色空间转换](http://baike.baidu.com/link?url=39OkKSxllQaqxFxO2cZJIFb88wgAQVRocvDD2RM0ltvDFJXJau49mAPuO_pE45s3DQdNLYjSDuQpZvzqyNdPcK)
 	cvCvtColor(...)，是Opencv里的颜色空间转换函数，可以实现BGR颜色向HSV，HSI等颜色空间的转换，也可以转换为灰度图像。
 	说明：	void cvCvtColor( const CvArr* src, CvArr* dst, int code );
-	示例：  Imgproc.cvtColor(mat, mat, Imgproc.COLOR_RGB2GRAY);
+	示例：  Imgproc.cvtColor(mat, mat, Imgproc.COLOR_RGB2GRAY);		//转灰度图
+			Imgproc.COLOR_RGB2HLS	//转HLS
 
 ## calcHist 计算图像直方图(http://www.cnblogs.com/ronny/p/opencv_road_4.html)
 	//另： http://docs.opencv.org/3.1.0/d6/dc7/group__imgproc__hist.html#ga4b2b5fd75503ff9e6844cc4dcdaed35d
