@@ -174,7 +174,10 @@
 	//先获取所有tab页的句柄，再跳入指定的tab页
 	String tempHandleIds = dr.getWindowHandles()
 	dr.switchTo().window(tempHandleId);
-	
+## 截屏
+	File screenshot = ((TakesScreenshot)dr).getScreenshotAs(OutputType.FILE);
+	FileUtils.copyFile(screenshot,
+	new File("G:/practice/openCV/suningyanzhengma-" + new Date().getTime() + ".png"));
 	
 ## 超时设置
 	//webdriver中可以设置很多的超时时间
