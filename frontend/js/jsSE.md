@@ -3,6 +3,7 @@
 	//<script src="/servletexample/resources/js/jquery-3.1.0.js"></script>
 	//<script src="http://cdn.staticfile.org/jquery/2.1.1-rc2/jquery.js"></script>
 
+
 # String 字符串
 ## 删除所有空格 .replace(/[\n ]/g,"")
 
@@ -49,7 +50,7 @@
 		"x".padEnd(5,"ab")		 "xabab"
 		"x".padEnd(4)	
 	
-	padStart() / padEnd() 补齐 es6
+	toLowerCase()/toUpperCase()		//大小写转换
 
 ## Unicode转字符串
 	索引词：unicode转utf8、
@@ -58,6 +59,7 @@
 	escape("我在")	 "%u6211%u5728"
 	② 	var xx = "ad.person.label.OfferByPhoneFee=\u8BDD\u8D39\u652F\u4ED8";
 		console.log(xx.normalize());		// normalize  ES6
+
 
 
 # js作用域
