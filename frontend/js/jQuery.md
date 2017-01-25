@@ -53,16 +53,18 @@
 
 # 属性/内容操作-addClass等
     $( "p" ).addClass( "myClass yourClass" );       //添加class
-    $("a[name=\"public0_dyg01\"]").attr("href")；    //获取第一个匹配元素指定属性的值
-    .attr( attributeName, value )                   //设置所有元素的属性值
     $( "#mydiv" ).hasClass( "foo" )                 //是否有某个class，true false
-    .html();        //设置或获取标签的值
-    $( "select.foo" ).val();    //获取文本值
-    input.removeAttr( "title" )；    //移除属性
     $("p").removeClass("myClass yourClass")；    //移除class
+
+    $("select.foo").val();    //获取标签value属性的值
+				.html();    //设置或获取标签内的值
+				.text();	//获取内部所有标签夹起来的值
+	
+    input.removeAttr( "title" )；    //移除属性
+    $("a[name=\"public0_dyg01\"]").attr("href")；    //获取第一个匹配元素指定属性的值
+		.attr( attributeName, value )                //设置所有元素的属性值
+
     $( "div.tumble" ).toggleClass( "bounce" )   //没有class则添加，有则删除
-
-
 
 # jQuery DOM操作
 ## 插入节点
