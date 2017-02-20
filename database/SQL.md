@@ -2,7 +2,14 @@
 ## 基础知识
 	sqlplus /nolog 
 	conn / as sysdba
+
+## 管理SQL
+	//用户下所有表
+	select t.table_name,t.* from user_tables t;
+	//查看表结构(表字段)
+	select * from user_tab_columns where table_name  in ('DE_LICENSE_TPS');
 	
+
 ### 导入/导出数据
 	//导出所有表
 	exp besfront/Huawei123@BESDB file=/home/oracle/zhou/besfront.dump owner=besfront;
