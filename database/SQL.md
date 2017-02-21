@@ -3,7 +3,7 @@
 	sqlplus /nolog 
 	conn / as sysdba
 
-## 管理SQL
+### 管理SQL
 	//用户下所有表 (user_tables为视图)
 	select t.table_name,t.* from user_tables t;
 	//查看表结构(表字段)
@@ -34,3 +34,12 @@
 
 	//删除用户
 	drop user test cascade;
+
+## 查询前10条数据
+	//先取10条数据再排序
+	select b.service_number,B.CREATE_TIME FROM BESCUST.inf_subscriber b where b.status=2  and rownum<=10  order by b.CREATE_TIME DESC;
+	//先排序再取10条数据
+	select service_number, CREATE_TIME FROM  (select *   From BESCUST.inf_subscriber  where status=2    order by CREATE_TIME DESC) where  rownum<=10;
+
+
+
