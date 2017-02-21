@@ -149,6 +149,9 @@
 	
 	//求平均值/求和
 	awk '{sum+=$1} END {print "Average = ", sum/NR}'
+	
+	//删除特定文件外的所有其它文件
+	rm -rf `ls -lrt|awk '{if(match($0,".bes.cm.")) print $9}' |awk '{if( !(match($0,"bes.cm.base.meta.object-") || match($0,"bes.cm.base.meta.sdk-") || match($0,".bes.cm.base.sdk-") )) print $0}'`
 
 ### awk内部变量名
 	$0		完整的输入记录-即当期的完整行
@@ -237,12 +240,18 @@
     -m 以M为单位显示大小	不显示M，只显示数字
     -k  以1024 bit单位显示
     -g   以GB为单位显示
-    
+   
+## 删除特定文件外的所有其它文件
+	rm -rf `ls -lrt|awk '{if(match($0,".bes.cm.")) print $9}' |awk '{if( !(match($0,"bes.cm.base.meta.object-") || match($0,"bes.cm.base.meta.sdk-") || match($0,".bes.cm.base.sdk-") )) print $0}'`
+	
 ## sftp/ssh登录另一台linux
     sftp besread@10.21.89.7     lls显示本地文件夹
     ssh besread@10.21.89.7     
 
 ## 查看磁盘空间 df -h
+
+## 显示内存占用
+	free
 
 ## 重启系统 shutdown -r now
 
