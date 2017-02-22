@@ -178,20 +178,30 @@
 	RSTART	由match函数所匹配的字符串的第一个位置。
 	SUBSEP	数组下标分隔符(默认值是\034)。
 
-### awk内部字符串函数
+### awk内置函数
+	//字符串相关
 	gsub(r,s)	在整个$0中用s代替r
 	gsub(r,s,t)	在整个t中用s替代r
 	index(s,t)	返回s中字符串t的第一位置
-	length(s)	返回s长度
+	length(s)	返回s长度,如果未给出String参数，则返回整条记录的长度
 	match(s,r)	测试s是否包含匹配r的字符串
-	split(s,a,fs)	在fs上将s分成序列a
+	split(s,a,fs)	以fs为分隔符将s分成序列a
 	sprint(fmt,exp)	返回经fmt格式化后的exp
 	sub(r,s)		用$0中最左边最长的子串代替s
 	substr(s,p)		返回字符串s中从p开始的后缀部分
 	substr(s,p,n)	返回字符串s中从p开始长度为n的后缀部分
+	tolower( String )
+	toupper( String )
+	
+	//时间函数
+	//示例 awk 'BEGIN{tstamp=mktime("2001 01 01 12 12 12");print strftime("%c",tstamp);}'     //2001年01月01日 星期一 12时12分12秒
+	mktime( YYYY MM DD HH MM SS[ DST])	生成时间格式
+	strftime([format [, timestamp]])	格式化时间输出，将时间戳转为时间字符串 
+	systime()	得到时间戳,返回从1970年1月1日开始到当前时间(不计闰年)的整秒数
 
 ### awk操作符-运算符
 	in	是否数组成员	//{if ($2 in a)print $0}
+	* / % || && > >= == !=
 
 	
 ## sort 排序
