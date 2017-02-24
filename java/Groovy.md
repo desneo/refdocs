@@ -20,7 +20,11 @@
 	def  nonReturnTypeFunc(){  //函数返回值类型可指定类型，如String，如果不return string则报错
 	     [return] last_line;   //return可选， 最后一行代码的执行结果就是本函数的返回值
 	}
-
+	
+	//变量类型
+	cmres instanceof com.huawei.bes.cm.base.party.vo.QueryBlacklistsResponseDTO
+	
+	
 # 容器操作
 ## List
 	def list = [5, 6, 7, 8];
