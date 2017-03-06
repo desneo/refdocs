@@ -42,6 +42,7 @@
         n 6.00  //升级到指定版本
         
         //windows  gnvm.exe 保存到 Node.js 所在的文件夹
+        //示例 gnvm update latest
         config       配置 .gnvmrc
         use          使用某个本地已存在的 Node.js 版本
         ls           输出 [local] [remote] Node.js 版本
