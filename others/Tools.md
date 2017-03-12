@@ -61,7 +61,13 @@
 | zebra stripes | are neat      |    $1 |	
   
 # git  
-    索引词：git关键字、github关键字  
+    索引词：github
+## TortoiseGit
+	1.安装完成后需要设置，否则clone时报错：右键-->TortoiseGit > Settings > Network > 
+		SSH Client to git安装目录\bin\ssh.exe (必须ssh.exe才可)。
+	2.如果要提交代码，需要按“命令行”中步骤添加公钥
+	
+## 命令行
     1、生成公私钥对： ssh-keygen -t rsa -C "desneo@163.com"  
         （不需密码，默认即可）， 用户主目录（/c/Users/Administrator/.ssh）下生成id_rsa和id_rsa.pub文件  
     2、github设置账户公钥：settings-->SSH and GPG keys -->New SSH key --> 将公钥内容全部复制-->添加  
