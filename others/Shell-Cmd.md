@@ -286,5 +286,9 @@
 		3、配置ssh客户端使用密钥登录。新建连接-->用户省份认证-->方法(Public Key)
 			--> 输入用户名，选中1步中名字的证书即可。
 
+## 不同的linux系统
+	安装软件--> Debian   suduo -i; apt-get install git
+    
+			
 #bat
 	1、bat文件执行后不消失-->添加一行pause
