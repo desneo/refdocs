@@ -63,9 +63,10 @@
 # git  
     索引词：github
 ## TortoiseGit
-	1.安装完成后需要设置，否则clone时报错：右键-->TortoiseGit > Settings > Network > 
+	1.安装完成后需要设置，否则clone时报错（可选择指定分支）：右键-->TortoiseGit > Settings > Network > 
 		SSH Client to git安装目录\bin\ssh.exe (必须ssh.exe才可)。
-	2.如果要提交代码，需要按“命令行”中步骤添加公钥
+	2.如果要提交代码，需要按“命令行”中步骤添加公钥。
+	3.右键提交， 可同时commit/push,也可以分步进行。
 	
 ## 命令行
     1、生成公私钥对： ssh-keygen -t rsa -C "desneo@163.com"  
