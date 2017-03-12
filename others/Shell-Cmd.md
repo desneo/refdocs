@@ -288,7 +288,7 @@
 
 ## 不同的linux系统
 	安装软件--> Debian   suduo -i; apt-get install git
-    
+	
 			
 #bat
 	1、bat文件执行后不消失-->添加一行pause
