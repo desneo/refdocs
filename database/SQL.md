@@ -42,4 +42,17 @@
 	select service_number, CREATE_TIME FROM  (select *   From BESCUST.inf_subscriber  where status=2    order by CREATE_TIME DESC) where  rownum<=10;
 
 
+	
+# MySQL
+## 基础知识
+	show databases;		//显示数据库
+	use mysql;		//切换数据库
+	show columns from user;		//展示表字段
 
+## 修改用户密码
+	mysql -uroot -p		//root用户登录，进入mysql命令行, mysql>
+	use mysql;
+	update user set authentication_string = password('')where user = 'root';	//修改面膜
+	FLUSH PRIVILEGES;
+	
+	
