@@ -17,7 +17,7 @@
         2、错误引起整个系统退出。
         3、大量计算占用CPU时，无法继续调用异步I/O
 
-### node常用指令
+### npm常用指令
         npm -v          #显示版本，检查npm 是否正确安装。
         npm install -g express  #全局安装express模块; 安装指定版本 npm install gulp@3.9.1
         npm init        //创建package.json文件，便于后续开发者使用npm install根据dependency安装所有依赖包
@@ -34,13 +34,16 @@
         npm config set http-proxy http://username:password@proxyhk.huxxx.com:8080/ -g
         npm config set https-proxy http://username:password@proxyhk.huxxx.com:8080/ -g
 
-
-### [升级node](http://www.jb51.net/article/52409.htm)
-        //linux
-        node install –g n
-        n stable    //升级到stable版本
-        n 6.00  //升级到指定版本
-        
+### linux(ubuntu)下安装nodeJs
+	sudo -i 	//切换到root用户
+	apt-get install npm	
+	npm install -g n   //安装n
+	n latest	//安装nodeJs最新版本
+	
+	n stable    //升级到stable版本
+	n 6.00  //升级到指定版本
+		
+### windows升级nodeJS
         //windows  gnvm.exe 保存到 Node.js 所在的文件夹
         //示例 gnvm update latest
         config       配置 .gnvmrc
