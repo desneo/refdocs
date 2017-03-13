@@ -265,17 +265,20 @@
 
 ## 重启系统 shutdown -r now
 
-## 查看端口占用进程 
-	1-查找被占用的端口 netstat -tln | grep 8083
-	2-查看端口属于哪个程序 lsof -i :8083 
-
-
 ## 查看环境变量 set/env
     win： set
     linux: env
 
 ## 增加权限 chmod 777 xx.sh
 	rwx分别对应421权值
+	
+## 查看端口占用进程 
+	1-查找被占用的端口 netstat -tln | grep 8083
+	2-查看端口属于哪个程序 lsof -i :8083 
+
+## 保持程序后台运行(关闭终端程序继续运行)
+	以脱离终端的方式在后台运行这个shell命令： 	nohup 你的shell命令 &
+	//nohup命令可以让你的shell命令忽略SIGHUP信号，即可以使之脱离终端运行；“&”可以让你的命令在后台运行。
 
 ## xshell使用证书登陆linux
 	基本步骤3步：
