@@ -9,7 +9,9 @@
 		//aptitude show pkgname 显示包的详细信息
 
 
-#代理软件 squid
+# 代理软件 squid
+	1) 安装: aptitude install squid3 ；
+		安装完成后自动启动， 默认端口3128
 	http://blog.csdn.net/stamhe/article/details/5334868
 	https://tahenniu.com/news/22
 	http://www.2cto.com/os/201307/229016.html
