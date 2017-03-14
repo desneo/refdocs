@@ -7,3 +7,6 @@
 		//aptitude remove pkgname 删除包
 		//aptitude purge pkgname 删除包及其配置文件
 		//aptitude show pkgname 显示包的详细信息
+
+
+#代理软件 squid
