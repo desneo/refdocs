@@ -10,3 +10,6 @@
 
 
 #代理软件 squid
+	http://blog.csdn.net/stamhe/article/details/5334868
+	https://tahenniu.com/news/22
+	http://www.2cto.com/os/201307/229016.html
