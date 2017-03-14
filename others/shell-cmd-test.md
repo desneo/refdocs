@@ -15,3 +15,4 @@
 	http://blog.csdn.net/stamhe/article/details/5334868
 	https://tahenniu.com/news/22
 	http://www.2cto.com/os/201307/229016.html
+	https://wiki.archlinux.org/index.php/Squid_(%E7%AE%80%E4%BD%93%E4%B8%AD%E6%96%87)
