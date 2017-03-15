@@ -104,3 +104,10 @@
     core modules don't has path since it's built-in.
     From the official api site it says that core modules are installed at the /lib folder of the root folder of NodeJS,
     that means /lib folder is in source code not your computer. you can see it in repository
+    
+    
+function foo(x){
+	return function(){
+		return x;
+	}
+}
