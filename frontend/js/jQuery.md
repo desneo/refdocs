@@ -31,8 +31,16 @@
 ## 继承关系选择器
     $("parent > child")     //选中上一级元素是parent的child元素
     $("ancestor descendant")    //祖先中有ancestor的descendant的元素
-    $("prev + next")            //prev之后的next元素
-    $("prev ~ siblings")        //与prev共一个parent节点，但是在prev之后的元素
+    $("prev + next")            //prev之后的next兄弟元素
+    $("prev ~ sibling")        //与prev共一个parent节点，但是在prev之后的所有兄弟sibling元素
+	
+	//查找父元素
+	$('#item1').parent()/.parent('.parent1');	//上一级
+	$('#items').parents('.parent1');	//取得一个包含着所有匹配元素的祖先元素的元素集合（不包含根元素）
+	$('#items1').closest('.parent1');	//closest会首先检查当前元素是否匹配，如果匹配则直接返回元素本身。如果不匹配则向上查找父元素，
+											一层一层往上，直到找到匹配选择器的元素。如果什么都没找到则返回一个空的jQuery对象。
+    
+  
 ## 属性过滤器
     //1-单双引号是有意义的，$("a[rel='nofollow']")
          $("a[rel='nofollow']"), will select <a href="example.html" rel="nofollow">Some text</a> ， but not <a href="example.html" rel="nofollow foe">Some text</a>.
