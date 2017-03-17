@@ -116,12 +116,22 @@ function foo(x){
 # [爬虫](http://borninsummer.com/2015/03/18/nodejs-crawler/)
 ## 基本例子
 	//1、常用
+	var fs = require('fs');
 	var request = require('request');
-	request('http://www.google.com', function (error, response, body) {
-	  console.log('error:', error); // Print the error if one occurred 
-	  console.log('statusCode:', response && response.statusCode); // Print the response status code if a response was received 
-	  console.log('body:', body); // Print the HTML for the Google homepage. 
-	});
+	var cheerio = require('cheerio');
+	getSeeds = function(url){
+		request({url: url}, function (error, response, body){
+			if (error) {
+				return console.error(error);
+			}
+			console.log('得到种子页面： ' + url );
+			var $ = cheerio.load(response.body.toString());
+			$('a[href*="list.jd.com/"]').each(function(){
+				var $me = $(this);
+				var href = $me.attr('href');
+			});
+		});
+	};
 
 	//2、通过代理
 	var fs = require('fs')
