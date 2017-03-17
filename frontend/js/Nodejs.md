@@ -53,9 +53,14 @@
         reg          设定 .gnvmrc 属性值 [noderoot] 为 环境变量 [NODE_HOME]，并加入到 Path 中
         version      查看 gnvm 版本
 
+## 系统相关
+	console.log(process.__dirname); //代码目录 E:\practice\nodejs\mp3download
+	console.log(process.__filename);    //文件全路径 E:\practice\nodejs\mp3download\test.js
+	console.log(process.cwd());     //执行node指令时所在的地址 E:\practice\nodejs\mp3download
+	console.log(process.execPath)   //当前node.exe的路径  E:\program-my\nodejs\node.exe
+			
  
 ## 文件系统
-    require('fs')
     const fs = require('fs');
     
     --fs.readdir(path, callback) 读取文件夹,另fs.readdirSync(path) , 返回字符串数组文件名列表 (不包含"."和"..")
@@ -79,6 +84,11 @@
     --fs.appendFile(file, data[, options], callback) 追加写入,另fs.appendFileSync(file, data[, options])
         文件不存在则创建，data可string / buffer
         fs.appendFileSync('C:\\Users\\z00316474\\Desktop\\fanyi.txt', data);
+		
+	//文件是否存在
+	fs.existsSync("./node_modules")；
+	
+	
 
 ## 模块
     引用模块require: var math = require("math");
