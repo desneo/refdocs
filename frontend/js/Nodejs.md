@@ -111,3 +111,20 @@ function foo(x){
 		return x;
 	}
 }
+
+
+# [爬虫](http://borninsummer.com/2015/03/18/nodejs-crawler/)
+## 基本例子
+	//1、常用
+	var request = require('request');
+	request('http://www.google.com', function (error, response, body) {
+	  console.log('error:', error); // Print the error if one occurred 
+	  console.log('statusCode:', response && response.statusCode); // Print the response status code if a response was received 
+	  console.log('body:', body); // Print the HTML for the Google homepage. 
+	});
+
+	//2、通过代理
+	var fs = require('fs')
+	var request = require('request');
+	var r = request.defaults({'proxy':'http://userName:password@proxyhk.huawei.com:8080'})
+	r.get('http://www.google.com').pipe(fs.createWriteStream('test.log'))
