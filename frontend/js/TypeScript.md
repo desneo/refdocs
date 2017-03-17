@@ -2,7 +2,7 @@
     //声明
     let arr3:number[] = [3,4,5,6,7,8];
 	
-	//循环
+	//循环, return false == continue;
 	1) for (let entry of someArray) { console.log(entry); 	}
 	2) list.foreach((val,index [, array])=>{ console.log("")});
 	
