@@ -148,3 +148,31 @@ function foo(x){
 	var request = require('request');
 	var r = request.defaults({'proxy':'http://userName:password@proxyhk.huawei.com:8080'})
 	r.get('http://www.google.com').pipe(fs.createWriteStream('test.log'))
+
+## [request ](https://www.npmjs.com/package/request)
+	npm install request
+	基本使用： request(options, callback)
+	
+## [iconv-lite 编码转换模块](https://www.npmjs.com/package/iconv-lite)
+	var iconv = require('iconv-lite');
+	//检查编码是否支持
+	iconv.encodingExists("us-ascii")；
+	//Convert from an encoded buffer to js string 
+	str = iconv.decode(new Buffer([0x68, 0x65, 0x6c, 0x6c, 0x6f]), 'win1251');
+	// Convert from js string to an encoded buffer. 
+	buf = iconv.encode("Sample input string", 'win1251');
+	
+	//request请求的网页乱码, encoding--null, 返回Buffer再转换
+	request({url: url,encoding: null}, function (error, response, body){
+		let str = iconv.decode(body, "gb2312");
+	})
+
+## [cheero DOM解析](https://www.npmjs.com/package/cheerio)
+	//npm install cheerio	语法同JQuery选择器
+	let $ = cheerio.load('<h2 class="title">Hello world</h2>')
+	let strs = $(".title>a[href='http://www.tingge123.com/jingdiangequ/index1.shtml']").text();	//经典歌曲
+
+	$('li').each(function(i, elem) {
+	  fruits[i] = $(this).text();
+	});
+	
