@@ -29,10 +29,10 @@
     $(".sclass")    //class选择器
     $("P")          //元素选择器
 ## 继承关系选择器
-    $("parent > child")     //选中上一级元素是parent的child元素
-    $("ancestor descendant")    //祖先中有ancestor的descendant的元素
-    $("prev + next")            //prev之后的next兄弟元素
-    $("prev ~ sibling")        //与prev共一个parent节点，但是在prev之后的所有兄弟sibling元素
+	$("parent > child")     //选中上一级元素是parent的child元素
+	$("ancestor descendant")    //祖先中有ancestor的descendant的元素
+	$("prev + next")            //prev之后的next兄弟元素
+	$("prev ~ sibling")        //与prev共一个parent节点，但是在prev之后的所有兄弟sibling元素
 	
 	//查找父元素
 	$('#item1').parent()/.parent('.parent1');	//上一级
