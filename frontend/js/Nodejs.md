@@ -146,8 +146,8 @@ function foo(x){
 	//2、通过代理
 	var fs = require('fs')
 	var request = require('request');
-	var r = request.defaults({'proxy':'http://userName:password@proxyhk.huawei.com:8080'})
-	r.get('http://www.google.com').pipe(fs.createWriteStream('test.log'))
+	request({url: url,encoding: null,'proxy':'proxy':'http://userName:password@proxyhk.huawei.com:8080'}, function (error, response, body){
+	});
 
 ## [request ](https://www.npmjs.com/package/request)
 	npm install request
