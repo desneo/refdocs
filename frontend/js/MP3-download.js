@@ -16,9 +16,8 @@ var iconv = require("iconv-lite")   //字符串编码转换
 var geshou = ["凤凰传奇","玖月奇迹"];
 //待下载的歌曲目录
 var catogories = [];
-//经典歌曲
-catogories.push("http://www.tingge123.com/jingdiangequ/index1.shtml");
 
+var requestOpt = {url: "",encoding: null};
 
 //返回待下载的歌曲url数组
 function parseURL(url){
@@ -28,7 +27,8 @@ function parseURL(url){
         //下载指定的歌手歌曲
     }else{
         //下载分类的歌曲
-        request({url: url,encoding: null}, function (error, response, body){
+        requestOpt.url = url;
+        request( requestOpt, function (error, response, body){
             if (error) {
                 return console.error("request获取URL页面失败: " + url);
             }
@@ -57,25 +57,23 @@ function parseURL(url){
 			
 			//爬行进入试听链接
 			for(var i=0; i<xx.length; i++){
+                console.log("xx[i]:"+xx[i])
 				requestOpt.url = xx[i];
 				request( requestOpt, function (error, response, body){
 					let temp = iconv.decode(body, "gb2312");
-					let $1 = cheerio.load(temp);
-					console.log("requestOpt.url:"+requestOpt.url);
-					let downLoadUrl = $1("a[href$='.mp3']").attr("href");
+                    // fs.writeFileSync("123.txt", temp);
+                    // console.log("写入文件完成！");
+					let downLoadUrl = "http://qqma.tingge123.com:83/"+temp.match(/".+\.mp3/)[0].slice(1);
 					console.log("downLoadUrl:"+downLoadUrl);
 					downMusics(downLoadUrl, dirName);
 				});
-				break;
 			}
-
-
         });        
     }
 }
 
 //入参歌曲url和放置的文件夹名称
-function downMusics(urls, dirname){
+function downMusics(curUrl, dirname){
     debugger;
     //文件夹是否存在，不存在则创建
     if(!fs.existsSync(dirname)){
@@ -83,12 +81,11 @@ function downMusics(urls, dirname){
     }
 
     //格式 http://qqma.tingge123.com:83/123/2017/01/玖月奇迹 - 最美的中国.mp3
-    for(var curUrl of urls){
-        //文件若存在则跳过
-        var fileName = dirname + "/" +curUrl.split("/").pop();
-        if( !fs.existsSync(fileName)  ){
-            request(encodeURI(curUrl)).pipe(fs.createWriteStream(fileName))
-        }
+    //文件若存在则跳过
+    var fileName = dirname + "/" +curUrl.split("/").pop();
+    console.log("文件名：" + fileName);
+    if( !fs.existsSync(fileName)  ){
+        request(encodeURI(curUrl)).pipe(fs.createWriteStream(fileName))
     }
 }
 
@@ -98,6 +95,12 @@ function downMusics(urls, dirname){
 
 function mainFun(){
     debugger;
+    for(var i=1; i<=6; i++){
+        //经典歌曲
+        var temp = "http://www.tingge123.com/jingdiangequ/index"+i+".shtml";
+        catogories.push(temp);
+    }
+
     for( var catogory of catogories){
         parseURL(catogory);
     }
