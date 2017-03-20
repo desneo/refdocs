@@ -152,6 +152,9 @@ function foo(x){
 ## [request ](https://www.npmjs.com/package/request)
 	npm install request
 	基本使用： request(options, callback)
+	request({url: url,encoding: null}, function (error, response, body){
+		let str = iconv.decode(body, "gb2312");
+	})
 	
 ## [iconv-lite 编码转换模块](https://www.npmjs.com/package/iconv-lite)
 	var iconv = require('iconv-lite');
@@ -169,6 +172,8 @@ function foo(x){
 
 ## [cheero DOM解析](https://www.npmjs.com/package/cheerio)
 	//npm install cheerio	语法同JQuery选择器
+	//1) 请求到的页面可能与浏览器中查看到的不同，浏览器解析的是一个完整页面，可能多次请求
+	//2) 也可使用str.match()匹配到所需的字符串
 	let $ = cheerio.load('<h2 class="title">Hello world</h2>')
 	let strs = $(".title>a[href='http://www.tingge123.com/jingdiangequ/index1.shtml']").text();	//经典歌曲
 
