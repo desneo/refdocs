@@ -43,12 +43,31 @@ function parseURL(url){
             let dirName = temp + strs[strs.length-2];
 
             //获取所有歌曲列表
-            console.log("歌曲列表条数"+$("a[class='songname']").length);
+			let firstURLs = [];
             $("a[class='songname']").each(function(i , val){
-                //从一级链接爬行进入
-                let firstUrl = val.text()
-                console.log("firstUrl:"+firstUrl);
+                let firstUrl = $(this).attr("href");
+				firstURLs.push(firstUrl);
+                //console.log("firstUrl:"+firstUrl);
             });
+			
+			//下载页面即是将url中/play/换成/xiazai即可
+			var xx = firstURLs.map(function(val){
+				return val.replace("/play/","/xiazai/");
+			});
+			
+			//爬行进入试听链接
+			for(var i=0; i<xx.length; i++){
+				requestOpt.url = xx[i];
+				request( requestOpt, function (error, response, body){
+					let temp = iconv.decode(body, "gb2312");
+					let $1 = cheerio.load(temp);
+					console.log("requestOpt.url:"+requestOpt.url);
+					let downLoadUrl = $1("a[href$='.mp3']").attr("href");
+					console.log("downLoadUrl:"+downLoadUrl);
+					downMusics(downLoadUrl, dirName);
+				});
+				break;
+			}
 
 
         });        
