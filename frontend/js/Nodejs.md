@@ -200,7 +200,7 @@ function foo(x){
 ## POST请求
 	var fs = require('fs');
 	var j = request.jar()
-	request = request.defaults({jar:j,'proxy':'http://z00316474:!QAZ!QAZ1qaz@proxyhk.huawei.com:8080'});
+	request = request.defaults({jar:j,'proxy':'http://name:passwd@proxyhk.huawei.com:8080'});
 	function mainFun(){
 		debugger;
 		var url = "http://js.189.cn/ywbl/cabh_internationalRoamingInit.action";
