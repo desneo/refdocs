@@ -156,6 +156,22 @@ function foo(x){
 		let str = iconv.decode(body, "gb2312");
 	})
 	
+### cookie
+	var request = request.defaults({jar: true})
+	request('http://www.google.com', function () {
+	  request('http://images.google.com')
+	})
+		或
+	var j = request.jar()
+	request({url: 'http://www.google.com', jar: j}, function () {
+	  var cookie_string = j.getCookieString(url); // "key1=value1; key2=value2; ..." 
+	  var cookies = j.getCookies(url);
+	  // [{key: 'key1', value: 'value1', domain: "www.google.com", ...}, ...] 
+	})	
+	
+### gzip压缩的报文
+	request({ method: 'GET'     , uri: 'http://www.google.com'     , gzip: true     }....)
+	
 ## [iconv-lite 编码转换模块](https://www.npmjs.com/package/iconv-lite)
 	var iconv = require('iconv-lite');
 	//检查编码是否支持
