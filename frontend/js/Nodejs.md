@@ -150,8 +150,8 @@ function foo(x){
 	});
 
 ## [request ](https://www.npmjs.com/package/request)
-	npm install request
-	基本使用： request(options, callback)
+	//npm install request
+	//基本使用： request(options, callback)		默认编码utf-8
 	request({url: url,encoding: null}, function (error, response, body){
 		let str = iconv.decode(body, "gb2312");
 	})
@@ -197,3 +197,27 @@ function foo(x){
 	  fruits[i] = $(this).text();
 	});
 	
+## POST请求
+	var fs = require('fs');
+	var j = request.jar()
+	request = request.defaults({jar:j,'proxy':'http://z00316474:!QAZ!QAZ1qaz@proxyhk.huawei.com:8080'});
+	function mainFun(){
+		debugger;
+		var url = "http://js.189.cn/ywbl/cabh_internationalRoamingInit.action";
+		request( url, function (error, response, body){
+			if (error) {
+				return console.error("获取登录页面失败: " + url);
+			}
+			console.log(j.getCookies(url));
+			
+			//发送验证码
+			url = "http://js.189.cn/self_service/getDynamicPWD.action";
+			request.post( {url:url, form: {accountID:'1771231213'}}, function (error, response, body){
+				if (error) {
+					return console.error("获取登录页面失败: " + url);
+				}
+				console.log(body);
+			});
+		});
+	}
+	mainFun();
