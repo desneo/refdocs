@@ -71,11 +71,40 @@
 # Js关键字
 ## this
 	//既不指向自身，也不指向自身作用域，指向调用它的那一层作用域(调用位置，不是声明位置)
-	function foo(){
-		var a=2;
-		this.bar();
-	}
-	function bar(){ console.log(this.a); }
-	foo();	//undefined
+	1）作为对象方法调用-->指向该对象
+		var obj = {
+			a:1,
+			getA:function(){
+				alert(this === obj);	//true
+				alert(thi.a);	//1
+			}
+		}
+		obj.getA();	//1
+	2) 作为普通函数调用-->指向window对象
+		var a = "YYYYY";
+		var xx = obj.getA;
+		xx();	//YYYYY
+	3) new时构造器调用-->指向构造器返回的对象
+		//当new运算符调用函数是，函数总是返回一个对象
+		var MyClass = function(){
+			this.name = "SVEN";
+			return { name: "kkkkk"};	//显式的返回对象
+		}
+		var obj = new MyClass();
+	4) call/apply调用-->指向传入的对象
+		var obj1 = {
+			name:"SVEN",
+			getName:function(){
+				return this.name;
+			}
+		}
+		var obj2 = {
+			name:"ZZZZZ"
+		}
+		console.log(obj1.getName());	//SVEN
+		console.log(obj1.getName.call(obj2));	//ZZZZZ
+
+## call/apply
+	
 
 
