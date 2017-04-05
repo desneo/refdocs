@@ -94,7 +94,7 @@
 	find()/findIndex() 自定义查找规则ES6
 			[1, 4 , -5 ,10].find(n=>n<0)	 -5
 			[1, 4 , -5 ,10].findIndex(n=>n<0)	 2
-
+	数组最大值: var values = [1,3,5,6,23,6,7,67,1233,3]; var max = Math.max.apply(null,values);
 # JS对象
 	遍历属性( for in ): var xx = {xx:123}; for(let tem in xx ){ console.log(xx[tem])}
 	合并对象： Object.assign(des, src1, src2, ...)		//将src中所有可枚举属性复制到des对象
@@ -137,7 +137,19 @@
 		for( let [key,value] of map){
 			console.log(key+" : "+value)
 		}
-
+## Math
+	Math.PI	 ∏的值(约等于3.14159) 
+	数组最大值: var values = [1,3,5,6,23,6,7,67,1233,3]; var max = Math.max.apply(null,values);
+	Math.ceil(num)	向上舍入为整数
+	Math.floor(num)	向下舍入为整数
+	Math.round(num)	标准四舍五入为整数
+	Math.random()	//0<返回值<1
+	Math.abs(x) 	返回数字的绝对值
+	math.trunc()	返回整数部分
+	Math.sign()		//返回 1 -1 0, 或NaN
+	Math.clz32(x)	//返回一个数的32位无符号整数形式有多少个前导0
+	x**y	//指数
+	
 # js作用域
 	1) function级 或 let/const(块级作用域)
 	2) let--es6, let声明的变量不允许重复声明 let bar= foo*2;
