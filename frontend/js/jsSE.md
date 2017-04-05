@@ -5,62 +5,32 @@
 
 
 # String 字符串
-## 删除所有空格 .replace(/[\n ]/g,"")
+	//转字符串 	String(xx)
+	//长度 "ss".length
+	//slice(startend) 子串，可负数
+	
+	//replace 替换可正则
+		删除所有空格 .replace(/[\n ]/g,"")
+		"2016-4-30 23:59:59".replace(/-/g,"/")	// "2016/4/30 23:59:59"
+		双引号转单引号: SON.stringify(json).replace(/"/g,"'")
 
-## 转字符串 String(xx)
+	//split.split(",") 分割成数组,可正则
+		"zhou shao".split("") 分割成字母
+		"zhou,shao".split(",") 指定分隔符
+		"zhou shao".split("",3) 只返回结果前3项
 
-## 长度 "ss".length
+	//字符串比较大小
+		规则：1、长度长的大; 2、按每一位的charCode比较大小，直到出现不同
 
-## slice(startend) 子串，可负数
-
-## split.split(",") 分割成数组,可正则
-	"zhou shao".split("") 分割成字母
-	"zhou,shao".split(",") 指定分隔符
-	"zhou shao".split("",3) 只返回结果前3项
-
-## replace(/-/g,"/") 替换可正则
-	var ss = "2016-4-30 23:59:59";
-	var tt = ss.replace(/-/g,"/")	// "2016/4/30 23:59:59"
-	"asdasda777777".replace(/[^\d]/gi,"9")		//"9999999777777"
-	双引号转单引号：
-		var tt = {};
-		var json = {releaseProject:"name"}
-		tt.xx = JSON.stringify(json);		//{xx: "{"releaseProject":"name"}"}
-		tt.xx.replace(/"/g,"'")		//"{'releaseProject':'name'}"	
-
-## 字符串比较大小
-	规则：
-		1、长度长的大
-		2、按每一位的charCode比较大小，直到出现不同
-	测试：
-		var a = "2014-08-08";
-		var b = "2014-09-09";
-		// console.log(a>b, a<b); 
-
-## match 字符串匹配/是否存在 支持正则
-
-## 其它重用
+	match 字符串匹配/是否存在 支持正则
 	indexOf("a") / lastIndexOf(""a)		//查找
 	includes()/startsWith()/endsWith() 	//ES6
-	
 	"ad".repeat(3)		//重复字符串,ababab
-
 	padStart() / padEnd() 	//补齐 es6
 		"x".padStart(4,"ab")	 "abax"
 		"x".padEnd(5,"ab")		 "xabab"
 		"x".padEnd(4)	
-	
 	toLowerCase()/toUpperCase()		//大小写转换
-
-## Unicode转字符串
-	索引词：unicode转utf8、
-	①	var data = "ad.gift.label.recipientNumber=\u53D7\u8D60\u53F7\u7801\uFF1A";
-	unescape(data.replace(/\\/g,"%");	  'ad.gift.label.recipientNumber=受赠号码：'
-	escape("我在")	 "%u6211%u5728"
-	② 	var xx = "ad.person.label.OfferByPhoneFee=\u8BDD\u8D39\u652F\u4ED8";
-		console.log(xx.normalize());		// normalize  ES6
-
-
 
 # js作用域
 	1) function级 或 let/const(块级作用域)
@@ -105,6 +75,16 @@
 		console.log(obj1.getName.call(obj2));	//ZZZZZ
 
 ## call/apply
-	
+	//0--为了动态改变this，当某个object没有某个方法，可以借助call/apply用其它对象的方法来操作
+	//1-作用相同，入参形式不同； Function原型上定义的方法，Function.prototype.call/apply
+	//funtion.call(this, arg1, arg2, .....);	func.apply(this, [arg1, arg2, arg3])
+	//示例1
+	var obj1 = {name: "sven"};
+	var obj2 = {name: "anne"};
+	window.name = "xxxx";
+	var getName = function(){	alert(this.name)	}
+	getName();		//XXXX
+	getName.call(obj1);		//sven
+	getName.call(obj2)		//anne
 
 
