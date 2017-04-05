@@ -54,7 +54,7 @@
 
 # JS数组
 	//遍历和过滤
-		for of: 
+		for of: (也可map set string)
 			for (let xx of ['a', 'b', 'c']){console.log(xx)}	 //a b c
 		forEach	
 			["asd","dfdwer"].forEach((item, index)=>{ console.log(item.length)});	//3 6
@@ -95,6 +95,25 @@
 			[1, 4 , -5 ,10].find(n=>n<0)	 -5
 			[1, 4 , -5 ,10].findIndex(n=>n<0)	 2
 
+# JS对象
+	遍历属性( for in ): var xx = {xx:123}; for(let tem in xx ){ console.log(xx[tem])}
+	合并对象： Object.assign(des, src1, src2, ...)		//将src中所有可枚举属性复制到des对象
+	obj下属性：Object.keys(obj);	//返回可枚举属性
+	是否存在某个属性(自有属性):  obj.hasOwnProperty("x");	//true,false
+	是否存在某个属性(自有和集成属性):  "x" in obj;			//true,false
+	复制对象：var zz = JSON.parseJSON(JSON.stringify(xx))
+	
+	//属性的属性
+		var obj = {aa: "123"};
+		Object.getOwnPropertyDescriptor(obj, "aa")
+		//{	value: "123", 
+			writable: true, 	//是否可修改属性的值
+			enumerable: true, 	//可枚举
+			configurable: true	//可配置
+		  }	
+## prototype
+	//每个函数都有一个prototype(原型)属性，这个属性是一个指针，指向一个对象，而这个对象的用途是包含
+		可以由特定类型的所有实例共享的属性和方法。
 	
 # js作用域
 	1) function级 或 let/const(块级作用域)
