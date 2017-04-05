@@ -106,4 +106,13 @@
 	getName.call(obj1);		//sven
 	getName.call(obj2)		//anne
 
-
+## new 关键字
+	返回一个对象，如果有return则返回其值，没有则默认返回执行完后的对象
+	var xx = function(){
+		var name = "NAME";
+		return {
+			"name": "RRRRRR"
+		}
+	}
+	var yy = new xx();
+	yy.name;	//RRRRRR
