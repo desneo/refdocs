@@ -72,9 +72,22 @@
 		var a=111;
 		zz();		//2
 	
-## 高阶函数
-	1--函数可以作为参数被传递，
-	2--函数可以作为返回值返回
+	//示例2--封装模块
+	function coolModule() {
+		var something = "cool";var another = [1,2, 3];
+		function doSome(){console.log(something);}
+		function doAnother(){console.log(another);}
+		return {
+			doSome: doSome,
+			doAnother: doAnother
+		}
+	}
+	var tt = coolModule();
+	tt.doSome();	//cool
+	tt.doAnother();		//[1, 2, 3]
+	
+	
+## 高阶函数 函数做入参/返回值
 	//示例1 判断数据类型
 	//原方法
 	isString = function(obj){ return Object.prototype.toString.call(obj) === "[object String]"; 	}
