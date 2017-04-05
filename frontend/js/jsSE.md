@@ -114,7 +114,30 @@
 ## prototype
 	//每个函数都有一个prototype(原型)属性，这个属性是一个指针，指向一个对象，而这个对象的用途是包含
 		可以由特定类型的所有实例共享的属性和方法。
+
+# 其它数据类型
+## Set
+	//比较相等时使用===(类似)
+		var s = new Set(); [2, 4, 6, 2].map(x=>s.add(x)); for(let i of s){console.log(i)};		//2 4 6
+	.size	
+	add(value)	//添加值，返回Set结构本身
+	delete(value)	//删除，返回boolean, 表示删除成功
+	has(value)	//返回boolean
+	clear()	//清空所有成员，无返回值
 	
+## Map 
+	var map = new Map();
+	map.set('a', "11111");
+	map.get("a");
+	map.has("a");
+	map.delte("a");
+	map.size		//0
+	//遍历
+		var map = new Map([['F', "no"], ['T', "yes"]]);
+		for( let [key,value] of map){
+			console.log(key+" : "+value)
+		}
+
 # js作用域
 	1) function级 或 let/const(块级作用域)
 	2) let--es6, let声明的变量不允许重复声明 let bar= foo*2;
