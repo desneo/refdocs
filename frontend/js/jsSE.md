@@ -52,6 +52,50 @@
 		"x".padEnd(4)	
 	toLowerCase()/toUpperCase()		//大小写转换
 
+# JS数组
+	//遍历和过滤
+		for of: 
+			for (let xx of ['a', 'b', 'c']){console.log(xx)}	 //a b c
+		forEach	
+			["asd","dfdwer"].forEach((item, index)=>{ console.log(item.length)});	//3 6
+		.map() 更新对应项,返回新数组
+			[1,2,3,4].map(function (item) {   return item * item; });	//1 4 9 16
+		.filter() 返回过滤后的数组
+			[0,1,2,3].filter(function(item) { return item; });		//1 2 3
+		.some() 有一个true就返回true
+			[5, 6, 8].some(function(score){ return score<7; });		//true
+		.every()每一个都true才返回true
+			[5, 6, 8].every(function(score){ return score<7; });	//false
+		.reduce() 归并(求和)
+			[1, 2, 3, 4].reduce(function (previous, current, index, array) {   return previous + current; });	//10
+		reduceRight() 归并(右侧开始)  与reduce相反
+	
+	join--转字符串，指定连接符	["am","bm","cm"].join("---");	//	am—bm—cm
+	slice() 截取/浅复制/可负值	[].slice(1, 3)
+	push()/pop() 尾部添加/删除
+	unshift()/shift() 头部添加删除	
+	concat()合并数组/添加对象，返回新对象		arrayObject.concat(arrayX,arrayX,......,arrayX)
+	
+	array.splice() 添加/删除,改变源对象
+		splice()有三个或以上参数,前两个是必须的,后面参数是可选的
+		插入	splice(起始项,0,添加项)		//splice(2 , 0 , "red","green")	从数组位置2插入串"red"和"green"
+		删除	splice(起始项,要删除的项个数)		//splice(0,2) 删除数组中的前两项
+		替换	splice(起始项,替换个数,替换项)		//其实是添加删除的共同结果, splice(2 , 1, "red","green") 删除位置2，然后再从位置2开始插入串"red"和"green"
+	
+	//数组排序
+	array.sort()  改变源
+		[3,4.5,5,1,-2].sort(function(value1, value2){	//自定义排序,
+			return Math.abs(value1-4) - Math.abs(value2-4);		
+		})		// [4.5, 3, 5, 1, -2]
+	array.reverse() 反转数组，改变源
+	
+	indexOf(xx) / lastIndexOf(xx)  查找位置,返回第一个index，未找到返回-1
+		[1,2,4,5 ,3 , 4,2].indexOf(4)	//2
+	find()/findIndex() 自定义查找规则ES6
+			[1, 4 , -5 ,10].find(n=>n<0)	 -5
+			[1, 4 , -5 ,10].findIndex(n=>n<0)	 2
+
+	
 # js作用域
 	1) function级 或 let/const(块级作用域)
 	2) let--es6, let声明的变量不允许重复声明 let bar= foo*2;
