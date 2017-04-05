@@ -2,23 +2,26 @@
 # js基础
 	//<script src="/servletexample/resources/js/jquery-3.1.0.js"></script>
 ## 类型判断 typeof/instanceof
+	typeof "XX"	//"string";	"undefined"/"boolean"/"string"/"number"/"object"/"function"/
+	3 instanceof String		//false
+	
 ## JS初始化过程
-	1、	在JS解释器执行任何代码之前,创建全局对象
-	2、	用预定义的值和函数来初始化全局对象中的属性,eg.Math,Infinity,parseInt
-	3、	搜索函数外的var声明,创建全局对象相应的属性,初始化为undefined
-	4、	创建全局的执行环境,作用域链只有一个对象-全局对象
-	5、	依次执行代码
-		a)	遇到var声明赋值语句给全局对象相应的属性赋值
-		b)	遇到未声明赋值语句,在全局对象中增加相应的属性,并赋值
-		c)	遇到函数调用,创建调用对象
-			i.	搜索函数中的var声明和参数,创建调用对象相应的属性,初始化为undefined。
-			ii.	创建函数执行环境,作用域链--第一对象:调用对象;第二对象:全局对象
-			iii.	依次执行代码
-				1.	遇到var声明赋值语句给调用对象相应的属性赋值
-				2.	遇到未声明赋值语句,在全局对象中增加相应的属性,并赋值
-				3.	遇到函数调用,创建嵌套函数的调用对象
-					a)	搜索嵌套函数中的var声明和参数,创建嵌套函数的调用对象相应的属性,初始化为undefined.
-					b)	创建嵌套函数执行环境,作用域链--第一对象:嵌套函数的调用对象;第二对象:调用对象;第三对象:全局对象
+	1、在JS解释器执行任何代码之前,创建全局对象
+	2、用预定义的值和函数来初始化全局对象中的属性,eg.Math,Infinity,parseInt
+	3、搜索函数外的var声明,创建全局对象相应的属性,初始化为undefined
+	4、创建全局的执行环境,作用域链只有一个对象-全局对象
+	5、依次执行代码
+		a)遇到var声明赋值语句给全局对象相应的属性赋值
+		b)遇到未声明赋值语句,在全局对象中增加相应的属性,并赋值
+		c)遇到函数调用,创建调用对象
+			i.搜索函数中的var声明和参数,创建调用对象相应的属性,初始化为undefined。
+			ii.创建函数执行环境,作用域链--第一对象:调用对象;第二对象:全局对象
+			iii.依次执行代码
+				1.遇到var声明赋值语句给调用对象相应的属性赋值
+				2.遇到未声明赋值语句,在全局对象中增加相应的属性,并赋值
+				3.遇到函数调用,创建嵌套函数的调用对象
+					a)搜索嵌套函数中的var声明和参数,创建嵌套函数的调用对象相应的属性,初始化为undefined.
+					b)创建嵌套函数执行环境,作用域链--第一对象:嵌套函数的调用对象;第二对象:调用对象;第三对象:全局对象
 
 
 # String 字符串
@@ -56,10 +59,23 @@
 	4) 作用域链-逐级向上查找(直到顶部window,未找到报错)，scope chain
 
 # 闭包和高阶函数
-	//高阶函数
+## 闭包 未销毁的局部变量
+	//示例1--函数在定义的此法作用域以外执行
+		function foo() {
+			var a = 2;
+			function bar(){
+				console.log(a);
+			}
+			return bar;
+		}
+		var zz = foo();
+		var a=111;
+		zz();		//2
+	
+## 高阶函数
 	1--函数可以作为参数被传递，
 	2--函数可以作为返回值返回
-## 示例1 判断数据类型
+	//示例1 判断数据类型
 	//原方法
 	isString = function(obj){ return Object.prototype.toString.call(obj) === "[object String]"; 	}
 	isNumber = function(obj){ return Object.prototype.toString.call(obj) === "[object Number]"; 	}
