@@ -246,7 +246,41 @@
 	  await sleep(3000);
 	  console.log('Do other things, ' + new Date());
 	})();
-
+	
+# [Reflect](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Reflect)
+	Reflect.apply() - 调用函数
+		Reflect.apply(Math.floor, undefined, [1.75]); 
+	
+	
+# [Proxy对象代理](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Proxy/handler/apply)
+	定义： let proxy = Proxy(target, handler);	//target是被代理的对象，handlder是声明了各类代理的对象，
+		最终返回一个代理对象。外界每次通过代理对象访问target属性时，就会经过handler。
+	ECMAScript标准委员会定义了一个由14种内部方法组成的集合，亦即一个适用于所有对象的通用接口，属性、原型
+		和函数这三种基础功能自然成为它们关注的核心。
+	//方法列表
+		obj.[[Get]](key, receiver) – 获取属性值。	//执行obj.prop或obj[key]时被调用
+		obj.[[Set]](key, value, receiver) – 为对象的属性赋值	//执行 obj.prop = value或obj[key] = value时
+			执行类似obj.prop += 2这样的赋值语句时，首先调用[[Get]]方法，然后调用[[Set]]方法。对于++和--操作符来说亦是如此。
+		
+## 示例1--属性拦截
+	let target = { foo: "Welcome, foo" }
+	let proxy = new Proxy(target, {
+		get (receiver, name) {
+			return name in receiver ? receiver[name] : `Hello, ${name}`
+		}
+	})
+	proxy.foo   === "Welcome, foo"	//测试
+	proxy.world === "Hello, world"	
+## 实例2--方法拦截
+	var p = new Proxy(function() {}, {
+	  apply: function(target, thisArg, argumentsList) {
+		console.log('called: ' + argumentsList.join(', '));
+		return argumentsList[0] + argumentsList[1] + argumentsList[2];
+	  }
+	});
+	console.log(p(1, 2, 3));
+	
+	
 ### 示例2--串行执行ajax
 	function requestP(url) {	// 封装 Ajax，返回一个 Promise
 		return new Promise(function(resolve, reject) {
