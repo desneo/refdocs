@@ -246,7 +246,21 @@
 	  await sleep(3000);
 	  console.log('Do other things, ' + new Date());
 	})();
-	
+### 示例2--串行执行ajax
+	function requestP(url) {	// 封装 Ajax，返回一个 Promise
+		return new Promise(function(resolve, reject) {
+			ajax(url, (response) => { resolve(JSON.parse(response)); });
+		});
+	}
+	(async () => {
+		// 获取产品数据
+		let data = await requestP('products.json');
+		 // 获取用户数据
+		let users = await requestP('users.json');
+		 // 获取评论数据
+		let products = await requestP('comments.json');
+	}());
+
 # [Reflect](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Reflect)
 	Reflect.apply() - 调用函数
 		Reflect.apply(Math.floor, undefined, [1.75]); 
@@ -281,20 +295,7 @@
 	console.log(p(1, 2, 3));
 	
 	
-### 示例2--串行执行ajax
-	function requestP(url) {	// 封装 Ajax，返回一个 Promise
-		return new Promise(function(resolve, reject) {
-			ajax(url, (response) => { resolve(JSON.parse(response)); });
-		});
-	}
-	(async () => {
-		// 获取产品数据
-		let data = await requestP('products.json');
-		 // 获取用户数据
-		let users = await requestP('users.json');
-		 // 获取评论数据
-		let products = await requestP('comments.json');
-	}());	
+	
 	
 # Js关键字
 ## this
