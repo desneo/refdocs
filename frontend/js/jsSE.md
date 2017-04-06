@@ -231,7 +231,7 @@
 		  });
 		}	
 
-## async/await
+## async/await 推荐使用
 	async可以声明一个异步函数 ，此函数需要返回一个promise对象。await可以等待一个Promise对象resolve，并拿到结果。
 ### 示例1 sleep函数
 	async function sleep(timeout) {  
@@ -247,6 +247,21 @@
 	  console.log('Do other things, ' + new Date());
 	})();
 
+### 示例2--串行执行ajax
+	function requestP(url) {	// 封装 Ajax，返回一个 Promise
+		return new Promise(function(resolve, reject) {
+			ajax(url, (response) => { resolve(JSON.parse(response)); });
+		});
+	}
+	(async () => {
+		// 获取产品数据
+		let data = await requestP('products.json');
+		 // 获取用户数据
+		let users = await requestP('users.json');
+		 // 获取评论数据
+		let products = await requestP('comments.json');
+	}());	
+	
 # Js关键字
 ## this
 	//既不指向自身，也不指向自身作用域，指向调用它的那一层作用域(调用位置，不是声明位置)
