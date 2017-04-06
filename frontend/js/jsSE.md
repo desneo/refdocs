@@ -200,7 +200,53 @@
 	isString = isType('String');
 	isNumber = isType('Number');
 	isArray = isType('Array');	
-	
+
+# 异步编程
+## promise 异步嵌套打平
+	Promise，简单说就是一个容器，里面保存着某个未来才会结束的事件（通常是一个异步操作）的结果。
+	//先创建Promise对象，再监听Resolved和Reject状态变化
+		var promise = new Promise(function(resolve, reject) {
+		  // ... some code
+
+		  if (/* 异步操作成功 */){
+			resolve(value);		//resolve方法，将Promise对象状态从"pending"变为"Resolved"
+		  } else {
+			reject(error);		//reject方法将Promise对象状态从"pending"变为"Reject"
+		  }
+		});
+		//then方法指定 Resolved状态和Reject状态的回调函数
+		promise.then(function(value) {
+		  // success
+		}, function(error) {
+		  // failure
+		});
+		
+	//示例1--异步加载图片
+		function loadImageAsync(url) {
+		  return new Promise(function(resolve, reject) {
+			var image = new Image();
+			image.onload = function() { resolve(image); };
+			image.onerror = function() { reject(new Error('Could not load image at ' + url)); };
+			image.src = url;
+		  });
+		}	
+
+## async/await
+	async可以声明一个异步函数 ，此函数需要返回一个promise对象。await可以等待一个Promise对象resolve，并拿到结果。
+### 示例1 sleep函数
+	async function sleep(timeout) {  
+	  return new Promise((resolve, reject) => {
+		setTimeout(function() {
+		  resolve();
+		}, timeout);
+	  });
+	}
+	(async function() {
+	  console.log('Do some thing, ' + new Date());
+	  await sleep(3000);
+	  console.log('Do other things, ' + new Date());
+	})();
+
 # Js关键字
 ## this
 	//既不指向自身，也不指向自身作用域，指向调用它的那一层作用域(调用位置，不是声明位置)
