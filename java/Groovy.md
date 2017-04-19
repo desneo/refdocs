@@ -11,7 +11,14 @@
 			}
 		}
 		Wizard.learn(x,y).learn(a,b)..
+	6. 直接访问属性，无需定义get/set
+	7. 带默认值的入参 def log(x, base=10), 调用时可传1或2个入参
+	8. 多个返回值   def splitName(fullNmae){ fullName.split(" ") }		//左边多则置为null，右边多则舍弃
+			def (firstName, lastName) = splitName("James Bond");
+	9. boolean判断，自动转换 if(xx){}
+		null==false / Collection不为空==true（非null且有元素） / (Number！=0)==true / (obj!=null)==true
 	
+	10.
 	//定义变量
 	xx = "asdasd"  //全局变量
 	def str= "i am a person"  //类型不定
