@@ -1,12 +1,16 @@
 
-# 基础  
-	== 相当于java中的equals
-	
-	println xx?.yy;  //安全引用操作符, 如果xx==null， 则后面不执行  
-	
-	//字符串求值， 或${x}
-	def x = 1;
-	def doubleQuoteWithDollar = "I am $x dolloar" //输出I am 1 dolloar
+# 改进点/基础  
+	1、== 相当于java中的equals
+	2、println xx?.yy;  //安全引用操作符, 只在xx!=null时才调用后续的属性或方法 
+	3、字符串求值${x} 	def x = 1; 	println "I am $x dolloar" //输出I am 1 dolloar
+	4、不强制捕获异常，异常往上层抛出
+	5、静态方法内部可使用this返回Class对象，形成链式调用
+		class Wizard {
+			def static learn(trick, action){
+				this;
+			}
+		}
+		Wizard.learn(x,y).learn(a,b)..
 	
 	//定义变量
 	xx = "asdasd"  //全局变量
@@ -224,10 +228,9 @@
 	}
 	
 # 其它	
-## [调用shell/cmd指令](http://groovy-lang.org/groovy-dev-kit.html#_reading_files)
+## [调用shell/cmd指令]
 	//只用Process对象
-	def process = "ls -l".execute();	println "Found text ${process.text}" ;
-	def process = "ls -l".execute();process.in.eachLine { line ->println line};
+	def process = "ls -l".execute().text;	//获取命令行执行的结果
 
 ## java<-->groovy互相调用  
 	//groovy<--java
@@ -260,20 +263,9 @@
 	//hello.groovy
 		return "in param name is ${name}"
 
-
 ## 包 
-	//默认导入
-	java.io.*
-	java.lang.*
-	java.math.BigDecimal
-	java.math.BigInteger
-	java.net.*
-	java.util.*
-	groovy.lang.*
-	groovy.util.*
-	
-	//引入jar包
-	*.groovy中加入 import java.math.* 即可！
+	//默认导入 	java.io.*/java.lang.*/java.math.BigDecimal/java.math.BigInteger/java.net.*/java.util.*/groovy.lang.*/groovy.util.*
+	//引入jar包 	*.groovy中加入 import java.math.* 即可！
 
 ## 配置  
 	1、下载apache-groovy-sdk-2.4.7.zip --> 环境变量：GROOVY_HOME=G:\program-my\groovy-2.4.7 ， path添加：%GROOVY_HOME%/bin; 
