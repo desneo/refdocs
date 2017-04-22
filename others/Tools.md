@@ -62,29 +62,22 @@
   
 # git  
     索引词：github
-## TortoiseGit
-	1.安装完成后需要设置，否则clone时报错（可选择指定分支）：右键-->TortoiseGit > Settings > Network > 
-		SSH Client to git安装目录\bin\ssh.exe (必须ssh.exe才可)。
-	2.如果要提交代码，需要按“命令行”中步骤添加公钥。
-	3.右键提交， 可同时commit/push,也可以分步进行。
+## 安装
+	//生成密钥对
+		1、生成公私钥对： ssh-keygen -t rsa -C "desneo@163.com"  
+			（不需密码，默认即可）， 用户主目录（/c/Users/Administrator/.ssh）下生成id_rsa和id_rsa.pub文件  
+		2、github设置账户公钥：settings-->SSH and GPG keys -->New SSH key --> 将公钥内容全部复制-->添加  
+	//TortoiseGit
+		1.安装完成后需要设置，否则clone时报错（可选择指定分支）：右键-->TortoiseGit > Settings > Network > 
+			SSH Client to git安装目录\bin\ssh.exe (必须ssh.exe才可)。
+		2.如果要提交代码，需要按“命令行”中步骤添加公钥。
+		3.右键提交， 可同时commit/push,也可以分步进行。
 	
-## 命令行
-    1、生成公私钥对： ssh-keygen -t rsa -C "desneo@163.com"  
-        （不需密码，默认即可）， 用户主目录（/c/Users/Administrator/.ssh）下生成id_rsa和id_rsa.pub文件  
-    2、github设置账户公钥：settings-->SSH and GPG keys -->New SSH key --> 将公钥内容全部复制-->添加  
-    3、获取远程仓库，并命名别名：  
-        //不要使用 git clone https://github.com/desneo/refinfo （https形式，否则每次push都要输入用户名目录）  
-        git clone git@github.com:desneo/refinfo.git  
-        git remote add refinfo git@github.com:desneo/refinfo.git  
-    4、推送到远程仓库：  
-        git add tool.md	//添加修改的文件  
-        //git add .  //添加所有变化的文件
-        git commit -m '修改的注释'  	
-        git push refinfo gh-pages	//本地仓库推送到指定分支  
-    5、更新： git pull
-    6、删除文件: git rm [-r] *    //若是删除目录需 -r
-    7、重命名： git mv helloworld.c helloworld1.c
-    8、强制覆盖： git push -f   //强覆盖方式用你本地的代码替代git仓库内的内容
+## 命令
+	git pull  //	更新
+	
+
+    强制覆盖： git push -f   //强覆盖方式用你本地的代码替代git仓库内的内容
 ## git stash
 		我们有时会遇到这样的情况，正在分支a上开发一半，然后分支b上发现Bug，需要马上处理。
 		这时候分支a上的修改怎么办呢，git add 是不行的，有的git客户端版本会提示还有add过的文件没提交不能
@@ -97,6 +90,8 @@
 	git stash pop
 	git stash apply stash@{num}
 
+## 	http://geek.csdn.net/news/detail/67091
+	
 ## git rebase
 		有的时候我们在一个分支a开发的时候，master已经进入了很多修改，这时候如果把a的修改提交上去，可能就会
 	跟主干有冲突，需要在主干解决冲突才能提交，这样比较难看。
