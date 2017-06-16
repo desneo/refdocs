@@ -6,11 +6,13 @@
 
 
 # Shell编程
-## 变量
-	声明： i = 1
-	使用: $i
+## 变量 (不要空格)
+	声明： i=1
+	使用: $i / ${i}
+## 字符串
+	连接字符串： var3=${var1}${var2}
 ## Shell数组和循环
-	声明: array=(element1 element2 element3 .... elementN) 		//()括起来，逗号隔开
+	声明: array=(element1 element2 element3 .... elementN) 		//()括起来 空格分开
 	读取: #echo ${array[0]} 
 	遍历： ${array[@]}  
 	循环: 	(1) for data in ${array[@]}  
@@ -26,3 +28,8 @@
 
 	sed -n '5,7p' ,只显示5~7行
 	sed -n '4p' ,只显示第4行
+
+	
+	
+	awk 
+		-v var=val    变量， 可外部指定一个变量，在{}中使用
