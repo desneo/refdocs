@@ -156,3 +156,55 @@
 
 ## 粘贴图片显示空白 
     点击左上角office图标word选项高级”显示文档内容”栏下的“显示图片框”， 不勾选	。	即可显示图片。
+    
+
+# IDEA
+## 常用配置
+	File --> Settings   (Ctrl + Alt + S)
+	1).提示不区分大小写: Editor-->Genereal-->Code Completion-->Case sensitive completion  All
+	2).文件tab标签多行显示：  Editor-->Genereal-->Editor Tabs --> show in single rows
+	3).注释在代码头部而不是行首: Editor-->Code Style-->Java-->Code generation-->comment Code-->取消 comment at first column
+	4).设置字体大小: Editor-->Colors&fonts-->Font --> Size 17合适
+	).开启字体大小滚轮调节: Editor-->General-->Change font size with Ctrl+Mouse Wheel
+	.)显示方法分割线:Editor-->General--》Appearance--> show method separators
+	).文件打开方式: Editors-->File Type--> Rcognized File Types
+	).忽略的文件: Editors-->File Type--> Ignore files and folders
+	).启动时手动选择打开的工程：Appearance-->System Setttings--> startup/shutdown
+	).tab页和左侧文件列表自动对应跳转:Project-->齿轮-->Autoscroll to source
+	
+	//修改主体 	http://blog.csdn.net/guliangliang/article/details/50407946
+	
+	//导入maven工程
+	a).设置:Settings-->maven-->Maven Home directory/User settings File
+	b).导入maven工程：打开一个工程-->File-->new --Source from exists source-->选中根pom.xml
+	c).project-->右键-->maven-->
+	
+## 快捷键
+	//查找
+	双击shift 全局查找
+	CTRL+N   查找类
+	CTRL+SHIFT+N  查找文件
+	CTRL+G   定位行
+	CTRL+SHIFT+F  全局查找
+	CTRL+R   替换
+	CTRL+SHIFT+R  全局替换
+	ALT+SHIFT+C  查找修改的文件
+	CTRL+E   最 近打开的文件
+	F3   向下查找关键字出现位置
+	SHIFT+F3  向上一个关键字出现位置
+	
+	//查看代码
+	Alt+1   显示project视图
+	Alt+7	显示所有方法和变量	
+	Alt+-->/<--	代码前进后退
+	
+	//编辑
+	Alt		列编辑模式
+	Ctrl+W	连按扩大选取范围
+	Ctrl+Alt+L  格式化代码
+	Ctrl+D	复制当前行到下一行
+	Ctrl+X	剪切当前行
+	
+	Alt+Insert  自动生成getter/setter等方法
+	Alt+Enter	自动提示
+	
