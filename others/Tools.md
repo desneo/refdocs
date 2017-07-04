@@ -90,6 +90,8 @@
 	git stash pop
 	git stash apply stash@{num}
 
+## git blame 查找代码修改人
+
 ## 	http://geek.csdn.net/news/detail/67091
 	
 ## git rebase
