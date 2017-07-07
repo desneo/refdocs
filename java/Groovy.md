@@ -130,8 +130,13 @@
 	map['name'] == 'Gromit';
 	map.name == 'Gromit';
 	emptyMap.size() == 0;
-	emptyMap.put("foo", 5);
 	ages['Bob'] == null
+	
+	//填值
+	emptyMap.put("foo", 5);
+	
+	//删除
+	emptyMap.remove("foo");
 
 	def map2 = map.clone();	//克隆map
 	
