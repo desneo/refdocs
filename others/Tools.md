@@ -75,9 +75,10 @@
 	
 ## 命令
 	git pull  //	更新
+	git reset --hard 4e325b3f4840822647ae0b3cfe5beb01a69affd4	//回退到指定commit
 	
+    	强制覆盖： git push -f   //强覆盖方式用你本地的代码替代git仓库内的内容
 
-    强制覆盖： git push -f   //强覆盖方式用你本地的代码替代git仓库内的内容
 ## git stash
 		我们有时会遇到这样的情况，正在分支a上开发一半，然后分支b上发现Bug，需要马上处理。
 		这时候分支a上的修改怎么办呢，git add 是不行的，有的git客户端版本会提示还有add过的文件没提交不能
@@ -92,7 +93,7 @@
 
 ## git blame 查找代码修改人
 
-## 	http://geek.csdn.net/news/detail/67091
+## http://geek.csdn.net/news/detail/67091
 	
 ## git rebase
 		有的时候我们在一个分支a开发的时候，master已经进入了很多修改，这时候如果把a的修改提交上去，可能就会
