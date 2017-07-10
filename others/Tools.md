@@ -168,21 +168,29 @@
 	2).文件tab标签多行显示：  Editor-->Genereal-->Editor Tabs --> show in single rows
 	3).注释在代码头部而不是行首: Editor-->Code Style-->Java-->Code generation-->comment Code-->取消 comment at first column
 	4).设置字体大小: Editor-->Colors&fonts-->Font --> Size 17合适
-	).开启字体大小滚轮调节: Editor-->General-->Change font size with Ctrl+Mouse Wheel
-	.)显示方法分割线:Editor-->General--》Appearance--> show method separators
-	).文件打开方式: Editors-->File Type--> Rcognized File Types
-	).忽略的文件: Editors-->File Type--> Ignore files and folders
-	).启动时手动选择打开的工程：Appearance-->System Setttings--> startup/shutdown
-	).tab页和左侧文件列表自动对应跳转:Project-->齿轮-->Autoscroll to source
+	5).开启字体大小滚轮调节: Editor-->General-->Change font size with Ctrl+Mouse Wheel
+	5). 文件编码： File Encodings --> 全部改成utf-8即可
+	6).显示方法分割线:Editor-->General--》Appearance--> show method separators
+	7).文件打开方式: Editors-->File Type--> Rcognized File Types
+	8).忽略的文件: Editors-->File Type--> Ignore files and folders
+	9).启动时手动选择打开的工程：Appearance-->System Setttings--> startup/shutdown
+	10).tab页和左侧文件列表自动对应跳转:Project-->齿轮-->Autoscroll to source
+	11). 设置eclipse快捷键 --> keymap --> eclipse
+	12). 安装 file explore插件，Open Containing Folder in a File Explorer， 右键打开文件地址
 	
-	//修改主体 	http://blog.csdn.net/guliangliang/article/details/50407946
+	//配置maven
+	File--> settings -->maven --> 配置即可
+	
+	//修改主题 	http://blog.csdn.net/guliangliang/article/details/50407946
 	
 	//导入maven工程
-	a).设置:Settings-->maven-->Maven Home directory/User settings File
-	b).导入maven工程：打开一个工程-->File-->new --Source from exists source-->选中根pom.xml
-	c).project-->右键-->maven-->
+		a).设置:Settings-->maven-->Maven Home directory/User settings File
+		b).导入maven工程：打开一个工程-->File-->new --Source from exists source-->选中根pom.xml
+		c).project-->右键-->maven-->
 	
 ## 快捷键
+	//设置eclipse快捷键
+
 	//查找
 	双击shift 全局查找
 	CTRL+N   查找类
@@ -211,3 +219,104 @@
 	Alt+Insert  自动生成getter/setter等方法
 	Alt+Enter	自动提示
 	
+# maven
+## 安装
+	注：下载后解压即可(先安装jdk), 升级下载最新包，修改M2_HOME值即可
+	1.“系统变量”中增加变量 M2_HOME , 值 H:\program\apache-maven-3.2.3 （Maven的安装路径）。 
+	2.“ 系统变量”Path中末尾加 %M2_HOME%\bin;	
+	//测试安装成功
+	echo %M2_HOME%		//变量是否指向了正确的安装目录
+	mvn  -v			//能否正确找到mvn的执行脚本
+	
+	//IDE中配置maven
+	window-->preference-->搜索maven-->Installations-->add
+
+## 基础问题 
+	1、pom.xml总是在项目的根目录。
+	2、约定优于配置：
+			源码目录为 src/main/java
+			编译输出目录为 target/classes/
+			打包方式默认为jar(如果不指定packaging标签的话)
+			包输出目录为target
+	3、maven中通过groupId、artifactId、version定位到一个唯一jar、pom、car。
+	4、Maven所需构件都是直接从本地仓库获取的。如果本地没有，会尝试从远程仓库下载构件至本地仓库，然后再使用本地仓库的构件。
+	5、maven指令
+		//test前会自动compile，package前会自动test，install前会自动package
+		mvn clean compile   //编译
+		mvn clean test
+		mvn clean package   //打包（成jar后war）
+		mvn clean install   //将工程打出的包安装到本地仓库
+
+## pom.xml解析  
+	<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+	  <modelVersion>4.0.0</modelVersion>	//当前pom模型的版本，3.0必须是4.0.0
+	  <groupId>com.huawei</groupId>		//必须，项目属于哪个组，一般值项目关联的组织/公司
+	  <artifactId>ttt</artifactId>		//必须，项目在组中唯一的id
+	  <version>0.0.1-SNAPSHOT</version>	//必须，项目当前版本(snapchat-快照，开发中非稳定版本)
+	  <packaging>war</packaging>	//可选，打包方式，默认jar
+	  <name>Maven hello project</name>	//可选，对用户更友好的项目名称
+	  
+	  <dependencies>  
+		<dependency>  
+		    <groupId>org.springframework</groupId>  //必选
+		    <artifactId>spring-core</artifactId>  //必选
+		    <version>${springframework.version}</version	//必选  
+		    <type>jar</type>   //可选，依赖类型，默认jar
+		    //可选，依赖范围，默认compile-编译/测试/运行都需要；test-只测试需要；provided-编译测试；runtime-运行
+		    <scope>compile</scope>  
+		</dependency>  
+	  </dependencies>  
+	</project>
+
+## 坐标和依赖
+	//传递性依赖
+	   例子：项目有Spring-aop:4.1.1.RELEASE的依赖，而Spring-aop也有自己的依赖（maven仓库中的pom.xml），maven会自动解析依赖获得依赖的包。
+	//依赖冲突的处理
+	   如果项目A有这样的依赖关系：A->B->C->X(1.0)、A->D->X(2.0), 这样依赖路径上有两个版本的X。原则如下：
+	   1.路径最近者优先。如上1.0的路径长度是3，2.0的长度是2，则2.0的X会被使用。
+	   2.路径长度相同时，第一声明者优先。即在pom.xml中使用先声明的那个。
+	//排除依赖
+	
+	查看依赖信息
+	   mvn dependency:tree 优先 --> 解析成依赖树，可以看出某个依赖是从哪个路径引入的。
+	   mvn dependency:list 	--> 解析并显示依赖列表。 列出所有依赖的文件。
+
+## [仓库](http://search.maven.org/)
+    1、仓库搜索服务 --> http://search.maven.org/
+    2、超级pom,中央仓库 ${M2_HOME}/lib/maven-model-builder-3.0.4.jar --> \org\apache\maven\model\pom-4.0.0.xml, 所有Maven POM的父POM
+    3、//本地仓库（可从maven中复制一份到此处修改，不要修改全局的settings.xml）
+        ~/.m2/settings.xml --> localRepository标签指定本地仓库地址
+        
+    4、//远程仓库（私服是一种特殊的远程仓库）可多个，pom.xml配置-单工程有效，settings.xml全部有效
+      <repositories>  
+    	<repository>  
+    	  <id>cloudhopper</id>  
+    	  <name>Repository for Cloudhopper</name>  
+    	  <url>http://maven.cloudhopper.com/repos/third-party/</url>  //仓库地址，http协议
+    	  <releases>       
+    		<enabled>true</enabled>   //开启发布版本支持    
+    	  </releases>       
+    	  <snapshots>       
+    		<enabled>false</enabled>  //不会下载快照版本(最新版)
+    	  </snapshots>  
+    	</repository>  
+      </repositories>  
+
+    5、镜像--一般用于代替中央仓库提供服务,一般公司内部有一个
+    <mirrors>
+      <mirror> 
+    	<id>rnd-huawei</id> 
+    	<name>ibiblio Mirror of http://repo1.maven.org/maven2/</name> 
+    	<url>http://rnd-mirrors.hxxx.com/maven/</url>
+    	<mirrorOf>central</mirrorOf> 
+      </mirror>
+    </mirrors>
+
+## 其它  
+	10、创建maven project：new project-->maven project --> 勾选"Create a simple project" 不使用骨架
+	11、[创建webapp项目](http://jingyan.baidu.com/article/9f63fb91a7d2a5c8400f0e20.html)：
+		先创建一个普通的maven project（package选war），src/main下面会生成webapp目录--> 工程 properties-->project facets -->java选中1.8
+		-->Danamic web module取消，apply， 再勾选apply-->生成webContent目录-->将其下的MEATA_INF和WEB_INF复制到src/main/webapp下
+		-->删掉webcontent-->
+		修改发布规则-->工程 右键 properties --> Deployment Assembly -->测试目录不需发布可以去掉
+						   --> 指定web路径-->add-->folder-->选中webapp目录
