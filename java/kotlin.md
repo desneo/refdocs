@@ -27,9 +27,36 @@
 	//字符串模版
 	var a = 1; val s1 = "a is $a"
 	
-# 容器
-
-
+# 容器 可变/不可变
+	
+	List<out T> 只读list; MutableList<T>;
+	Set<out T>/MutableSet<T>
+	Map<K, out V>/MutableMap<K, V>
+	
+	//示例
+	val numbers: MutableList<Int> = mutableListOf(1, 2, 3)
+	val readOnlyView: List<Int> = numbers
+	println(numbers)        // prints "[1, 2, 3]"
+	numbers.add(4)
+	println(readOnlyView)   // prints "[1, 2, 3, 4]"
+	readOnlyView.clear()    // -> does not compile
+	
+# MutableList
+	
+# MutableMap
+	//属性
+	size	//map尺寸
+	keys	// Returns a mutable Set of all keys 
+	values	// Returns a mutable Set of all values 
+	
+	isEmpty()	//判空
+	
+	clear()	
+	put(key: K, value: V)
+	putAll(from: Map<out K, V>)
+	remove(key: K)
+	
+	all
 
 # 语法
 	var name = "123"; 	//可变变量
