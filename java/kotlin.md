@@ -41,7 +41,115 @@
 	println(readOnlyView)   // prints "[1, 2, 3, 4]"
 	readOnlyView.clear()    // -> does not compile
 	
-# MutableList
+## MutableList
+	//示例
+	val numbers: MutableList<Int> = mutableListOf(1, 2, 3)
+	val readOnlyView: List<Int> = numbers
+	println(numbers)        // prints "[1, 2, 3]"
+	numbers.add(4)
+	println(readOnlyView)   // prints "[1, 2, 3, 4]"
+	readOnlyView.clear()    // -> does not compile
+
+	//属性
+	size	//尺寸
+	lastIndex	//最尾元素的索引值
+
+	//方法
+	isNotEmpty()
+
+	forEach		//循环
+	forEachIndexed	//带索引的循环
+
+	//取值
+	component1()	//获取第1(2/3/4/5/)个元素
+	elementAtOrElse	//返回指定E,或index越界时返回入参函数的执行结果
+	getOrElse	//取值，如果越界则返回传入的默认值
+	getOrNull	//取值，越界则返回null
+	
+	contains	//包含
+	containsAll
+	
+	//删除
+	remove
+	removeAll	//删除有所满足入参函数的元素
+	drop(n)	//list,返回删除前n个元素后的新list
+	dropLast
+	
+	slice	//子list
+	sort()	//排序
+	sortBy	//指定排序
+	sorted	//返回新的排序后的list
+	
+	
+	//去重
+	distinct()	//list
+	distinctBy(T->{})	//list,使用入参函数处理
+	
+	//统计--判断
+	all		//boolean,每个元素都满足入参函数
+	any		//任一满足
+	count	//满足入参函数E的个数
+	none  	//都不满足
+
+	//转换成其它类型
+	toHashSet
+	toSet
+	toSortedSet
+	zip	
+	
+	
+	//转换
+	reverse		//反转列表
+	reversed
+	asReversed	//list,生成反转列表
+	associate	//map,将E按入参函数转成pair返回
+	associateBy	//map,将E按入参函数转成K返回
+	map			//对每一个元素做变换后返回新的list
+	mapNotNull	
+	flatMap		//对每一个元素做变换后返回新的list
+	mapIndexed	//函数入参带index
+	mapIndexedNotNull	//list，只返回非null值
+	minus
+	minusAssign
+	plus
+	plusAssign
+	take	//返回前n个元素
+	takeLast
+	
+	
+	//过滤--新增
+	filter		//list,返回符合入参函数的E
+	filterNot
+	filterNotNull	//返回非null元素
+	filterIsInstance	//list,返回特定类型的元素
+	groupBy		//map, 分组
+	intersect	//set,两个容器中都包含的元素
+	
+	//查找
+	find	//返回第一个符合入参函数的元素或null
+	findLast
+	indexOf	//返回第一个的索引值，无则-1
+	indexOfFirst	//返回第一个符合入参条件的元素索引
+	indexOfLast	
+	last	//最后一个入参是否符合
+	lastIndexOf		//最后一个符合条件元素索引，或-1
+	lastOrNull	//最有一个元素是否符合,或null
+	single	//未找到则抛出异常
+	singleOrNull
+	
+	
+	//最大，最小
+	max()	//返回最大值的元素
+	maxBy	//经过入参函数处理过的最大值
+	min()
+	minBy
+	
+	//求和--递减
+	fold	//从左往右，在基础值上求和,	 xx.fold(9){t,a->a+t}
+	foldRight	//从右往左求和
+	reduce	//从左往右递减
+	reduceIndexed
+	sumBy	//求和 
 	
 ## MutableMap
 	//基本示例
