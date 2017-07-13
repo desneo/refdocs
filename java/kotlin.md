@@ -434,6 +434,12 @@
 		var output: String? = "123123";
 		println(ou);
 	}
+## 与java互相调用
+	//java中调kotlin
+		1).调用相同
+	
+	//kotlin中调java
+		1).kotlin中无new关键字，其它属性-方法调用相同
 
 # 默认导入
 	kotlin.*; 							kotlin.annotation.*; 	kotlin.collections.*;
