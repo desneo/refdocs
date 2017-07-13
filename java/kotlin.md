@@ -43,20 +43,64 @@
 	
 # MutableList
 	
-# MutableMap
+## MutableMap
+	//基本示例
+	val readWriteMap = hashMapOf("foo" to 1, "bar" to 2)
+	println(readWriteMap["foo"])  // prints "1"
+	val snapshot: Map<String, Int> = HashMap(readWriteMap)
+
 	//属性
 	size	//map尺寸
 	keys	// Returns a mutable Set of all keys 
 	values	// Returns a mutable Set of all values 
 	
 	isEmpty()	//判空
+	isNotEmpty
+	orEmpty()	//如果为null，则返回新map
+	forEach((key,value)->{})	//循环
+
+	get		//取值
+	getOrDefault	//有则取值，无则返回传入的默认值
+	getOrElse		//有则返回值，无则返回传入函数的返回值
+	getOrPut		//有则返回，无则设值
+	getValue		//key无对应值时抛出异常
 	
 	clear()	
 	put(key: K, value: V)
 	putAll(from: Map<out K, V>)
 	remove(key: K)
 	
-	all
+	//统计/判断
+	all		//boolean, 所有元素匹配
+	any		//boolean,任一元素匹配
+	count	//int, 返回符合入参函数的规则个数
+	none()	//boolean,如果为空
+	none((k,v)->{})	//boolean,所有元素都不匹配	
+	
+	contains	//boolean,是否包含
+	containsValue	//boolean
+	
+	//过滤--新增
+	filter	//map,按规则过滤返回新map
+	filterNot	//map,反向
+	minus		//map,返回删除key(s)后的新map
+	minusAssign		//map,删除对应的key(s)
+	plus		//map,返回添加新pair(s)后的新map
+	plusAssign	//添加到当前map
+	toSortedMap
+	
+	//转换
+	map			//list, pair用入参函数转换后放入list中返回, 和flatmap区别是入参函数的入参不同
+	flattmap	//list,按入参函数将pair转成元素
+	mapKeys		//map, 将key处理后当做新key
+	mapValues		//map, 将value处理后当做新value
+	toMutableMap	//转成可变map
+	
+	//查找
+	maxBy	//<K,V>, 返回入参函数处理后值最大的那一个pair (null if there are no entries)
+	MaxWith	//<K,V>,入参比较函数
+	minBY
+	minWith
 
 # 语法
 	var name = "123"; 	//可变变量
