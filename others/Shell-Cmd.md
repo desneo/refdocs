@@ -113,6 +113,9 @@
 	删除指定行:	sed '2d'	;	sed '3,5'
 	删除包含test的行:	sed '/test/d'
 	
+	sed -n '5,7p' ,只显示5~7行
+	sed -n '4p' ,只显示第4行
+	
 ## awk 分解行、字段
 	格式:	awk 'pattern {action} pattern {action}' filename
 	注：多个文件时，读取从左到右，读完第一个再读取第二个
@@ -129,6 +132,9 @@
 		内置函数
 		控制流命令
 		也可以调用外部shell，使用system指令（参见详解知识点）。
+	
+	-v var=val    变量， 可外部指定一个变量，在{}中使用
+	
 ### 使用示例
 	awk -F '|' '$2>3 {print $1}' data.cvs	//打印指定字段 {print $1} 序号1开始
 	
@@ -299,7 +305,28 @@
 		//aptitude purge pkgname 删除包及其配置文件
 		//aptitude show pkgname 显示包的详细信息
 
-
+		
+# Shell编程
+## 变量 (不要空格)
+	声明： i=1
+	使用: $i / ${i}
+## 字符串
+	连接字符串： var3=${var1}${var2}
+## Shell数组和循环
+	声明: array=(element1 element2 element3 .... elementN) 		//()括起来 空格分开
+	读取: #echo ${array[0]} 
+	遍历： ${array[@]}  
+	循环: 	(1) for data in ${array[@]}  
+				do  
+					echo ${data}  
+				done  
+			(2) 可用标准的for循环
+			(3) for shname in `ls *.sh`
+			(4) while循环
+				i=1
+				while(($i<100))
+		
+		
 # 代理软件 squid
 	1) 安装: aptitude install squid3 ；
 		安装完成后自动启动， 默认端口3128
@@ -310,7 +337,7 @@
 	http://www.2cto.com/os/201307/229016.html
 	https://wiki.archlinux.org/index.php/Squid_(%E7%AE%80%E4%BD%93%E4%B8%AD%E6%96%87)
 
-	
-			
+
+		
 #bat
 	1、bat文件执行后不消失-->添加一行pause
