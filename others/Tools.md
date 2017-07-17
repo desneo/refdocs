@@ -182,6 +182,10 @@
 	File--> settings -->maven --> 配置即可
 	
 	//修改主题 	http://blog.csdn.net/guliangliang/article/details/50407946
+		a).http://color-themes.com/ 下载主题
+		b).File → Import Settings → 选择下载的jar文件
+		c).重启IntelliJ
+		d).如果主题未生效，File → Settings → Editor → Color & Fonts 选择导入的主题即可
 	
 	//导入普通工程
 		打开一个工程-->File-->new -- Project from exists source --> 选中代码根目录-->下一步即可
