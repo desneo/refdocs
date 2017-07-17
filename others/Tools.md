@@ -183,6 +183,9 @@
 	
 	//修改主题 	http://blog.csdn.net/guliangliang/article/details/50407946
 	
+	//导入普通工程
+		打开一个工程-->File-->new -- Project from exists source --> 选中代码根目录-->下一步即可
+	
 	//导入maven工程
 		a).设置:Settings-->maven-->Maven Home directory/User settings File
 		b).导入maven工程：打开一个工程-->File-->new --Source from exists source-->选中根pom.xml
