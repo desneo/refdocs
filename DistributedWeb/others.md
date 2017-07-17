@@ -6,4 +6,5 @@
 	5). 之后一旦这个被关注的节点移除，客户端会收到相应的通知，这个时候客户端需要再次调用getChildren("/root/lock_",false)来确保自己是最小的节点，然后进入步骤3.
 
 # 分布式session--redis
-	
+	1). 将session已sessionId作为key，保存缓存集群中.
+	2). 请求到来时从缓存中加载session，出来后写回.
