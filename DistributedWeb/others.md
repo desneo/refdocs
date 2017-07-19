@@ -8,3 +8,8 @@
 # 分布式session--redis
 	1). 将session已sessionId作为key，保存缓存集群中.
 	2). 请求到来时从缓存中加载session，出来后写回.
+
+	//tomcat基于redis
+		使用功能tomcat-redis-session-manager， 设置non-sticky模式，每次映射到后端的server是不同的，当请求到来时，
+	从redis中恢复session，处理完成后session再写回redis.
+	
