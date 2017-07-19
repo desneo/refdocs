@@ -7,7 +7,7 @@
 	5. redis安全-配置密码
 	
 
-# 数据类型
+# 数据类型-前B都是阻塞版本
 	exists foo		//键是否存在，存在返回1， 否则0
 	del foo			//删除键
 	del foo bar		//一次删除多个键,空格分隔
@@ -194,6 +194,24 @@
 	2). 支持丰富的数据类型：字符串、列表、集合、有序集合、散列数据类型.
 	3). 原子性：所有Redis操作是原子的，保证了同时访问的Redis服务器将获得更新后的值。
 	4). 多功能实用工具：Redis是一个多实用的工具，可以在多个用例如缓存，消息，队列使用(Redis原生支持发布/订阅)，任何短暂的数据，应用程序，如Web应用程序会话，网页命中计数等。	
+
+## java操作--jedis
+	//单机版
+	Jedis jedis = new Jedis ("192.168.0.1", 22400); 
+	
+	//集群, ostAndPort为集群中任意可以联通的成员。JedisCluster将通过这个成员获取整个集群的信息
+	HostAndPort host1 = new HostAndPort("192.168.0.1", 22400);  
+	HashSet<HostAndPort> set = new HashSet<HostAndPort>();
+	set.add(host1);
+	JedisCluster cluster = new JedisCluster(set); 
+	String result = cluster.set("key111", "value111"); 
+	
+	//pom.xml
+	<dependency>
+		<groupId>redis.clients</groupId>
+		<artifactId>jedis</artifactId>
+		<version>2.9.0</version>
+	</dependency>
 
 ## linux下安装redis-源码
 	a). C语言编写，编译依赖gcc和make
