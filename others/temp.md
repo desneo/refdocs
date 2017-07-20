@@ -6,3 +6,6 @@
 
 	Alt+Shift+Insert进入到列模式进行按列
 	Ctrl+Shift+V	剪切板列表
+	
+	Ctrl+Alt+B	//查看所有继承类
+	
